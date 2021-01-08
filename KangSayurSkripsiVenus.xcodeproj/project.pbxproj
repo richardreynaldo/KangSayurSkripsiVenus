@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0517547525A85E7200A18063 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517547425A85E7200A18063 /* SignUp.swift */; };
+		0517547D25A85EC100A18063 /* SignUp-SetelAlamat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517547C25A85EC100A18063 /* SignUp-SetelAlamat.swift */; };
+		0517548325A8602000A18063 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517548225A8602000A18063 /* SignIn.swift */; };
+		0517549525A865B200A18063 /* AkunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517549425A865B200A18063 /* AkunView.swift */; };
+		051754A025A865EC00A18063 /* AkunChevron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517549F25A865EC00A18063 /* AkunChevron.swift */; };
+		051754AE25A8667400A18063 /* DataDiriView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754AD25A8667400A18063 /* DataDiriView.swift */; };
+		051754B325A866A100A18063 /* AkunBottom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754B225A866A100A18063 /* AkunBottom.swift */; };
+		051754B825A866F400A18063 /* DataAlamatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754B725A866F400A18063 /* DataAlamatView.swift */; };
+		051754BD25A8674D00A18063 /* UbahEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754BC25A8674D00A18063 /* UbahEmailView.swift */; };
+		051754C225A8678400A18063 /* UbahKataSandiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754C125A8678400A18063 /* UbahKataSandiView.swift */; };
+		051754C725A867C100A18063 /* RiwayatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754C625A867C100A18063 /* RiwayatView.swift */; };
+		051754CC25A867CE00A18063 /* RiwayatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754CB25A867CE00A18063 /* RiwayatRow.swift */; };
+		051754D125A867E400A18063 /* RiwayatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754D025A867E400A18063 /* RiwayatDetailView.swift */; };
+		051754D625A868A700A18063 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754D525A868A700A18063 /* SearchBar.swift */; };
+		051754DB25A868D200A18063 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754DA25A868D200A18063 /* HomeView.swift */; };
+		051754E025A8690100A18063 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051754DF25A8690100A18063 /* CollectionViewCell.swift */; };
 		6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */; };
 		6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507DA25A6CF5400133A56 /* ContentView.swift */; };
 		6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DC25A6CF5600133A56 /* Assets.xcassets */; };
@@ -33,6 +49,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0517547425A85E7200A18063 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		0517547C25A85EC100A18063 /* SignUp-SetelAlamat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUp-SetelAlamat.swift"; sourceTree = "<group>"; };
+		0517548225A8602000A18063 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		0517549425A865B200A18063 /* AkunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunView.swift; sourceTree = "<group>"; };
+		0517549F25A865EC00A18063 /* AkunChevron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunChevron.swift; sourceTree = "<group>"; };
+		051754AD25A8667400A18063 /* DataDiriView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDiriView.swift; sourceTree = "<group>"; };
+		051754B225A866A100A18063 /* AkunBottom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunBottom.swift; sourceTree = "<group>"; };
+		051754B725A866F400A18063 /* DataAlamatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAlamatView.swift; sourceTree = "<group>"; };
+		051754BC25A8674D00A18063 /* UbahEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbahEmailView.swift; sourceTree = "<group>"; };
+		051754C125A8678400A18063 /* UbahKataSandiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbahKataSandiView.swift; sourceTree = "<group>"; };
+		051754C625A867C100A18063 /* RiwayatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatView.swift; sourceTree = "<group>"; };
+		051754CB25A867CE00A18063 /* RiwayatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatRow.swift; sourceTree = "<group>"; };
+		051754D025A867E400A18063 /* RiwayatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatDetailView.swift; sourceTree = "<group>"; };
+		051754D525A868A700A18063 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		051754DA25A868D200A18063 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		051754DF25A8690100A18063 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		6D7507D525A6CF5400133A56 /* KangSayurSkripsiVenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KangSayurSkripsiVenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusApp.swift; sourceTree = "<group>"; };
 		6D7507DA25A6CF5400133A56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +104,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0517546F25A85E1600A18063 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				0517548125A85F3200A18063 /* SignIn */,
+				0517547325A85E5700A18063 /* SignUp */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		0517547025A85E1C00A18063 /* Keranjang */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Keranjang;
+			sourceTree = "<group>";
+		};
+		0517547125A85E2700A18063 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				051754D525A868A700A18063 /* SearchBar.swift */,
+				051754DA25A868D200A18063 /* HomeView.swift */,
+				051754DF25A8690100A18063 /* CollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0517547225A85E3400A18063 /* Akun */ = {
+			isa = PBXGroup;
+			children = (
+				0517549425A865B200A18063 /* AkunView.swift */,
+				0517549F25A865EC00A18063 /* AkunChevron.swift */,
+				0517548E25A860EC00A18063 /* DataDiri */,
+				0517548D25A8606200A18063 /* DataAlamat */,
+				0517548C25A8605F00A18063 /* UbahEmail */,
+				0517548F25A864E800A18063 /* UbahKataSandi */,
+				0517549025A8656300A18063 /* Riwayat */,
+			);
+			path = Akun;
+			sourceTree = "<group>";
+		};
+		0517547325A85E5700A18063 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				0517547425A85E7200A18063 /* SignUp.swift */,
+				0517547C25A85EC100A18063 /* SignUp-SetelAlamat.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		0517548125A85F3200A18063 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				0517548225A8602000A18063 /* SignIn.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		0517548C25A8605F00A18063 /* UbahEmail */ = {
+			isa = PBXGroup;
+			children = (
+				051754BC25A8674D00A18063 /* UbahEmailView.swift */,
+			);
+			path = UbahEmail;
+			sourceTree = "<group>";
+		};
+		0517548D25A8606200A18063 /* DataAlamat */ = {
+			isa = PBXGroup;
+			children = (
+				051754B725A866F400A18063 /* DataAlamatView.swift */,
+			);
+			path = DataAlamat;
+			sourceTree = "<group>";
+		};
+		0517548E25A860EC00A18063 /* DataDiri */ = {
+			isa = PBXGroup;
+			children = (
+				051754AD25A8667400A18063 /* DataDiriView.swift */,
+				051754B225A866A100A18063 /* AkunBottom.swift */,
+			);
+			path = DataDiri;
+			sourceTree = "<group>";
+		};
+		0517548F25A864E800A18063 /* UbahKataSandi */ = {
+			isa = PBXGroup;
+			children = (
+				051754C125A8678400A18063 /* UbahKataSandiView.swift */,
+			);
+			path = UbahKataSandi;
+			sourceTree = "<group>";
+		};
+		0517549025A8656300A18063 /* Riwayat */ = {
+			isa = PBXGroup;
+			children = (
+				051754C625A867C100A18063 /* RiwayatView.swift */,
+				051754CB25A867CE00A18063 /* RiwayatRow.swift */,
+				051754D025A867E400A18063 /* RiwayatDetailView.swift */,
+			);
+			path = Riwayat;
+			sourceTree = "<group>";
+		};
 		6D7507CC25A6CF5400133A56 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +227,10 @@
 		6D7507D725A6CF5400133A56 /* KangSayurSkripsiVenus */ = {
 			isa = PBXGroup;
 			children = (
+				0517546F25A85E1600A18063 /* Auth */,
+				0517547225A85E3400A18063 /* Akun */,
+				0517547125A85E2700A18063 /* Home */,
+				0517547025A85E1C00A18063 /* Keranjang */,
 				6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */,
 				6D7507DA25A6CF5400133A56 /* ContentView.swift */,
 				6D7507DC25A6CF5600133A56 /* Assets.xcassets */,
@@ -260,7 +396,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */,
+				051754B325A866A100A18063 /* AkunBottom.swift in Sources */,
+				051754E025A8690100A18063 /* CollectionViewCell.swift in Sources */,
+				051754A025A865EC00A18063 /* AkunChevron.swift in Sources */,
+				051754AE25A8667400A18063 /* DataDiriView.swift in Sources */,
+				051754CC25A867CE00A18063 /* RiwayatRow.swift in Sources */,
+				051754DB25A868D200A18063 /* HomeView.swift in Sources */,
+				051754D625A868A700A18063 /* SearchBar.swift in Sources */,
+				0517547525A85E7200A18063 /* SignUp.swift in Sources */,
+				051754D125A867E400A18063 /* RiwayatDetailView.swift in Sources */,
+				051754C225A8678400A18063 /* UbahKataSandiView.swift in Sources */,
+				0517548325A8602000A18063 /* SignIn.swift in Sources */,
+				051754B825A866F400A18063 /* DataAlamatView.swift in Sources */,
+				051754BD25A8674D00A18063 /* UbahEmailView.swift in Sources */,
 				6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */,
+				0517547D25A85EC100A18063 /* SignUp-SetelAlamat.swift in Sources */,
+				0517549525A865B200A18063 /* AkunView.swift in Sources */,
+				051754C725A867C100A18063 /* RiwayatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
