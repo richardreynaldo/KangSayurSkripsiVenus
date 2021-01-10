@@ -9,21 +9,38 @@ import SwiftUI
 
 struct KeranjangView: View {
     var body: some View {
-        ScrollView{
+        GeometryReader{
+            geometry in
             VStack{
-                HStack{
-                    CheckView()
-                    Text("Pilih semua")
-                }.padding(.trailing,250)
-                KeranjangRow(nama: "Kangkung", harga: 20000)
-                KeranjangRow(nama: "Bayam Hijau", harga: 10000)
-                KeranjangRow(nama: "Brokoli",  harga: 15000)
-                KeranjangRow(nama: "Tomat", harga: 5000)
-                KeranjangRow(nama: "Tauge", harga: 3000)
+                Group{
+                    HStack{
+                        CheckView()
+                        Text("Pilih semua")
+                            .lineLimit(1)
+                            .frame(width: 100,alignment: .leading)
+                    }
+                }
+                .padding(.trailing,150)
+                ScrollView{
+                    VStack{
+                        
+                        KeranjangRow(nama: "Kangkung", harga: 20000, gambar: "bell_isle")
+                        KeranjangRow(nama: "Bayam Hijau", harga: 10000, gambar: "bell_isle")
+                        KeranjangRow(nama: "Brokoli",  harga: 15000, gambar: "bell_isle")
+                        KeranjangRow(nama: "Tomat", harga: 5000, gambar: "bell_isle")
+                        KeranjangRow(nama: "Tauge", harga: 20000, gambar: "bell_isle")
+                    }
+                    //jangan lupa di ganti sama actual total price*quantity terus tambahin
+                }
+                Group{
+                    TotalKeranjangRow(price: 40000)
             }
-            //jangan lupa di ganti sama actual total price*quantity terus tambahin
-            TotalKeranjangRow(price: 40000)
+            
+//                    .position(x: geometry.size.width/2, y: geometry.size.height/2.9)
+            }
         }
+        .navigationBarTitle("Keranjang")
+        
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct KeranjangRow: View {
     var nama: String
     var harga: Int
-    
+    var gambar:String
     var body: some View {
 
         ZStack {
@@ -22,8 +22,9 @@ struct KeranjangRow: View {
                 
                 // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
                 
-                Text("GAMBAR")
-                        .font(.title)
+                Image(gambar)
+                    .resizable()
+                    .frame(width: 60, height: 60, alignment: .center)
                 
                 VStack(alignment: .leading) {
                     Text("\(nama)")
@@ -49,7 +50,7 @@ struct KeranjangRow: View {
 
 struct KeranjangRow_Previews: PreviewProvider {
     static var previews: some View {
-        KeranjangRow(nama: "Kangkung", harga: 20000)
+        KeranjangRow(nama: "Kangkung", harga: 20000, gambar: "")
     }
 }
 

@@ -11,7 +11,7 @@ import SwiftUI
 struct KangSayurSkripsiVenusApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KeranjangView()
         }
     }
 }
