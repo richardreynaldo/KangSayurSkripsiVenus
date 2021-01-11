@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests : NSObject
+@end
+@implementation PodsDummy_Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests
+@end

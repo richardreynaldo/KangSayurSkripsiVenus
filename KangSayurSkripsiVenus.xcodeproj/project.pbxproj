@@ -3,16 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4059F625AC3BFE0052CA50 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4059F525AC3BFE0052CA50 /* UserData.swift */; };
+		2C4059FB25AC3CD00052CA50 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4059FA25AC3CD00052CA50 /* Profile.swift */; };
+		2C405A0325AC40540052CA50 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A0225AC40540052CA50 /* Product.swift */; };
+		2C405A0B25AC41520052CA50 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A0A25AC41520052CA50 /* Order.swift */; };
+		2C405A1625AC4E7E0052CA50 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A1525AC4E7E0052CA50 /* Authentication.swift */; };
+		2C405A3E25AC66A50052CA50 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A3D25AC66A50052CA50 /* GlobalVariable.swift */; };
+		2C6A6DCE25AC19AF002E9FFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */; };
+		53A9C738AC664DF6DB9E622F /* Pods_KangSayurSkripsiVenus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68AA302DE971C99381A4DBBA /* Pods_KangSayurSkripsiVenus.framework */; };
 		6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */; };
 		6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507DA25A6CF5400133A56 /* ContentView.swift */; };
 		6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DC25A6CF5600133A56 /* Assets.xcassets */; };
 		6D7507E025A6CF5600133A56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DF25A6CF5600133A56 /* Preview Assets.xcassets */; };
 		6D7507EB25A6CF5700133A56 /* KangSayurSkripsiVenusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507EA25A6CF5700133A56 /* KangSayurSkripsiVenusTests.swift */; };
 		6D7507F625A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507F525A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift */; };
+		9E3C84C3185571F4E44674C3 /* Pods_KangSayurSkripsiVenusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */; };
+		D2B46AFA9555FE7C7D908463 /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE29FCACCA76AE549CDD443F /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +43,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B2306BD0484B61DB5B7ED69 /* Pods-KangSayurSkripsiVenusTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenusTests.debug.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenusTests/Pods-KangSayurSkripsiVenusTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2C4059F525AC3BFE0052CA50 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		2C4059FA25AC3CD00052CA50 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		2C405A0225AC40540052CA50 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		2C405A0A25AC41520052CA50 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		2C405A1525AC4E7E0052CA50 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		2C405A3D25AC66A50052CA50 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
+		2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4F9AD758C8A74BC802D43D3A /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.release.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.release.xcconfig"; sourceTree = "<group>"; };
+		68AA302DE971C99381A4DBBA /* Pods_KangSayurSkripsiVenus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KangSayurSkripsiVenus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507D525A6CF5400133A56 /* KangSayurSkripsiVenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KangSayurSkripsiVenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusApp.swift; sourceTree = "<group>"; };
 		6D7507DA25A6CF5400133A56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +65,12 @@
 		6D7507F125A6CF5700133A56 /* KangSayurSkripsiVenusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KangSayurSkripsiVenusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507F525A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusUITests.swift; sourceTree = "<group>"; };
 		6D7507F725A6CF5700133A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E120A098FC787508EFB8826 /* Pods-KangSayurSkripsiVenus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.debug.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.debug.xcconfig"; sourceTree = "<group>"; };
+		A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KangSayurSkripsiVenusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8EBEC5F5999A2CB1FA3F976 /* Pods-KangSayurSkripsiVenus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.release.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.release.xcconfig"; sourceTree = "<group>"; };
+		D012B79C66BC5F4066FE0BDA /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.debug.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE29FCACCA76AE549CDD443F /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F881A2DA6924370A06891F90 /* Pods-KangSayurSkripsiVenusTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenusTests.release.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenusTests/Pods-KangSayurSkripsiVenusTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53A9C738AC664DF6DB9E622F /* Pods_KangSayurSkripsiVenus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E3C84C3185571F4E44674C3 /* Pods_KangSayurSkripsiVenusTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +94,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B46AFA9555FE7C7D908463 /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C4059F225AC3B810052CA50 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C405A1525AC4E7E0052CA50 /* Authentication.swift */,
+				2C4059F525AC3BFE0052CA50 /* UserData.swift */,
+				2C405A0A25AC41520052CA50 /* Order.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		2C4059F325AC3B990052CA50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C4059F425AC3BA10052CA50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C405A0225AC40540052CA50 /* Product.swift */,
+				2C4059FA25AC3CD00052CA50 /* Profile.swift */,
+				2C405A3D25AC66A50052CA50 /* GlobalVariable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6D7507CC25A6CF5400133A56 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +135,8 @@
 				6D7507E925A6CF5700133A56 /* KangSayurSkripsiVenusTests */,
 				6D7507F425A6CF5700133A56 /* KangSayurSkripsiVenusUITests */,
 				6D7507D625A6CF5400133A56 /* Products */,
+				925ACA065FE35607F35781BE /* Pods */,
+				9F3476CF5DD89C64D3E965CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,10 +153,14 @@
 		6D7507D725A6CF5400133A56 /* KangSayurSkripsiVenus */ = {
 			isa = PBXGroup;
 			children = (
+				2C4059F425AC3BA10052CA50 /* Model */,
+				2C4059F225AC3B810052CA50 /* View Model */,
+				2C4059F325AC3B990052CA50 /* View */,
 				6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */,
 				6D7507DA25A6CF5400133A56 /* ContentView.swift */,
 				6D7507DC25A6CF5600133A56 /* Assets.xcassets */,
 				6D7507E125A6CF5600133A56 /* Info.plist */,
+				2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */,
 				6D7507DE25A6CF5600133A56 /* Preview Content */,
 			);
 			path = KangSayurSkripsiVenus;
@@ -130,6 +192,29 @@
 			path = KangSayurSkripsiVenusUITests;
 			sourceTree = "<group>";
 		};
+		925ACA065FE35607F35781BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E120A098FC787508EFB8826 /* Pods-KangSayurSkripsiVenus.debug.xcconfig */,
+				B8EBEC5F5999A2CB1FA3F976 /* Pods-KangSayurSkripsiVenus.release.xcconfig */,
+				D012B79C66BC5F4066FE0BDA /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.debug.xcconfig */,
+				4F9AD758C8A74BC802D43D3A /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.release.xcconfig */,
+				1B2306BD0484B61DB5B7ED69 /* Pods-KangSayurSkripsiVenusTests.debug.xcconfig */,
+				F881A2DA6924370A06891F90 /* Pods-KangSayurSkripsiVenusTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9F3476CF5DD89C64D3E965CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				68AA302DE971C99381A4DBBA /* Pods_KangSayurSkripsiVenus.framework */,
+				EE29FCACCA76AE549CDD443F /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework */,
+				A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D7507FA25A6CF5700133A56 /* Build configuration list for PBXNativeTarget "KangSayurSkripsiVenus" */;
 			buildPhases = (
+				541D46FA13D8A8E59D981CD0 /* [CP] Check Pods Manifest.lock */,
 				6D7507D125A6CF5400133A56 /* Sources */,
 				6D7507D225A6CF5400133A56 /* Frameworks */,
 				6D7507D325A6CF5400133A56 /* Resources */,
+				A825C9A1E3742D3F529CF02B /* [CP] Embed Pods Frameworks */,
+				2C405A3825AC538B0052CA50 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -154,6 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D7507FD25A6CF5700133A56 /* Build configuration list for PBXNativeTarget "KangSayurSkripsiVenusTests" */;
 			buildPhases = (
+				8B097918F2B755460BB55E5F /* [CP] Check Pods Manifest.lock */,
 				6D7507E225A6CF5700133A56 /* Sources */,
 				6D7507E325A6CF5700133A56 /* Frameworks */,
 				6D7507E425A6CF5700133A56 /* Resources */,
@@ -172,9 +261,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D75080025A6CF5700133A56 /* Build configuration list for PBXNativeTarget "KangSayurSkripsiVenusUITests" */;
 			buildPhases = (
+				47ACD1EFFC8EB763A53DD731 /* [CP] Check Pods Manifest.lock */,
 				6D7507ED25A6CF5700133A56 /* Sources */,
 				6D7507EE25A6CF5700133A56 /* Frameworks */,
 				6D7507EF25A6CF5700133A56 /* Resources */,
+				06C9BB5CDE9F4D5EDB5041A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +326,7 @@
 			files = (
 				6D7507E025A6CF5600133A56 /* Preview Assets.xcassets in Resources */,
 				6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */,
+				2C6A6DCE25AC19AF002E9FFD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,12 +346,138 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		06C9BB5CDE9F4D5EDB5041A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2C405A3825AC538B0052CA50 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		47ACD1EFFC8EB763A53DD731 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		541D46FA13D8A8E59D981CD0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KangSayurSkripsiVenus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B097918F2B755460BB55E5F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KangSayurSkripsiVenusTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A825C9A1E3742D3F529CF02B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6D7507D125A6CF5400133A56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C405A1625AC4E7E0052CA50 /* Authentication.swift in Sources */,
+				2C405A0B25AC41520052CA50 /* Order.swift in Sources */,
+				2C4059FB25AC3CD00052CA50 /* Profile.swift in Sources */,
+				2C4059F625AC3BFE0052CA50 /* UserData.swift in Sources */,
+				2C405A0325AC40540052CA50 /* Product.swift in Sources */,
 				6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */,
+				2C405A3E25AC66A50052CA50 /* GlobalVariable.swift in Sources */,
 				6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,11 +632,13 @@
 		};
 		6D7507FB25A6CF5700133A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E120A098FC787508EFB8826 /* Pods-KangSayurSkripsiVenus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"KangSayurSkripsiVenus/Preview Content\"";
+				DEVELOPMENT_TEAM = QWVAEMBXMM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = KangSayurSkripsiVenus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -429,17 +649,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skripsi.KangSayurSkripsiVenus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		6D7507FC25A6CF5700133A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8EBEC5F5999A2CB1FA3F976 /* Pods-KangSayurSkripsiVenus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"KangSayurSkripsiVenus/Preview Content\"";
+				DEVELOPMENT_TEAM = QWVAEMBXMM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = KangSayurSkripsiVenus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -450,12 +672,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skripsi.KangSayurSkripsiVenus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		6D7507FE25A6CF5700133A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B2306BD0484B61DB5B7ED69 /* Pods-KangSayurSkripsiVenusTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -477,6 +700,7 @@
 		};
 		6D7507FF25A6CF5700133A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F881A2DA6924370A06891F90 /* Pods-KangSayurSkripsiVenusTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -498,6 +722,7 @@
 		};
 		6D75080125A6CF5700133A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D012B79C66BC5F4066FE0BDA /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -517,6 +742,7 @@
 		};
 		6D75080225A6CF5700133A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9AD758C8A74BC802D43D3A /* Pods-KangSayurSkripsiVenus-KangSayurSkripsiVenusUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
