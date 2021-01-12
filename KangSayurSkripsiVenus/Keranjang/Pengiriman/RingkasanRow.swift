@@ -15,7 +15,7 @@ struct RingkasanRow: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .fill(Color.gray)
+                .fill(Color.white)
                 .frame(width: UIScreen.main.bounds.size.width, height: 106)
             VStack(alignment: .leading){
                 Text("Ringkasan belanja")

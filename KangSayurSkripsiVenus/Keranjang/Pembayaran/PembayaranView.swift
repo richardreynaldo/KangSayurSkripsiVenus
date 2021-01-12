@@ -15,6 +15,7 @@ struct PembayaranView: View {
                 
                     VStack(spacing:0){
                         BarangDiBeliRow(quantity: 2, price: 20000, quantityxprice: 40000, nama: "Brokoli")
+                        
                         Rectangle()
                             .frame(height: 1)
                         AlamatRow()
@@ -48,6 +49,7 @@ struct PembayaranView: View {
                     })
                 }
             }
+            .background(StyleColors.background)
         }
         .navigationBarTitle("Pembayaran")
         

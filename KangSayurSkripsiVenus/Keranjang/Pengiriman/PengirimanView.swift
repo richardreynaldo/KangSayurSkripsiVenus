@@ -13,11 +13,9 @@ struct PengirimanView: View {
             geometry in
             VStack{
                 Group{
-                    
+                    AlamatRow()
                 }
                 ScrollView{
-                    AlamatRow()
-                        .padding(.bottom, 15)
                     VStack{
                         PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
                         PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
@@ -39,6 +37,7 @@ struct PengirimanView: View {
             }
         }
         .navigationBarTitle("Pengiriman")
+        .background(StyleColors.background)
         
     }
 }

@@ -12,7 +12,7 @@ struct TotalPembelianRow: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .fill(Color.gray)
+                .fill(Color.white)
                 .frame(width: UIScreen.main.bounds.size.width, height: 65)
             HStack{
                 VStack(alignment: .leading){

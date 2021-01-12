@@ -11,7 +11,7 @@ struct AlamatRow: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .fill(Color.gray)
+                .fill(Color.white)
                 .frame(width: UIScreen.main.bounds.size.width, height: 160)
             VStack(alignment: .leading){
                 Text("Alamat Pengiriman")

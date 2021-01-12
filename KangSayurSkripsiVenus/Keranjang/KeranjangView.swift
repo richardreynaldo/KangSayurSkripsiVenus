@@ -26,13 +26,13 @@ struct KeranjangView: View {
                 .padding(.trailing,240)
                 ScrollView{
                     VStack{
-                        
                         KeranjangRow(nama: "Kangkung", harga: 20000, gambar: "bell_isle")
                         KeranjangRow(nama: "Bayam Hijau", harga: 10000, gambar: "bell_isle")
                         KeranjangRow(nama: "Brokoli",  harga: 15000, gambar: "bell_isle")
                         KeranjangRow(nama: "Tomat", harga: 5000, gambar: "bell_isle")
                         KeranjangRow(nama: "Tauge", harga: 20000, gambar: "bell_isle")
                     }
+                    .frame(width: geometry.size.width * 0.91, height: geometry.size.height * 0.11, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     //jangan lupa di ganti sama actual total price*quantity terus tambahin
                 }
                 Group{
@@ -43,6 +43,7 @@ struct KeranjangView: View {
             }
         }
         .navigationBarTitle("Keranjang")
+        .background(StyleColors.background)
         
     }
 }
