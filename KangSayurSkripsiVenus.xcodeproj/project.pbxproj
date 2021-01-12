@@ -36,6 +36,13 @@
 		0517552A25A8E20700A18063 /* TotalPembayaranRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517552925A8E20700A18063 /* TotalPembayaranRow.swift */; };
 		054121FE25A97760005BC031 /* MetodePembayaranRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054121FD25A97760005BC031 /* MetodePembayaranRow.swift */; };
 		0541220325A9784B005BC031 /* PembayaranView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541220225A9784B005BC031 /* PembayaranView.swift */; };
+		6D62A57825AD8DC700F8D567 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62A57725AD8DC700F8D567 /* Colors.swift */; };
+		6D62A58125AD8DDC00F8D567 /* StyleFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62A58025AD8DDC00F8D567 /* StyleFont.swift */; };
+		6D62A58D25AD8EA000F8D567 /* Sora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58825AD8EA000F8D567 /* Sora-Regular.ttf */; };
+		6D62A58E25AD8EA000F8D567 /* Sora-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58925AD8EA000F8D567 /* Sora-SemiBold.ttf */; };
+		6D62A58F25AD8EA000F8D567 /* Sora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58A25AD8EA000F8D567 /* Sora-Bold.ttf */; };
+		6D62A59025AD8EA000F8D567 /* Sora-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58B25AD8EA000F8D567 /* Sora-Light.ttf */; };
+		6D62A59125AD8EA000F8D567 /* Sora-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58C25AD8EA000F8D567 /* Sora-Medium.ttf */; };
 		6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */; };
 		6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507DA25A6CF5400133A56 /* ContentView.swift */; };
 		6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DC25A6CF5600133A56 /* Assets.xcassets */; };
@@ -91,6 +98,13 @@
 		0517552925A8E20700A18063 /* TotalPembayaranRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPembayaranRow.swift; sourceTree = "<group>"; };
 		054121FD25A97760005BC031 /* MetodePembayaranRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetodePembayaranRow.swift; sourceTree = "<group>"; };
 		0541220225A9784B005BC031 /* PembayaranView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PembayaranView.swift; sourceTree = "<group>"; };
+		6D62A57725AD8DC700F8D567 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6D62A58025AD8DDC00F8D567 /* StyleFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleFont.swift; sourceTree = "<group>"; };
+		6D62A58825AD8EA000F8D567 /* Sora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Regular.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Regular.ttf"; sourceTree = "<group>"; };
+		6D62A58925AD8EA000F8D567 /* Sora-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-SemiBold.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-SemiBold.ttf"; sourceTree = "<group>"; };
+		6D62A58A25AD8EA000F8D567 /* Sora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Bold.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Bold.ttf"; sourceTree = "<group>"; };
+		6D62A58B25AD8EA000F8D567 /* Sora-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Light.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Light.ttf"; sourceTree = "<group>"; };
+		6D62A58C25AD8EA000F8D567 /* Sora-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Medium.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Medium.ttf"; sourceTree = "<group>"; };
 		6D7507D525A6CF5400133A56 /* KangSayurSkripsiVenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KangSayurSkripsiVenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusApp.swift; sourceTree = "<group>"; };
 		6D7507DA25A6CF5400133A56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -259,9 +273,48 @@
 			path = Pembayaran;
 			sourceTree = "<group>";
 		};
+		6D62A57425AD8D8F00F8D567 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				6D62A57625AD8DB500F8D567 /* Fonts */,
+				6D62A57525AD8DB000F8D567 /* Colors */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		6D62A57525AD8DB000F8D567 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				6D62A57725AD8DC700F8D567 /* Colors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		6D62A57625AD8DB500F8D567 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6D62A57F25AD8DCE00F8D567 /* Typeface */,
+				6D62A58025AD8DDC00F8D567 /* StyleFont.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6D62A57F25AD8DCE00F8D567 /* Typeface */ = {
+			isa = PBXGroup;
+			children = (
+				6D62A58A25AD8EA000F8D567 /* Sora-Bold.ttf */,
+				6D62A58B25AD8EA000F8D567 /* Sora-Light.ttf */,
+				6D62A58C25AD8EA000F8D567 /* Sora-Medium.ttf */,
+				6D62A58825AD8EA000F8D567 /* Sora-Regular.ttf */,
+				6D62A58925AD8EA000F8D567 /* Sora-SemiBold.ttf */,
+			);
+			path = Typeface;
+			sourceTree = "<group>";
+		};
 		6D7507CC25A6CF5400133A56 = {
 			isa = PBXGroup;
 			children = (
+				6D62A57425AD8D8F00F8D567 /* Theme */,
 				6D7507D725A6CF5400133A56 /* KangSayurSkripsiVenus */,
 				6D7507E925A6CF5700133A56 /* KangSayurSkripsiVenusTests */,
 				6D7507F425A6CF5700133A56 /* KangSayurSkripsiVenusUITests */,
@@ -425,6 +478,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D7507E025A6CF5600133A56 /* Preview Assets.xcassets in Resources */,
+				6D62A58D25AD8EA000F8D567 /* Sora-Regular.ttf in Resources */,
+				6D62A59025AD8EA000F8D567 /* Sora-Light.ttf in Resources */,
+				6D62A58E25AD8EA000F8D567 /* Sora-SemiBold.ttf in Resources */,
+				6D62A58F25AD8EA000F8D567 /* Sora-Bold.ttf in Resources */,
+				6D62A59125AD8EA000F8D567 /* Sora-Medium.ttf in Resources */,
 				6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +522,7 @@
 				051754D625A868A700A18063 /* SearchBar.swift in Sources */,
 				054121FE25A97760005BC031 /* MetodePembayaranRow.swift in Sources */,
 				0517552A25A8E20700A18063 /* TotalPembayaranRow.swift in Sources */,
+				6D62A58125AD8DDC00F8D567 /* StyleFont.swift in Sources */,
 				0517550D25A8CFA700A18063 /* RingkasanRow.swift in Sources */,
 				0517547525A85E7200A18063 /* SignUp.swift in Sources */,
 				051754D125A867E400A18063 /* RiwayatDetailView.swift in Sources */,
@@ -475,6 +534,7 @@
 				051754ED25A89FB300A18063 /* KeranjangRow.swift in Sources */,
 				6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */,
 				0517551D25A8DE9500A18063 /* BarangDiBeliRow.swift in Sources */,
+				6D62A57825AD8DC700F8D567 /* Colors.swift in Sources */,
 				0517547D25A85EC100A18063 /* SignUp-SetelAlamat.swift in Sources */,
 				0517550825A8CD9700A18063 /* PengirimanRow.swift in Sources */,
 				0517549525A865B200A18063 /* AkunView.swift in Sources */,

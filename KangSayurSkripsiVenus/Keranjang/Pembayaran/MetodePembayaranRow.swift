@@ -19,7 +19,10 @@ struct MetodePembayaranRow: View {
                     Text("Metode Pembayaran")
                         .font(.title2)
                     HStack{
-                        Text("ikon")
+                        Image("bi_cash")
+                            .resizable()
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .scaledToFit()
                         Text("\(paymentType)")
                     }
                 }.padding(.leading, 15)
