@@ -43,6 +43,7 @@
 		6D62A58F25AD8EA000F8D567 /* Sora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58A25AD8EA000F8D567 /* Sora-Bold.ttf */; };
 		6D62A59025AD8EA000F8D567 /* Sora-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58B25AD8EA000F8D567 /* Sora-Light.ttf */; };
 		6D62A59125AD8EA000F8D567 /* Sora-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D62A58C25AD8EA000F8D567 /* Sora-Medium.ttf */; };
+		6D62A59725AD966800F8D567 /* TotalPembayaran.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62A59625AD966800F8D567 /* TotalPembayaran.swift */; };
 		6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */; };
 		6D7507DB25A6CF5400133A56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507DA25A6CF5400133A56 /* ContentView.swift */; };
 		6D7507DD25A6CF5600133A56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DC25A6CF5600133A56 /* Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		6D62A58A25AD8EA000F8D567 /* Sora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Bold.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Bold.ttf"; sourceTree = "<group>"; };
 		6D62A58B25AD8EA000F8D567 /* Sora-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Light.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Light.ttf"; sourceTree = "<group>"; };
 		6D62A58C25AD8EA000F8D567 /* Sora-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sora-Medium.ttf"; path = "../../../../Project-WasWas/Project WasWas/Project WasWas/Themes/Fonts/Typeface/Sora-Medium.ttf"; sourceTree = "<group>"; };
+		6D62A59625AD966800F8D567 /* TotalPembayaran.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalPembayaran.swift; sourceTree = "<group>"; };
 		6D7507D525A6CF5400133A56 /* KangSayurSkripsiVenus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KangSayurSkripsiVenus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507D825A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusApp.swift; sourceTree = "<group>"; };
 		6D7507DA25A6CF5400133A56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -311,6 +313,14 @@
 			path = Typeface;
 			sourceTree = "<group>";
 		};
+		6D62A59525AD965900F8D567 /* Struct */ = {
+			isa = PBXGroup;
+			children = (
+				6D62A59625AD966800F8D567 /* TotalPembayaran.swift */,
+			);
+			path = Struct;
+			sourceTree = "<group>";
+		};
 		6D7507CC25A6CF5400133A56 = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +345,7 @@
 		6D7507D725A6CF5400133A56 /* KangSayurSkripsiVenus */ = {
 			isa = PBXGroup;
 			children = (
+				6D62A59525AD965900F8D567 /* Struct */,
 				0517546F25A85E1600A18063 /* Auth */,
 				0517547225A85E3400A18063 /* Akun */,
 				0517547125A85E2700A18063 /* Home */,
@@ -528,6 +539,7 @@
 				051754D125A867E400A18063 /* RiwayatDetailView.swift in Sources */,
 				051754C225A8678400A18063 /* UbahKataSandiView.swift in Sources */,
 				0541220325A9784B005BC031 /* PembayaranView.swift in Sources */,
+				6D62A59725AD966800F8D567 /* TotalPembayaran.swift in Sources */,
 				0517548325A8602000A18063 /* SignIn.swift in Sources */,
 				051754B825A866F400A18063 /* DataAlamatView.swift in Sources */,
 				051754BD25A8674D00A18063 /* UbahEmailView.swift in Sources */,

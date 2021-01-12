@@ -63,6 +63,10 @@ struct KeranjangRow: View {
             }
             
         }
+        .onChange(of: jumlah, perform: { value in
+        let totalHarga = harga * value
+            total += totalHarga
+        })
     }
 }
 

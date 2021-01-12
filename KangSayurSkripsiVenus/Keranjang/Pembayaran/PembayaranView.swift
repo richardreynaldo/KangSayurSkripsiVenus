@@ -12,7 +12,7 @@ struct PembayaranView: View {
         GeometryReader{
             geometry in
             VStack{
-                ScrollView{
+                
                     VStack(spacing:0){
                         BarangDiBeliRow(quantity: 2, price: 20000, quantityxprice: 40000, nama: "Brokoli")
                         Rectangle()
@@ -28,8 +28,9 @@ struct PembayaranView: View {
                             .frame(height: 1)
                         
                         
-                    }
+                    
                 }
+                Spacer()
                 Group{
                     
                     TotalPembayaranRow(totalOrder: 50000)

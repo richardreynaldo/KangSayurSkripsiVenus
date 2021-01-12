@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+var total : Int = 0
+
 struct KeranjangView: View {
     var body: some View {
         GeometryReader{
@@ -18,9 +20,10 @@ struct KeranjangView: View {
                         Text("Pilih semua")
                             .lineLimit(1)
                             .frame(width: 100,alignment: .leading)
+                        
                     }
                 }
-                .padding(.trailing,150)
+                .padding(.trailing,240)
                 ScrollView{
                     VStack{
                         
@@ -33,7 +36,7 @@ struct KeranjangView: View {
                     //jangan lupa di ganti sama actual total price*quantity terus tambahin
                 }
                 Group{
-                    TotalKeranjangRow(price: 40000)
+                    TotalKeranjangRow(price: total)
             }
             
 //                    .position(x: geometry.size.width/2, y: geometry.size.height/2.9)

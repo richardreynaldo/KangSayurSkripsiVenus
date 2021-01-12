@@ -21,6 +21,14 @@ struct PengirimanView: View {
                     VStack{
                         PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
                         PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
+                        PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
+                        PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
+                        PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
+                        PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
+                        PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
+                        PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
+                        PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
+                        PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
                     }
                    
                 }
