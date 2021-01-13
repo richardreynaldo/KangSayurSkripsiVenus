@@ -8,7 +8,7 @@
 import Foundation
 
 struct Product {
-    var productID: String
+    var productID: UUID
     var name: String
     var price: String
     var stock: String
