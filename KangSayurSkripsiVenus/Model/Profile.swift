@@ -13,7 +13,7 @@ struct Profile {
     var lastName: String?
     var email: String?
     var dob: Date?
-    var address: String?
+    var address: [String?]
     
-    static let `default` = Self(userID: "", firstName: "Venus", lastName: "Dhammiko", email: "venusdhammiko@gmail.com", dob: Date(), address: "Cipondoh, Tangerang, Banten.")
+    static let `default` = Self(userID: "", firstName: "Venus", lastName: "Dhammiko", email: "venusdhammiko@gmail.com", dob: Date(), address: ["Cipondoh", "Tangerang", "Banten"])
 }

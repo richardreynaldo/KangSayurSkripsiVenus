@@ -17,9 +17,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct KangSayurSkripsiVenusApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TestView(product: Product.example)
+                .environmentObject(Cart())
+                .environmentObject(UserData())
         }
     }
 }

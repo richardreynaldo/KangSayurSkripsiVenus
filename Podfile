@@ -10,7 +10,6 @@ target 'KangSayurSkripsiVenus' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
-  pod 'SwiftLint'
 
   target 'KangSayurSkripsiVenusTests' do
     inherit! :search_paths
@@ -21,4 +20,12 @@ target 'KangSayurSkripsiVenus' do
     # Pods for testing
   end
 
+end
+
+post_install do |installer|
+ installer.pods_project.targets.each do |target|
+  target.build_configurations.each do |config|
+   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
+  end
+ end
 end
