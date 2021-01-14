@@ -20,6 +20,7 @@ class Authentication: NSObject, ObservableObject {
     private let userID = Auth.auth().currentUser?.uid
     private var db = Firestore.firestore()
     
+    // Authentication State
     override private init() {
         loggedInUser = auth.currentUser
         globalUserID = auth.currentUser?.uid ?? ""
