@@ -13,34 +13,38 @@ struct TestView: View {
     var product: Product
     
     var body: some View {
-        VStack {
-            Text(cart.item.name)
-            Text(cart.item.desc)
-            Text("Stock: \(cart.item.stock)")
-            
-            HStack {
-                Button(action: {
-                    cart.remove(product: product)
-                }, label: {
-                    Image(systemName: "minus.circle")
-                })
-                .disabled(cart.item.stock == stock ? true : false)
-                
-                Text("\(cart.totalProduct)")
-                    .underline()
-                
-                Button(action: {
-                    cart.add(product: product)
-                }, label: {
-                    Image(systemName: "plus.circle")
-                })
-                .disabled(cart.item.stock == 0 ? true : false)
+        LazyVStack {
+            ForEach(cart.item, id: \.id) { item in
+                VStack {
+                    Text(item.name)
+                    Text(item.desc)
+                    Text("Stock: \(item.stock)")
+
+                    HStack {
+                        Button(action: {
+                            cart.remove(product: product)
+                        }, label: {
+                            Image(systemName: "minus.circle")
+                        })
+                        .disabled(item.stock == stock ? true : false)
+
+                        Text("\(cart.totalProduct)")
+                            .underline()
+
+                        Button(action: {
+                            cart.add(product: product)
+                        }, label: {
+                            Image(systemName: "plus.circle")
+                        })
+                        .disabled(item.stock == 0 ? true : false)
+                    }
+
+                    Text("Price: Rp \(cart.totalPrice)")
+                }
+//                .onAppear {
+//                    stock = item.stock
+//                }
             }
-            
-            Text("Price: Rp \(cart.totalPrice)")
-        }
-        .onAppear {
-            stock = cart.item.stock
         }
     }
 }

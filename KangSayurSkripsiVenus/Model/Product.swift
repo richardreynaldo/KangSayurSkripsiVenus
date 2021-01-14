@@ -8,17 +8,17 @@
 import Foundation
 
 struct Category: Codable, Identifiable {
-    var id: String = "01"
-    var name: String = "Sayuran"
+    var id: String
+    var name: String
     var products: [Product]
 }
 
 struct Product: Codable, Equatable, Identifiable {
-    var id: String = "001"
-    var name: String = "Brokoli"
-    var price: Int = 10000
-    var stock: Int = 20
-    var desc: String = "Sayur Brokoli"
+    var id: String
+    var name: String
+    var price: Int
+    var stock: Int
+    var desc: String
 
     #if DEBUG
     static let example = Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli")
