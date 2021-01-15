@@ -7,10 +7,10 @@
 
 import Foundation
 import FirebaseFirestore
+import SwiftUI
 
 class Cart: ObservableObject {
-    @Published var item: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran"),
-                                      Product(id: "002", name: "Pisang", price: 5000, stock: 20, desc: "Buah Pisang", category: "Buah")]
+    @Published var productData = ProductData()
     @Published var cart = [Product]()
     @Published var orderHeader = OrderHeader()
     
@@ -33,32 +33,32 @@ class Cart: ObservableObject {
         }
     }
     
-    func add(product: Product) {
-        if let index = cart.firstIndex(of: product) {
-            if item[index].stock > 0 {
-                cart.append(product)
-                item[index].stock -= 1
-            }
+    func add(index: Int, product: Product) {
+        //        if let index = cart.firstIndex(of: product) {
+        if productData.products[index].stock > 0 {
+            cart.append(product)
+            productData.products[index].stock -= 1
         }
-//        orderHeader.totalOrder! += 1
-//        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
+        //        }
+        //        orderHeader.totalOrder! += 1
+        //        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
     }
     
-    func remove(product: Product) {
-        if let index = cart.firstIndex(of: product) {
-            if item[index].stock >= 0 {
-                cart.remove(at: index)
-                item[index].stock += 1
-            }
-//            orderHeader.totalOrder! -= 1
-//            db.collection("Cart").document(product.id).delete() { err in
-//                if let err = err {
-//                    print("Error removing product: \(err)")
-//                } else {
-//                    print("Product successfully removed!")
-//                }
-//            }
-        }
+    func remove(index: Int, product: Product) {
+        //        if let index = cart.firstIndex(of: product) {
+        //            if item[index].stock >= 0 {
+        cart.remove(at: index)
+        //                item[index].stock += 1
+        //            }
+        //            orderHeader.totalOrder! -= 1
+        //            db.collection("Cart").document(product.id).delete() { err in
+        //                if let err = err {
+        //                    print("Error removing product: \(err)")
+        //                } else {
+        //                    print("Product successfully removed!")
+        //                }
+        //            }
+        //        }
     }
     
     func checkout() {

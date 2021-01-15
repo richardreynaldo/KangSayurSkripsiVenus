@@ -7,11 +7,58 @@
 
 import SwiftUI
 
-struct TestView: View {
+struct CartView: View {
     @EnvironmentObject var productData: ProductData
     @EnvironmentObject var cart: Cart
     @State var stock: Int = 0
 //    var product: Product
+    
+    var body: some View {
+        NavigationView {
+            LazyVStack {
+                ForEach(Array(productData.products.enumerated()), id: \.1.id) { (index, item) in
+                    VStack {
+                        Text(item.name)
+                        Text(item.desc)
+                        Text("Stock: \(item.stock)")
+
+                        HStack {
+                            Button(action: {
+                                print("index: \(index)")
+                                cart.remove(index: index, product: item)
+                            }, label: {
+                                Image(systemName: "minus.circle")
+                            })
+                            .disabled(item.stock == stock ? true : false)
+
+                            Text("\(cart.totalProduct)")
+                                .underline()
+
+                            Button(action: {
+                                print("index: \(index)")
+                                cart.add(index: index, product: item)
+                            }, label: {
+                                Image(systemName: "plus.circle")
+                            })
+                            .disabled(item.stock == 0 ? true : false)
+                        }
+
+                        Text("Price: Rp \(cart.totalPrice)")
+                    }
+                    .padding(.bottom, 40)
+                }
+            }
+            .onAppear {
+                productData.getProductData()
+            }
+        }
+    }
+}
+
+struct CategorizationView: View {
+    @EnvironmentObject var productData: ProductData
+    @EnvironmentObject var cart: Cart
+    @State var stock: Int = 0
     var categories: [String: [Product]] {
         Dictionary(
             grouping: productData.products,
@@ -22,11 +69,11 @@ struct TestView: View {
     var body: some View {
         NavigationView {
             LazyVStack {
-                ForEach(categories.keys.sorted(), id: \.self) { key in
+                ForEach(Array(categories.keys.enumerated()), id: \.0) { (index, key) in
                     VStack {
                         Text("Category: \(key)")
                             .foregroundColor(.red)
-                        ForEach(categories[key]!) { item in
+                        ForEach(Array(categories[key]!)) { item in
                             VStack {
                                 Text(item.name)
                                 Text(item.desc)
@@ -34,7 +81,8 @@ struct TestView: View {
 
                                 HStack {
                                     Button(action: {
-                                        cart.remove(product: item)
+                                        cart.remove(index: index, product: item)
+                                        print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "minus.circle")
                                     })
@@ -44,7 +92,8 @@ struct TestView: View {
                                         .underline()
 
                                     Button(action: {
-                                        cart.add(product: item)
+                                        cart.add(index: index, product: item)
+                                        print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "plus.circle")
                                     })
@@ -71,7 +120,7 @@ struct TestView_Previews: PreviewProvider {
 
     static var previews: some View {
         NavigationView {
-            TestView()
+            CartView()
                 .environmentObject(cart)
                 .environmentObject(userData)
                 .environmentObject(ProductData())
