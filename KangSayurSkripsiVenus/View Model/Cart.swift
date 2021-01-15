@@ -33,7 +33,7 @@ class Cart: ObservableObject {
         }
     }
     
-    func add(index: Int, product: Product) {
+    func add(index: Int, product: Product, productData: ProductData) {
         //        if let index = cart.firstIndex(of: product) {
         if productData.products[index].stock > 0 {
             cart.append(product)

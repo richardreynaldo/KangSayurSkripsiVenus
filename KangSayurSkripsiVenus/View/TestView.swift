@@ -36,7 +36,7 @@ struct CartView: View {
 
                             Button(action: {
                                 print("index: \(index)")
-                                cart.add(index: index, product: item)
+                                cart.add(index: index, product: item, productData: productData)
                             }, label: {
                                 Image(systemName: "plus.circle")
                             })
@@ -92,7 +92,7 @@ struct CategorizationView: View {
                                         .underline()
 
                                     Button(action: {
-                                        cart.add(index: index, product: item)
+                                        cart.add(index: index, product: item,productData: productData)
                                         print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "plus.circle")
