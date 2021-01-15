@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Category: Codable, Identifiable {
-    var id: String
-    var name: String
-    var products: [Product]
-}
+//struct Category: Codable, Identifiable {
+//    var id: String
+//    var name: String
+//    var items: [Product]
+//}
 
 struct Product: Codable, Equatable, Identifiable {
     var id: String
@@ -19,8 +19,14 @@ struct Product: Codable, Equatable, Identifiable {
     var price: Int
     var stock: Int
     var desc: String
+    var category: String
+    
+    enum Category: String, CaseIterable, Codable, Hashable {
+        case sayur = "Sayur"
+        case buah = "Buah"
+    }
 
     #if DEBUG
-    static let example = Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli")
+    static let example = Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran")
     #endif
 }

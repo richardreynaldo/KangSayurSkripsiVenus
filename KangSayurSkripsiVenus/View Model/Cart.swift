@@ -9,8 +9,8 @@ import Foundation
 import FirebaseFirestore
 
 class Cart: ObservableObject {
-    @Published var item: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli"),
-                                         Product(id: "002", name: "Bayem", price: 5000, stock: 20, desc: "Sayur Bayem"),]
+    @Published var item: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran"),
+                                      Product(id: "002", name: "Pisang", price: 5000, stock: 20, desc: "Buah Pisang", category: "Buah")]
     @Published var cart = [Product]()
     @Published var orderHeader = OrderHeader()
     

@@ -8,42 +8,58 @@
 import SwiftUI
 
 struct TestView: View {
+    @EnvironmentObject var productData: ProductData
     @EnvironmentObject var cart: Cart
     @State var stock: Int = 0
-    var product: Product
+//    var product: Product
+    var categories: [String: [Product]] {
+        Dictionary(
+            grouping: productData.products,
+            by: { $0.category }
+        )
+    }
     
     var body: some View {
-        LazyVStack {
-            ForEach(cart.item, id: \.id) { item in
-                VStack {
-                    Text(item.name)
-                    Text(item.desc)
-                    Text("Stock: \(item.stock)")
+        NavigationView {
+            LazyVStack {
+                ForEach(categories.keys.sorted(), id: \.self) { key in
+                    VStack {
+                        Text("Category: \(key)")
+                            .foregroundColor(.red)
+                        ForEach(categories[key]!) { item in
+                            VStack {
+                                Text(item.name)
+                                Text(item.desc)
+                                Text("Stock: \(item.stock)")
 
-                    HStack {
-                        Button(action: {
-                            cart.remove(product: product)
-                        }, label: {
-                            Image(systemName: "minus.circle")
-                        })
-                        .disabled(item.stock == stock ? true : false)
+                                HStack {
+                                    Button(action: {
+                                        cart.remove(product: item)
+                                    }, label: {
+                                        Image(systemName: "minus.circle")
+                                    })
+                                    .disabled(item.stock == stock ? true : false)
 
-                        Text("\(cart.totalProduct)")
-                            .underline()
+                                    Text("\(cart.totalProduct)")
+                                        .underline()
 
-                        Button(action: {
-                            cart.add(product: product)
-                        }, label: {
-                            Image(systemName: "plus.circle")
-                        })
-                        .disabled(item.stock == 0 ? true : false)
+                                    Button(action: {
+                                        cart.add(product: item)
+                                    }, label: {
+                                        Image(systemName: "plus.circle")
+                                    })
+                                    .disabled(item.stock == 0 ? true : false)
+                                }
+
+                                Text("Price: Rp \(cart.totalPrice)")
+                            }
+                            .padding(.bottom, 40)
+                        }
                     }
-
-                    Text("Price: Rp \(cart.totalPrice)")
                 }
-//                .onAppear {
-//                    stock = item.stock
-//                }
+            }
+            .onAppear {
+                productData.getProductData()
             }
         }
     }
@@ -52,12 +68,13 @@ struct TestView: View {
 struct TestView_Previews: PreviewProvider {
     static let cart = Cart()
     static let userData = UserData()
-    
+
     static var previews: some View {
         NavigationView {
-            TestView(product: Product.example)
+            TestView()
                 .environmentObject(cart)
                 .environmentObject(userData)
+                .environmentObject(ProductData())
         }
     }
 }
