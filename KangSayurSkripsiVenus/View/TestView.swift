@@ -7,57 +7,61 @@
 
 import SwiftUI
 
+// MARK: - CartView
 struct CartView: View {
     @EnvironmentObject var productData: ProductData
-    @EnvironmentObject var cart: Cart
+    @EnvironmentObject var cartData: CartData
     @State var stock: Int = 0
 //    var product: Product
     
     var body: some View {
         NavigationView {
             LazyVStack {
-                ForEach(Array(productData.products.enumerated()), id: \.1.id) { (index, item) in
+                ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
                     VStack {
-                        Text(item.name)
-                        Text(item.desc)
-                        Text("Stock: \(item.stock)")
+                        Text(item.product.name)
+                        Text(item.product.desc)
+                        Text("Stock: \(item.product.stock)")
 
                         HStack {
                             Button(action: {
                                 print("index: \(index)")
-                                cart.remove(index: index, product: item)
+                                cartData.remove(index: index, product: item.product, productData: productData)
                             }, label: {
                                 Image(systemName: "minus.circle")
                             })
-                            .disabled(item.stock == stock ? true : false)
+                            .disabled(cartData.cart[index].quantity == 0 ? true : false)
 
-                            Text("\(cart.totalProduct)")
+                            Text("\(cartData.cart[index].quantity)")
                                 .underline()
 
                             Button(action: {
                                 print("index: \(index)")
-                                cart.add(index: index, product: item, productData: productData)
+                                cartData.add(index: index, product: item.product, productData: productData)
                             }, label: {
                                 Image(systemName: "plus.circle")
                             })
-                            .disabled(item.stock == 0 ? true : false)
+                            .disabled(item.product.stock == 0 ? true : false)
                         }
 
-                        Text("Price: Rp \(cart.totalPrice)")
+                        Text("Price: Rp \(cartData.totalPrice)")
                     }
                     .padding(.bottom, 40)
                 }
             }
             .onAppear {
                 productData.getProductData()
+                cartData.getCartData()
             }
         }
     }
 }
 
+
+// MARK: - CategorizationView
 struct CategorizationView: View {
     @EnvironmentObject var productData: ProductData
-    @EnvironmentObject var cart: Cart
+    @EnvironmentObject var cartData: CartData
     @State var stock: Int = 0
     var categories: [String: [Product]] {
         Dictionary(
@@ -81,18 +85,18 @@ struct CategorizationView: View {
 
                                 HStack {
                                     Button(action: {
-                                        cart.remove(index: index, product: item)
+                                        cartData.remove(index: index, product: item, productData: productData)
                                         print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "minus.circle")
                                     })
                                     .disabled(item.stock == stock ? true : false)
 
-                                    Text("\(cart.totalProduct)")
+                                    Text("\(cartData.totalProduct)")
                                         .underline()
 
                                     Button(action: {
-                                        cart.add(index: index, product: item,productData: productData)
+                                        cartData.add(index: index, product: item,productData: productData)
                                         print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "plus.circle")
@@ -100,7 +104,7 @@ struct CategorizationView: View {
                                     .disabled(item.stock == 0 ? true : false)
                                 }
 
-                                Text("Price: Rp \(cart.totalPrice)")
+                                Text("Price: Rp \(cartData.totalPrice)")
                             }
                             .padding(.bottom, 40)
                         }
@@ -114,8 +118,60 @@ struct CategorizationView: View {
     }
 }
 
+
+// MARK: - ProductView
+struct ProductView: View {
+    @EnvironmentObject var productData: ProductData
+    @EnvironmentObject var cartData: CartData
+    @State var stock: Int = 0
+//    var product: Product
+    
+    var body: some View {
+        NavigationView {
+            LazyVStack {
+                ForEach(Array(productData.products.enumerated()), id: \.1.id) { (index, item) in
+                    VStack {
+                        Text(item.name)
+                        Text(item.desc)
+                        Text("Stock: \(item.stock)")
+
+                        HStack {
+                            Button(action: {
+                                print("index: \(index)")
+                                cartData.remove(index: index, product: item, productData: productData)
+                            }, label: {
+                                Image(systemName: "minus.circle")
+                            })
+                            .disabled(item.stock == cartData.totalProduct ? true : false)
+
+                            Text("\(cartData.totalProduct)")
+                                .underline()
+
+                            Button(action: {
+                                print("index: \(index)")
+                                cartData.add(index: index, product: item, productData: productData)
+                            }, label: {
+                                Image(systemName: "plus.circle")
+                            })
+                            .disabled(item.stock == 0 ? true : false)
+                        }
+
+                        Text("Price: Rp \(cartData.totalPrice)")
+                    }
+                    .padding(.bottom, 40)
+                }
+            }
+            .onAppear {
+                productData.getProductData()
+            }
+        }
+    }
+}
+
+
+// MARK: - PreviewProvider
 struct TestView_Previews: PreviewProvider {
-    static let cart = Cart()
+    static let cart = CartData()
     static let userData = UserData()
 
     static var previews: some View {

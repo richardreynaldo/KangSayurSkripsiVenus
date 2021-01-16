@@ -9,9 +9,8 @@ import Foundation
 import FirebaseFirestore
 import SwiftUI
 
-class Cart: ObservableObject {
-    @Published var productData = ProductData()
-    @Published var cart = [Product]()
+class CartData: ObservableObject {
+    @Published var cart = [Cart]()
     @Published var orderHeader = OrderHeader()
     
     private var db = Firestore.firestore()
@@ -27,29 +26,37 @@ class Cart: ObservableObject {
     
     var totalPrice: Int {
         if cart.count > 0 {
-            return cart.reduce(0) { $0 + $1.price }
+            return cart.reduce(0) { $0 + $1.quantity }
         } else {
             return 0
         }
     }
     
+    func getCartData() {
+        cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
+    }
+    
     func add(index: Int, product: Product, productData: ProductData) {
         //        if let index = cart.firstIndex(of: product) {
-        if productData.products[index].stock > 0 {
-            cart.append(product)
-            productData.products[index].stock -= 1
+        if cart[index].product.stock > 0 {
+            cart[index].product = product
+            cart[index].quantity += 1
+//            productData.products[index].stock -= 1
+            cart[index].product.stock -= 1
         }
         //        }
         //        orderHeader.totalOrder! += 1
         //        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
     }
     
-    func remove(index: Int, product: Product) {
+    func remove(index: Int, product: Product, productData: ProductData) {
         //        if let index = cart.firstIndex(of: product) {
-        //            if item[index].stock >= 0 {
-        cart.remove(at: index)
-        //                item[index].stock += 1
-        //            }
+        if cart[index].product.stock >= 0 {
+//            cart.remove(at: index)
+            cart[index].quantity -= 1
+//            productData.products[index].stock += 1
+            cart[index].product.stock += 1
+        }
         //            orderHeader.totalOrder! -= 1
         //            db.collection("Cart").document(product.id).delete() { err in
         //                if let err = err {
