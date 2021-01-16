@@ -32,10 +32,6 @@ class CartData: ObservableObject {
         }
     }
     
-    func getCartData() {
-        cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
-    }
-    
     func add(index: Int, product: Product, productData: ProductData) {
         //        if let index = cart.firstIndex(of: product) {
         if cart[index].product.stock > 0 {
@@ -68,7 +64,17 @@ class CartData: ObservableObject {
         //        }
     }
     
+    func delete(index: Int) {
+        cart[index].product.stock += 1
+        cart.remove(at: index)
+    }
+    
     func checkout() {
         db.collection("")
+    }
+    
+    // Temporary Function
+    func getCartData() {
+        cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
     }
 }

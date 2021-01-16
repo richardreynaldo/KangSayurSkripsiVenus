@@ -14,6 +14,7 @@ class ProductData: ObservableObject {
     
     private var db = Firestore.firestore()
     
+    // Temporary Function
     func getProductData() {
         products.append(Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayur"))
         products.append(Product(id: "002", name: "Pisang", price: 20000, stock: 20, desc: "Buah Pisang", category: "Buah"))
