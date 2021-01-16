@@ -43,11 +43,10 @@ struct CartView: View {
                             })
                             .disabled(item.product.stock == 0 ? true : false)
                         }
-
-                        Text("Price: Rp \(cartData.totalPrice)")
                     }
                     .padding(.bottom, 40)
                 }
+                Text("Total Price: Rp \(cartData.totalPrice)")
             }
             .onAppear {
                 productData.getProductData()
@@ -103,13 +102,12 @@ struct CategorizationView: View {
                                     })
                                     .disabled(item.stock == 0 ? true : false)
                                 }
-
-                                Text("Price: Rp \(cartData.totalPrice)")
                             }
                             .padding(.bottom, 40)
                         }
                     }
                 }
+                Text("Total Price: Rp \(cartData.totalPrice)")
             }
             .onAppear {
                 productData.getProductData()
@@ -155,11 +153,10 @@ struct ProductView: View {
                             })
                             .disabled(item.stock == 0 ? true : false)
                         }
-
-                        Text("Price: Rp \(cartData.totalPrice)")
                     }
                     .padding(.bottom, 40)
                 }
+                Text("Total Price: Rp \(cartData.totalPrice)")
             }
             .onAppear {
                 productData.getProductData()

@@ -47,11 +47,15 @@ class CartData: ObservableObject {
     
     func remove(index: Int, product: Product, productData: ProductData) {
         //        if let index = cart.firstIndex(of: product) {
-        if cart[index].product.stock >= 0 {
+        if cart[index].quantity > 1 {
 //            cart.remove(at: index)
             cart[index].quantity -= 1
 //            productData.products[index].stock += 1
             cart[index].product.stock += 1
+        }
+        else if cart[index].quantity == 1 {
+            cart[index].product.stock += 1
+            cart.remove(at: index)
         }
         //            orderHeader.totalOrder! -= 1
         //            db.collection("Cart").document(product.id).delete() { err in
@@ -64,10 +68,10 @@ class CartData: ObservableObject {
         //        }
     }
     
-    func delete(index: Int) {
-        cart[index].product.stock += 1
-        cart.remove(at: index)
-    }
+//    func delete(index: Int) {
+//        cart[index].product.stock += 1
+//        cart.remove(at: index)
+//    }
     
     func checkout() {
         db.collection("")
@@ -76,5 +80,6 @@ class CartData: ObservableObject {
     // Temporary Function
     func getCartData() {
         cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
+        cart.append(Cart(id: "0002", product: Product.example, quantity: 1))
     }
 }
