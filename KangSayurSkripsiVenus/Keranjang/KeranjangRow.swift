@@ -51,14 +51,25 @@ struct KeranjangRow: View {
                     Button(action: {
                         print("asu")
                     }, label: {
-                        Image("trash")
+                        Image(systemName: "trash")
                             .resizable()
                             .frame(width: 20, height: 20)
                     })
                     
                     
-                    Stepper("\(jumlah)", value: $jumlah)
-                        .frame(width: 120, height: 20)
+                    Button(action: {print("asd")}, label: {
+                        Image(systemName: "minus.circle")
+                    })
+                    
+                    VStack{
+                        Text("1")
+                        Rectangle()
+                            .frame(width: 35, height: 1, alignment: .center)
+                    }
+                    
+                    Button(action: {print("asd")}, label: {
+                        Image(systemName: "plus.circle")
+                    })
                 }
             }
             
@@ -67,6 +78,7 @@ struct KeranjangRow: View {
         let totalHarga = harga * value
             total += totalHarga
         })
+        .padding()
     }
 }
 
