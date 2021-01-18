@@ -89,8 +89,7 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
+
+# User State
 *.xcuserstate
 *.xcbkptlist
-*.xcuserstate
-*.xcuserstate
-KangSayurSkripsiVenus.xcworkspace/xcuserdata/rayhanfaluda.xcuserdatad/UserInterfaceState.xcuserstate
