@@ -8,9 +8,9 @@
 import Foundation
 
 struct OrderHeader: Codable, Equatable, Identifiable {
-    var id: String? = "0001"
-    var orderDate: Date? = Date()
-    var paymentType: String? = "Cash"
-    var status: String? = "Delivering"
-    var totalOrder: Int? = 0
+    var id: String?
+    var orderDate: Date?
+    var paymentType: String?
+    var status: String?
+    var totalOrder: Int?
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    var product: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli"),
-                              Product(id: "002", name: "Bayem", price: 5000, stock: 20, desc: "Sayur Bayem"),]
+    var product: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran"),
+                              Product(id: "002", name: "Pisang", price: 5000, stock: 20, desc: "Buah Pisang", category: "Buah")]
     var columns = Array(repeating: GridItem(.flexible()), count: 2)
     @State var text = ""
     
