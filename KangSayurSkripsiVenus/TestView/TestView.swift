@@ -26,7 +26,7 @@ struct CartView: View {
                         HStack {
                             Button(action: {
                                 print("index: \(index)")
-                                cartData.remove(index: index, product: item.product, productData: productData)
+                                cartData.remove(index: index, product: item.product)
                             }, label: {
                                 Image(systemName: "minus.circle")
                             })
@@ -37,7 +37,7 @@ struct CartView: View {
 
                             Button(action: {
                                 print("index: \(index)")
-                                cartData.add(index: index, product: item.product, productData: productData)
+                                cartData.add(index: index, product: item.product)
                             }, label: {
                                 Image(systemName: "plus.circle")
                             })
@@ -84,7 +84,7 @@ struct CategorizationView: View {
 
                                 HStack {
                                     Button(action: {
-                                        cartData.remove(index: index, product: item, productData: productData)
+                                        cartData.remove(index: index, product: item)
                                         print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "minus.circle")
@@ -95,7 +95,7 @@ struct CategorizationView: View {
                                         .underline()
 
                                     Button(action: {
-                                        cartData.add(index: index, product: item,productData: productData)
+                                        cartData.add(index: index, product: item)
                                         print("index: \(index)")
                                     }, label: {
                                         Image(systemName: "plus.circle")
@@ -136,7 +136,7 @@ struct ProductView: View {
                         HStack {
                             Button(action: {
                                 print("index: \(index)")
-                                cartData.remove(index: index, product: item, productData: productData)
+                                cartData.remove(index: index, product: item)
                             }, label: {
                                 Image(systemName: "minus.circle")
                             })
@@ -147,7 +147,7 @@ struct ProductView: View {
 
                             Button(action: {
                                 print("index: \(index)")
-                                cartData.add(index: index, product: item, productData: productData)
+                                cartData.add(index: index, product: item)
                             }, label: {
                                 Image(systemName: "plus.circle")
                             })

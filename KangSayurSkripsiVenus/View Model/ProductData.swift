@@ -16,10 +16,10 @@ class ProductData: ObservableObject {
     
     // Temporary Function
     func getProductData() {
-        products.append(Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayur"))
-        products.append(Product(id: "002", name: "Pisang", price: 20000, stock: 20, desc: "Buah Pisang", category: "Buah"))
-        products.append(Product(id: "003", name: "Bayem", price: 15000, stock: 15, desc: "Sayur Bayem", category: "Sayur"))
-        products.append(Product(id: "004", name: "Apel", price: 25000, stock: 25, desc: "Buah Apel", category: "Buah"))
+        products.append(Product(id: "001", image: "brokoli", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayur"))
+        products.append(Product(id: "002", image: "kailan", name: "Kailan", price: 20000, stock: 20, desc: "Sayur Kailan", category: "Sayur"))
+        products.append(Product(id: "003", image: "bayam hijau", name: "Bayam", price: 15000, stock: 15, desc: "Sayur Bayam", category: "Sayur"))
+        products.append(Product(id: "004", image: "tauge", name: "Tauge", price: 25000, stock: 25, desc: "Sayur Tauge", category: "Sayur"))
 //        db.collection("Product").document("")
     }
 }

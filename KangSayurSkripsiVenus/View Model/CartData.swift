@@ -32,7 +32,7 @@ class CartData: ObservableObject {
         }
     }
     
-    func add(index: Int, product: Product, productData: ProductData) {
+    func add(index: Int, product: Product) {
         //        if let index = cart.firstIndex(of: product) {
         if cart[index].product.stock > 0 {
             cart[index].product = product
@@ -45,7 +45,7 @@ class CartData: ObservableObject {
         //        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
     }
     
-    func remove(index: Int, product: Product, productData: ProductData) {
+    func remove(index: Int, product: Product) {
         //        if let index = cart.firstIndex(of: product) {
         if cart[index].quantity > 1 {
 //            cart.remove(at: index)
