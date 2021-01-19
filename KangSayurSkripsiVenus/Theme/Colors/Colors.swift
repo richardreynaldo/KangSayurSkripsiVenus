@@ -9,6 +9,9 @@ import SwiftUI
 import Foundation
 
 class StyleColors {
+    static var primaryRed : Color {
+        return Color(hexString: "E97F6F")
+    }
     
     static var background : Color {
         return Color(hexString: "E5E5E5")
@@ -22,6 +25,9 @@ class StyleColors {
         return Color(hexString: "272727")
     }
     
+    static var secondaryYellow : Color {
+        return Color(hexString: "FCF9F5")
+    }
 }
 
 extension Color {

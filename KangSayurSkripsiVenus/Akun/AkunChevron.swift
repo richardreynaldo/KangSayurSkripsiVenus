@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AkunChevron: View {
-    var title:String
+    var title: String
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -17,8 +17,12 @@ struct AkunChevron: View {
             
             HStack {
                 Text("\(title)")
+                    .font(Font.custom("Sora-Regular", size: 15))
+                
                 Spacer()
+                
                 Image(systemName: "chevron.right")
+                    .font(Font.custom("Sora-Regular", size: 15))
             }
             .padding()
         }

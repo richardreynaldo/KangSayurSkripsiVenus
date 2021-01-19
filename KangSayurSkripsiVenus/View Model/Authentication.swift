@@ -20,6 +20,8 @@ class Authentication: NSObject, ObservableObject {
     private let userID = Auth.auth().currentUser?.uid
     private var db = Firestore.firestore()
     
+    static let shared = Authentication()
+    
     // Authentication State
     override private init() {
         loggedInUser = auth.currentUser
@@ -35,7 +37,7 @@ class Authentication: NSObject, ObservableObject {
         globalUserID = user?.uid ?? ""
     }
     
-    func signUp(firstName: String, lastName: String, email: String, dob: Date, address: String, password: String) {
+    func signUp(firstName: String, lastName: String, email: String, dob: Date, address: [String], password: String) {
         isAuthenticating = true
         error = nil
         

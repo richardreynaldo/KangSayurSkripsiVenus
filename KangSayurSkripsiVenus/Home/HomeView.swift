@@ -8,28 +8,29 @@
 import SwiftUI
 
 struct HomeView: View {
-    var product: [Product] = [Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran"),
-                              Product(id: "002", name: "Pisang", price: 5000, stock: 20, desc: "Buah Pisang", category: "Buah")]
-    var columns = Array(repeating: GridItem(.flexible()), count: 2)
+    @EnvironmentObject var productData: ProductData
     @State var text = ""
+    var columns = Array(repeating: GridItem(.flexible()), count: 2)
     
     var body: some View {
-        VStack{
-            SearchBar(text: $text)
-            
-            ScrollView(.vertical , showsIndicators: false){
-                LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(product, id:\.id) { i in
-                        CollectionViewCell()
+        ZStack {
+            VStack{
+                SearchBar(text: $text)
+                
+                ScrollView {
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(productData.products.indices) { index in
+                            CollectionViewCell(productName: productData.products[index].name,
+                                               productStatus: productData.products[index].stock == 0 ? "Tidak Tersedia" : "Tersedia",
+                                               productPrice: productData.products[index].price)
+                        }
                     }
-//                    ForEach(product.filter({"\($0)".contains(text) || text.isEmpty})){ i in
-////                        Text(i.nama)
-////                            .padding(.all, 30)
-////                            .background(Color.gray)
-//                        CollectionViewCell()
-//                    }
                 }
             }
+        }
+        .background(StyleColors.secondaryYellow)
+        .onAppear {
+            productData.getProductData()
         }
     }
 }
@@ -39,14 +40,3 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
-
-//struct Product: Identifiable {
-//    var id = UUID()
-//    var nama: String
-////    var status: String
-////    var harga: String
-//}
-//
-//var product = [
-//    Product(productID: UUID(), name: "Kangkung", price: "10000", stock: "5", desc: ""),
-//]
