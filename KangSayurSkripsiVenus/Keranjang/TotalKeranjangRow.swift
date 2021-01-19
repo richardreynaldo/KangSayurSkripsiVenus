@@ -10,27 +10,32 @@ import SwiftUI
 struct TotalKeranjangRow: View {
     var price: Int
     var body: some View {
-        ZStack{
+        ZStack {
             Rectangle()
                 .fill(Color.white)
                 .frame(width: UIScreen.main.bounds.size.width, height: 65)
-            HStack{
-                VStack(alignment: .leading){
+            
+            HStack {
+                VStack(alignment: .leading) {
                     Text("Total Harga")
-                    Text("Rp.\(price)")
-                }.padding(.leading, 15)
+                    Text("Rp\(price)")
+                }
+                .padding(.leading)
+                
                 Spacer()
+                
                 Button(action: {
                 }, label: {
                     ZStack {
                         Capsule()
-                            .frame(height: 52)
                             .frame(width: 108, height: 41)
+                        
                         //jangan lupa di ganti jadi total dari quantity barang yang di beli 3 nya
                         Text("Beli(3)")
                             .foregroundColor(Color.white)
                     }
-                }).padding(.trailing, 15)
+                })
+                .padding(.trailing)
             }
         }
     }

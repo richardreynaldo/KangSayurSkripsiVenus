@@ -20,9 +20,7 @@ struct HomeView: View {
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(productData.products.indices) { index in
-                            CollectionViewCell(productName: productData.products[index].name,
-                                               productStatus: productData.products[index].stock == 0 ? "Tidak Tersedia" : "Tersedia",
-                                               productPrice: productData.products[index].price)
+                            CollectionViewCell(product: productData.products[index], index: index)
                         }
                     }
                 }

@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CollectionViewCell: View {
-    var productName: String
-    var productStatus: String
-    var productPrice: Int
+    @EnvironmentObject var cartData: CartData
+    
+    var product: Product
+    var index: Int
     
     static let row = 2
     static let column = 9
@@ -25,7 +26,7 @@ struct CollectionViewCell: View {
                     Spacer()
                     
                     //jangan lupa taro gambar
-                    Image(systemName: "flame")
+                    Image(product.image)
                         .resizable()
                         .frame(width: 100, height: 100)
                         .aspectRatio(contentMode: .fit)
@@ -34,17 +35,17 @@ struct CollectionViewCell: View {
                 }
                 
                 Group {
-                    Text(productName)
+                    Text(product.name)
                         .font(Font.custom("Sora-Regular", size: 15))
                         .foregroundColor(StyleColors.titleText)
                         .padding(.vertical, 2)
                     
-                    Text(productStatus)
+                    Text(product.stock == 0 ? "Tidak Tersedia" : "Tersedia")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
                         .padding(.bottom, 1)
                     
-                    Text("Rp\(productPrice)/kg")
+                    Text("Rp\(product.price)/kg")
                         .font(Font.custom("Sora-Bold", size: 12))
                         .foregroundColor(StyleColors.secondaryTitleText)
                         .padding(.bottom, 2)
@@ -53,6 +54,7 @@ struct CollectionViewCell: View {
                 
                 Button(action: {
                     //jangan lupa kasih action buat masukkin ke cart
+                    cartData.add(index: index, product: product)
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
@@ -62,6 +64,7 @@ struct CollectionViewCell: View {
                             .foregroundColor(Color.white)
                     }
                 })
+                .disabled(product.stock == 0)
             }
             .padding()
         }
@@ -71,6 +74,6 @@ struct CollectionViewCell: View {
 
 struct CollectionViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionViewCell(productName: "Brokoli", productStatus: "Tersedia", productPrice: 20000)
+        CollectionViewCell(product: Product.example, index: 0)
     }
 }

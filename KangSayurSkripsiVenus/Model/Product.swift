@@ -15,6 +15,7 @@ import Foundation
 
 struct Product: Codable, Equatable, Identifiable {
     var id: String
+    var image: String
     var name: String
     var price: Int
     var stock: Int
@@ -27,6 +28,6 @@ struct Product: Codable, Equatable, Identifiable {
     }
 
     #if DEBUG
-    static let example = Product(id: "001", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran")
+    static let example = Product(id: "001", image: "brokoli", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran")
     #endif
 }

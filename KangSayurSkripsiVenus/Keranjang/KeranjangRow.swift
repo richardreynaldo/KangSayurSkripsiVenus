@@ -16,7 +16,8 @@ struct KeranjangRow: View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
                 .fill(Color.white)
-            VStack{
+            
+            VStack {
                 HStack {
                     CheckView()
                     
@@ -27,25 +28,25 @@ struct KeranjangRow: View {
                         .frame(width: 60, height: 60, alignment: .center)
                     
                     VStack(alignment: .leading) {
-                        Text("\(nama)")
-    //                        .font(StyleFont.captionSmall)
+                        Text(nama)
+                            //                        .font(StyleFont.captionSmall)
                             .fontWeight(.light)
-    //                        .foregroundColor(StyleColors.accountPageCaptionSmall)
+                            //                        .foregroundColor(StyleColors.accountPageCaptionSmall)
                             .padding(.top, 10)
                         
-                        Text("Rp.\(harga)")
-    //                        .font(StyleFont.heading2)
-    //                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
+                        Text("Rp\(harga)/kg")
+                        //                        .font(StyleFont.heading2)
+                        //                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
                         
                         //kurang yang tempat sampah buat delete sama + - buat quantity
                     }
-                    .padding(.leading, 14)
+                    .padding(.leading)
                     
-                     Spacer()
+                    Spacer()
                 }
-                .padding(.horizontal, 22)
-                HStack
-                {
+                .padding(.horizontal)
+                
+                HStack {
                     Spacer()
                     
                     Button(action: {
@@ -72,13 +73,13 @@ struct KeranjangRow: View {
                     })
                 }
             }
+            .padding()
             
         }
         .onChange(of: jumlah, perform: { value in
-        let totalHarga = harga * value
+            let totalHarga = harga * value
             total += totalHarga
         })
-        .padding()
     }
 }
 
@@ -89,11 +90,16 @@ struct KeranjangRow_Previews: PreviewProvider {
 }
 
 struct CheckView: View {
-    @State var isChecked:Bool = false
-    func toggle(){isChecked = !isChecked}
+    @State var isChecked: Bool = false
+    
+    func toggle() {
+        isChecked = !isChecked
+    }
+    
     var body: some View {
-        Button(action: toggle){
-            HStack{ Image(systemName: isChecked ? "checkmark.square": "square")
+        Button(action: toggle) {
+            HStack {
+                Image(systemName: isChecked ? "checkmark.square": "square")
             }
         }
     }
