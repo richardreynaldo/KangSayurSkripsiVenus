@@ -21,7 +21,7 @@ struct KangSayurSkripsiVenusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CartView()
+            KeranjangView()
                 .environmentObject(CartData())
                 .environmentObject(UserData())
                 .environmentObject(ProductData())
