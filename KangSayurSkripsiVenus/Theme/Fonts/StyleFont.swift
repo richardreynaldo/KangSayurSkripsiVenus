@@ -26,7 +26,6 @@ class StyleFont {
         Font.custom("Sora-SemiBold", size: 18, relativeTo: .headline)
     }
 
-    
     static var heading2: Font {
         Font.custom("Sora-SemiBold", size: 17, relativeTo: .subheadline)
     }

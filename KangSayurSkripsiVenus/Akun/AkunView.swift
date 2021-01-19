@@ -16,6 +16,7 @@ struct AkunView: View {
                         destination: DataDiriView())
                     {
                         AkunChevron(title: "Data Diri")
+                            .foregroundColor(StyleColors.titleText)
                             .padding(.horizontal)
                     }
                     
@@ -23,6 +24,7 @@ struct AkunView: View {
                         destination: DataAlamatView())
                     {
                         AkunChevron(title: "Data Alamat")
+                            .foregroundColor(StyleColors.titleText)
                             .padding(.horizontal)
                     }
                     
@@ -30,6 +32,7 @@ struct AkunView: View {
                         destination: UbahEmailView())
                     {
                         AkunChevron(title: "Ubah Email")
+                            .foregroundColor(StyleColors.titleText)
                             .padding(.horizontal)
                     }
                     
@@ -37,6 +40,7 @@ struct AkunView: View {
                         destination: UbahKataSandiView())
                     {
                         AkunChevron(title: "Ubah Kata Sandi")
+                            .foregroundColor(StyleColors.titleText)
                             .padding(.horizontal)
                     }
                     
@@ -47,13 +51,19 @@ struct AkunView: View {
 //                            .padding(.horizontal)
 //                    }
                     
-                    
                     Spacer()
                     
+                    NavigationLink(
+                        destination: EmptyView())
+                    {
+                        AkunChevron(title: "Keluar")
+                            .padding(.horizontal)
+                    }
                 }
-                .padding(.top, 30)
+                .padding(.top, 20)
             }
         }
+        .background(StyleColors.secondaryYellow)
     }
 }
 

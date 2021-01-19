@@ -21,10 +21,11 @@ struct KangSayurSkripsiVenusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            CartView()
-                .environmentObject(CartData())
+            CustomTabView()
+                .environmentObject(Authentication.shared)
                 .environmentObject(UserData())
                 .environmentObject(ProductData())
+                .environmentObject(CartData())
         }
     }
 }
