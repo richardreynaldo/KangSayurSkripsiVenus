@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct KeranjangRow: View {
-    var nama: String
-    var harga: Int
-    var gambar:String
-    @State var jumlah : Int = 1
+    @EnvironmentObject var cartData: CartData
+    var index: Int
+    var product:Product
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -23,18 +22,18 @@ struct KeranjangRow: View {
                     
                     // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
                     
-                    Image(gambar)
+                    Image(product.image)
                         .resizable()
                         .frame(width: 60, height: 60, alignment: .center)
                     
                     VStack(alignment: .leading) {
-                        Text(nama)
+                        Text(product.name)
                             //                        .font(StyleFont.captionSmall)
                             .fontWeight(.light)
                             //                        .foregroundColor(StyleColors.accountPageCaptionSmall)
                             .padding(.top, 10)
                         
-                        Text("Rp\(harga)/kg")
+                        Text("Rp\(product.price)/kg")
                         //                        .font(StyleFont.heading2)
                         //                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
                         
@@ -58,17 +57,22 @@ struct KeranjangRow: View {
                     })
                     
                     
-                    Button(action: {print("asd")}, label: {
+                    Button(action: {
+                        cartData.remove(index: index, product: product)
+                    }, label: {
                         Image(systemName: "minus.circle")
                     })
                     
                     VStack{
-                        Text("1")
+                        Text("\(cartData.cart[index].quantity)")
                         Rectangle()
                             .frame(width: 35, height: 1, alignment: .center)
                     }
                     
-                    Button(action: {print("asd")}, label: {
+                    Button(action: {
+                        cartData.add(index: index, product: product)
+                        print("lonte \(product.stock)")
+                    }, label: {
                         Image(systemName: "plus.circle")
                     })
                 }
@@ -76,18 +80,18 @@ struct KeranjangRow: View {
             .padding()
             
         }
-        .onChange(of: jumlah, perform: { value in
-            let totalHarga = harga * value
-            total += totalHarga
-        })
+//        .onChange(of: jumlah, perform: { value in
+//            let totalHarga = harga * value
+//            total += totalHarga
+//        })
     }
 }
 
-struct KeranjangRow_Previews: PreviewProvider {
-    static var previews: some View {
-        KeranjangRow(nama: "Kangkung", harga: 20000, gambar: "", jumlah: 0)
-    }
-}
+//struct KeranjangRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        KeranjangRow(nama: "Kangkung", harga: 20000, gambar: "", jumlah: 0)
+//    }
+//}
 
 struct CheckView: View {
     @State var isChecked: Bool = false

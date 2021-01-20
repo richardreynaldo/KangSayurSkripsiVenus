@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var productData: ProductData
     @State var text = ""
+    
     var columns = Array(repeating: GridItem(.flexible()), count: 2)
     
     var body: some View {

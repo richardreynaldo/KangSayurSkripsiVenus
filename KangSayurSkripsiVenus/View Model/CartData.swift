@@ -45,6 +45,10 @@ class CartData: ObservableObject {
         //        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
     }
     
+    func append(product: Product) {
+        cart.append(Cart(id: product.id, product: product, quantity: 1))
+    }
+    
     func remove(index: Int, product: Product) {
         //        if let index = cart.firstIndex(of: product) {
         if cart[index].quantity > 1 {

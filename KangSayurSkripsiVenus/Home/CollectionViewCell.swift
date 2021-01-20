@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CollectionViewCell: View {
     @EnvironmentObject var cartData: CartData
-    
+    @State var disabled1 : Bool = false
     var product: Product
     var index: Int
     
@@ -54,7 +54,10 @@ struct CollectionViewCell: View {
                 
                 Button(action: {
                     //jangan lupa kasih action buat masukkin ke cart
-                    cartData.add(index: index, product: product)
+//                    cartData.add(index: index, product: product)
+                    cartData.append(product: product)
+                    disabled1 = true
+                    
                 }, label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
@@ -64,7 +67,7 @@ struct CollectionViewCell: View {
                             .foregroundColor(Color.white)
                     }
                 })
-                .disabled(product.stock == 0)
+                .disabled(product.stock == 0 || disabled1)
             }
             .padding()
         }
@@ -72,8 +75,8 @@ struct CollectionViewCell: View {
     }
 }
 
-struct CollectionViewCell_Previews: PreviewProvider {
-    static var previews: some View {
-        CollectionViewCell(product: Product.example, index: 0)
-    }
-}
+//struct CollectionViewCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CollectionViewCell(product: Product.example, disabled: <#Binding<Bool>#>, index: 0)
+//    }
+//}
