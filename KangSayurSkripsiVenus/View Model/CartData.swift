@@ -72,10 +72,10 @@ class CartData: ObservableObject {
         //        }
     }
     
-//    func delete(index: Int) {
-//        cart[index].product.stock += 1
-//        cart.remove(at: index)
-//    }
+    func delete(index: Int) {
+        cart[index].product.stock += 1
+        cart.remove(at: index)
+    }
     
     func checkout() {
         db.collection("")

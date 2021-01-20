@@ -9,8 +9,10 @@ import SwiftUI
 
 struct KeranjangRow: View {
     @EnvironmentObject var cartData: CartData
+    var product: Product
+    var cart: Cart
     var index: Int
-    var product:Product
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -49,7 +51,7 @@ struct KeranjangRow: View {
                     Spacer()
                     
                     Button(action: {
-                        print("asu")
+                        cartData.delete(index: index)
                     }, label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -64,7 +66,7 @@ struct KeranjangRow: View {
                     })
                     
                     VStack{
-                        Text("\(cartData.cart[index].quantity)")
+                        Text("\(cart.quantity)")
                         Rectangle()
                             .frame(width: 35, height: 1, alignment: .center)
                     }

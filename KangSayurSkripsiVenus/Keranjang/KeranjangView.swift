@@ -10,8 +10,8 @@ import SwiftUI
 var total : Int = 0
 
 struct KeranjangView: View {
-    @EnvironmentObject var cartData: CartData
     @EnvironmentObject var productData: ProductData
+    @EnvironmentObject var cartData: CartData
     
     var body: some View {
         ZStack {
@@ -28,9 +28,9 @@ struct KeranjangView: View {
                     .padding(.trailing,240)
                     
                     ScrollView {
-                        ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
-                            VStack {
-                                KeranjangRow(index: index, product: item.product)
+                        LazyVStack {
+                            ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
+                                KeranjangRow(product: item.product, cart: item, index: index)
                                     .padding(.horizontal)
                                     .onTapGesture(perform: {
                                         print("cok \(item.id)")
@@ -38,7 +38,6 @@ struct KeranjangView: View {
                                     .padding(.vertical, 4)
                             }
                         }
-                        
                         //jangan lupa di ganti sama actual total price*quantity terus tambahin
                     }
                     
