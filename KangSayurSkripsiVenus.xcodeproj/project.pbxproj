@@ -319,8 +319,8 @@
 		6D4545ED25AEFB0B0024E572 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				6D4545EE25AEFB0B0024E572 /* SignUp-SetelAlamat.swift */,
 				6D4545EF25AEFB0B0024E572 /* SignUp.swift */,
+				6D4545EE25AEFB0B0024E572 /* SignUp-SetelAlamat.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";

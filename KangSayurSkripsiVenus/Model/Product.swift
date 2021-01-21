@@ -13,7 +13,7 @@ import Foundation
 //    var items: [Product]
 //}
 
-struct Product: Codable, Equatable, Identifiable {
+struct Product: Codable, Equatable, Identifiable, Hashable {
     var id: String
     var image: String
     var name: String

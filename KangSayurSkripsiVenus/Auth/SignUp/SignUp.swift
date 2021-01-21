@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SignUp: View {
+    @EnvironmentObject var authentication: Authentication
+    
     @State private var namaDepan = ""
     @State private var namaBelakang = ""
     @State private var birthdate = Date()
@@ -17,89 +19,94 @@ struct SignUp: View {
     //jangan lupa nama depan sama nama belakang disimpennya satuin di core data!
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading){
-                Group{
-                    Text("Daftar")
-                        .font(.largeTitle)
-                    
-                    TextField("Nama depan", text: $namaDepan)
-                        .padding(.top, 40)
-                        .keyboardType(.emailAddress)
-                        .disableAutocorrection(true)
-                    
-                    Divider()
-                    
-                    TextField("Nama belakang", text: $namaBelakang)
-                        .padding(.top, 40)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                    
-                    Divider()
-                    
-                    DatePicker(selection: $birthdate, in: ...Date(), displayedComponents: .date) {
-                        Text("Tanggal lahir")
-                            .foregroundColor(.gray)
-                    }
-                    .padding(.top, 40)
-
-                    Divider()
-                    
-                    TextField("Email", text: $email)
-                        .padding(.top, 40)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                    
-                    Divider()
-                }
-                Group{
-                    TextField("Kata sandi", text: $kataSandi)
-                        .padding(.top, 40)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                    
-                    Divider()
-                    
-                    TextField("Masukkan kembali kata sandi", text: $kataSandiUlang)
-                        .padding(.top, 40)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                    
-                    Divider()
-                }
-            }
-            .padding(.top, 80)
-            .padding(.horizontal, 16)
-            
-            VStack{
-                Button(action: {
-                }, label: {
-                    ZStack {
-                        Capsule()
-                            .frame(height: 52)
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading){
+                    Group{
+                        Text("Daftar")
+                            .font(.largeTitle)
                         
-                        Text("Lanjut")
-                            .foregroundColor(Color.white)
-                    }
-                    
-                }).padding(.top, 70)
-                .padding(.bottom)
-                
-                HStack{
-                    Text("Sudah punya akun?")
-                    Button(action: {
-                    }, label: {
-                        ZStack {
-                            Text("Masuk")
-                                .underline()
+                        TextField("Nama depan", text: $namaDepan)
+                            .padding(.top, 40)
+                            .keyboardType(.emailAddress)
+                            .disableAutocorrection(true)
+                        
+                        Divider()
+                        
+                        TextField("Nama belakang", text: $namaBelakang)
+                            .padding(.top, 40)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                        
+                        Divider()
+                        
+                        DatePicker(selection: $birthdate, in: ...Date(), displayedComponents: .date) {
+                            Text("Tanggal lahir")
+                                .foregroundColor(.gray)
                         }
-                    })
+                        .padding(.top, 40)
+
+                        Divider()
+                        
+                        TextField("Email", text: $email)
+                            .padding(.top, 40)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                        
+                        Divider()
+                    }
+                    Group{
+                        TextField("Kata sandi", text: $kataSandi)
+                            .padding(.top, 40)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                        
+                        Divider()
+                        
+                        TextField("Masukkan kembali kata sandi", text: $kataSandiUlang)
+                            .padding(.top, 40)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                        
+                        Divider()
+                    }
                 }
-            }
-            
-           
-        }.padding([.top, .leading, .trailing])
-        .padding(.bottom, 8)
+                .padding(.top, 80)
+                .padding(.horizontal, 16)
+                
+                VStack {
+                    NavigationLink(destination: SignUp_SetelAlamat()) {
+                        ZStack {
+                            Capsule()
+                                .frame(height: 52)
+                            
+                            Text("Lanjut")
+                                .foregroundColor(Color.white)
+                        }
+                    }
+                    .padding(.top, 70)
+                    .padding(.bottom)
+                    .simultaneousGesture(TapGesture().onEnded {
+                        authentication.tempSignUp(firstName: namaDepan, lastName: namaBelakang, email: email, dob: birthdate, password: kataSandi)
+                        print(authentication.profile ?? Profile.default)
+                    })
+                    
+                    HStack {
+                        Text("Sudah punya akun?")
+                        Button(action: {
+                        }, label: {
+                            ZStack {
+                                Text("Masuk")
+                                    .underline()
+                            }
+                        })
+                    }
+                }
+                
+               
+            }.padding([.top, .leading, .trailing])
+            .padding(.bottom, 8)
+        }
     }
 }
 

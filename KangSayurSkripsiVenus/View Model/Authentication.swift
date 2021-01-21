@@ -125,4 +125,15 @@ class Authentication: NSObject, ObservableObject {
             }
         })
     }
+    
+    func tempSignUp(firstName: String, lastName: String, email: String, dob: Date, password: String) {
+        profile?.firstName = firstName
+        profile?.lastName = lastName
+        profile?.email = email
+        profile?.dob = dob
+    }
+    
+    func tempAddAddress(address: [String]) {
+        profile?.address = address
+    }
 }

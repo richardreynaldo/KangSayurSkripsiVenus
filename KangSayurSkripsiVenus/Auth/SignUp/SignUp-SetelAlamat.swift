@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SignUp_SetelAlamat: View {
+    @EnvironmentObject var authentication: Authentication
+    
     @State private var perumahan = ""
     @State private var jalan = ""
     @State private var nomor = ""
@@ -18,6 +20,20 @@ struct SignUp_SetelAlamat: View {
     @State private var kota = ""
     @State private var provinsi = ""
     @State private var kodepos = ""
+    @State private var address: [String] = []
+    
+    func combineData() {
+        address.append(perumahan)
+        address.append(jalan)
+        address.append(nomor)
+        address.append(rt)
+        address.append(rw)
+        address.append(kelurahan)
+        address.append(kecamatan)
+        address.append(kota)
+        address.append(provinsi)
+        address.append(kodepos)
+    }
     
     var body: some View {
         ScrollView {
@@ -105,9 +121,8 @@ struct SignUp_SetelAlamat: View {
             }.padding(.top, 20)
             .padding(.horizontal, 16)
             
-            VStack{
-                Button(action: {
-                }, label: {
+            VStack {
+                NavigationLink(destination: AccView()) {
                     ZStack {
                         Capsule()
                             .frame(height: 52)
@@ -115,10 +130,17 @@ struct SignUp_SetelAlamat: View {
                         Text("Masuk")
                             .foregroundColor(Color.white)
                     }
-                }).padding(.top, 20)
+                }
+                .padding(.top, 20)
                 .padding(.bottom)
+                .simultaneousGesture(TapGesture().onEnded {
+                    combineData()
+                    authentication.tempAddAddress(address: address)
+                    print(authentication.profile ?? Profile.default)
+                })
             }
-        }.padding([.top, .leading, .trailing])
+        }
+        .padding([.top, .leading, .trailing])
         .padding(.bottom, 8)
     }
 }

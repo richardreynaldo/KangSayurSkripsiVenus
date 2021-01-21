@@ -7,6 +7,34 @@
 
 import SwiftUI
 
+
+// MARK: - AkunView
+struct AccView: View {
+    @EnvironmentObject var userData: UserData
+    
+    static let dateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "d MMMM yyyy"
+        return formatter
+    }()
+    
+    var body: some View {
+        ScrollView {
+            LazyVStack {
+                Text(userData.profile?.firstName ?? "")
+                Text(userData.profile?.lastName ?? "")
+                Text(userData.profile?.email ?? "")
+                Text("\(userData.profile?.dob ?? Date(), formatter: Self.dateFormat)")
+                ForEach((userData.profile?.address.indices)!) { index in
+                    Text((userData.profile?.address[index])!)
+                }
+            }
+        }
+    }
+}
+
+
 // MARK: - CartView
 struct CartView: View {
     @EnvironmentObject var productData: ProductData
