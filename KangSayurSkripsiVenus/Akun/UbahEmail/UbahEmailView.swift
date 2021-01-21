@@ -38,6 +38,7 @@ struct UbahEmailView: View {
                             }
                             else {
                                 print("Email changed successfully.")
+                                userData.getUserData()
                                 presentationMode.wrappedValue.dismiss()
                             }
                         }

@@ -79,6 +79,7 @@ struct DataAlamatView: View {
                     combineAddress()
                     DispatchQueue.main.async {
                         userData.changeUserAddress(address: userData.profile?.address ?? [])
+                        userData.getUserData()
                         presentationMode.wrappedValue.dismiss()
                     }
                     

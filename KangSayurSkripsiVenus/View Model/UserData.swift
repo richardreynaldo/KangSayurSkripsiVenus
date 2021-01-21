@@ -18,6 +18,7 @@ class UserData: ObservableObject {
     private var firstName: String = ""
     private var lastName: String = ""
     private var email: String = ""
+    private var timestamp: Timestamp? = Timestamp()
     private var dob: Date = Date()
     private var address: [String] = []
     private var isAdmin: Bool = false
@@ -30,9 +31,11 @@ class UserData: ObservableObject {
                 self.firstName = data?["firstName"] as? String ?? ""
                 self.lastName = data?["lastName"] as? String ?? ""
                 self.email = data?["email"] as? String ?? ""
-                self.dob = data?["dob"] as? Date ?? Date()
+                self.timestamp = data?["dob"] as? Timestamp
                 self.address = data?["address"] as? [String] ?? []
                 self.isAdmin = data?["isAdmin"] as? Bool ?? false
+                
+                self.dob = self.timestamp?.dateValue() ?? Date()
                 
                 self.profile = Profile(userID: globalUserID, firstName: self.firstName, lastName: self.lastName, email: self.email, dob: self.dob, address: self.address, isAdmin: self.isAdmin)
                 

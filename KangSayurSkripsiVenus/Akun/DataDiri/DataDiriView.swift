@@ -50,12 +50,12 @@ struct DataDiriView: View {
         }
         .onAppear {
             inputDataFromViewModel()
-            print(userData.profile as Any)
         }
         .navigationBarTitle("Change Info", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
             DispatchQueue.main.async {
                 userData.changeUserInfo(firstName: firstName, lastName: lastName, dob: dob)
+                userData.getUserData()
                 presentationMode.wrappedValue.dismiss()
             }
         }) {
