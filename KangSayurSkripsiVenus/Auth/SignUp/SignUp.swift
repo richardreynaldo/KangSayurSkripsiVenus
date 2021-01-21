@@ -16,102 +16,112 @@ struct SignUp: View {
     @State private var email = ""
     @State private var kataSandi = ""
     @State private var kataSandiUlang = ""
+    
+    @Binding var isPresented: Bool
+    
+    var capsuleColor: Color {
+        return namaDepan.isEmpty || namaBelakang.isEmpty || email.isEmpty || kataSandi.isEmpty || kataSandiUlang.isEmpty ? StyleColors.disabledButtonBg : StyleColors.primaryRed
+    }
+    
     //jangan lupa nama depan sama nama belakang disimpennya satuin di core data!
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading){
-                    Group{
-                        Text("Daftar")
-                            .font(.largeTitle)
-                        
-                        TextField("Nama depan", text: $namaDepan)
-                            .padding(.top, 40)
-                            .keyboardType(.emailAddress)
-                            .disableAutocorrection(true)
-                        
-                        Divider()
-                        
-                        TextField("Nama belakang", text: $namaBelakang)
-                            .padding(.top, 40)
-                            .keyboardType(.default)
-                            .disableAutocorrection(true)
-                        
-                        Divider()
-                        
-                        DatePicker(selection: $birthdate, in: ...Date(), displayedComponents: .date) {
-                            Text("Tanggal lahir")
-                                .foregroundColor(.gray)
-                        }
-                        .padding(.top, 40)
-
-                        Divider()
-                        
-                        TextField("Email", text: $email)
-                            .padding(.top, 40)
-                            .keyboardType(.default)
-                            .disableAutocorrection(true)
-                        
-                        Divider()
-                    }
-                    Group{
-                        TextField("Kata sandi", text: $kataSandi)
-                            .padding(.top, 40)
-                            .keyboardType(.default)
-                            .disableAutocorrection(true)
-                        
-                        Divider()
-                        
-                        TextField("Masukkan kembali kata sandi", text: $kataSandiUlang)
-                            .padding(.top, 40)
-                            .keyboardType(.default)
-                            .disableAutocorrection(true)
-                        
-                        Divider()
-                    }
-                }
-                .padding(.top, 80)
-                .padding(.horizontal, 16)
-                
-                VStack {
-                    NavigationLink(destination: SignUp_SetelAlamat()) {
-                        ZStack {
-                            Capsule()
-                                .frame(height: 52)
+            ZStack {
+                ScrollView {
+                    VStack(alignment: .leading){
+                        Group{
+                            Text("Daftar")
+                                .font(.largeTitle)
                             
-                            Text("Lanjut")
-                                .foregroundColor(Color.white)
+                            TextField("Nama depan", text: $namaDepan)
+                                .padding(.top, 40)
+                                .keyboardType(.emailAddress)
+                                .disableAutocorrection(true)
+                            
+                            Divider()
+                            
+                            TextField("Nama belakang", text: $namaBelakang)
+                                .padding(.top, 40)
+                                .keyboardType(.default)
+                                .disableAutocorrection(true)
+                            
+                            Divider()
+                            
+                            DatePicker(selection: $birthdate, in: ...Date(), displayedComponents: .date) {
+                                Text("Tanggal lahir")
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.top, 40)
+
+                            Divider()
+                            
+                            TextField("Email", text: $email)
+                                .padding(.top, 40)
+                                .keyboardType(.default)
+                                .disableAutocorrection(true)
+                            
+                            Divider()
+                        }
+                        Group{
+                            SecureField("Kata sandi", text: $kataSandi)
+                                .padding(.top, 40)
+                                .keyboardType(.default)
+                                .disableAutocorrection(true)
+                            
+                            Divider()
+                            
+                            SecureField("Masukkan kembali kata sandi", text: $kataSandiUlang)
+                                .padding(.top, 40)
+                                .keyboardType(.default)
+                                .disableAutocorrection(true)
+                            
+                            Divider()
                         }
                     }
-                    .padding(.top, 70)
-                    .padding(.bottom)
-                    .simultaneousGesture(TapGesture().onEnded {
-                        authentication.tempSignUp(firstName: namaDepan, lastName: namaBelakang, email: email, dob: birthdate, password: kataSandi)
-                        print(authentication.profile ?? Profile.default)
-                    })
+                    .padding(.top, 80)
+                    .padding(.horizontal, 16)
                     
-                    HStack {
-                        Text("Sudah punya akun?")
-                        Button(action: {
-                        }, label: {
+                    VStack {
+                        NavigationLink(destination: SignUp_SetelAlamat(namaDepan: $namaDepan, namaBelakang: $namaBelakang, birthdate: $birthdate, email: $email, kataSandi: $kataSandi)) {
                             ZStack {
-                                Text("Masuk")
-                                    .underline()
+                                Capsule()
+                                    .fill(capsuleColor)
+                                    .frame(height: 52)
+                                
+                                Text("Lanjut")
+                                    .foregroundColor(Color.white)
                             }
-                        })
+                        }
+                        .padding(.top, 70)
+                        .padding(.bottom)
+                        
+                        HStack {
+                            Text("Sudah punya akun?")
+                            Button(action: {
+                                isPresented = false
+                            }, label: {
+                                ZStack {
+                                    Text("Masuk")
+                                        .foregroundColor(StyleColors.primaryRed)
+                                        .underline()
+                                }
+                            })
+                        }
                     }
+                    
+                   
                 }
-                
-               
-            }.padding([.top, .leading, .trailing])
-            .padding(.bottom, 8)
+                .padding([.top, .leading, .trailing])
+            }
+            .navigationBarHidden(true)
         }
+        .accentColor(StyleColors.primaryRed)
     }
 }
 
-struct SignUp_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUp()
-    }
-}
+//struct SignUp_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUp()
+//    }
+//}

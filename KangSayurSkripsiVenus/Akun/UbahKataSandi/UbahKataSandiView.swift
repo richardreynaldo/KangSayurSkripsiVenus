@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct UbahKataSandiView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var authentication: Authentication
+    @EnvironmentObject var userData: UserData
+    
     @State var oldPass: String = ""
     @State var newPass: String = ""
     @State var rePass: String = ""
@@ -31,7 +36,16 @@ struct UbahKataSandiView: View {
                 .navigationBarItems(trailing: Button(action: {
                     
                     DispatchQueue.main.async {
-                        //masukkin func buat check password kalo bener baru update passwordnya
+                        authentication.changePassword(email: userData.profile?.email ?? "", currentPassword: oldPass, newPassword: newPass) { error in
+                            if error != nil {
+                                print("\(error?.localizedDescription ?? "")")
+                            }
+                            else {
+                                print("Password changed successfully.")
+                                //isLoading = false
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
                     }
                     
                 }) {
@@ -39,11 +53,10 @@ struct UbahKataSandiView: View {
 //                        .foregroundColor(StyleColors.primaryRed)
 //                        .font(StyleFont.heading2)
                 })
-                .padding(.top, 108)
+                .padding(.vertical)
             }
         }
-//        .background(StyleColors.secondaryYellow)
-        .edgesIgnoringSafeArea(.top)
+        .background(StyleColors.secondaryYellow)
     }
 }
 

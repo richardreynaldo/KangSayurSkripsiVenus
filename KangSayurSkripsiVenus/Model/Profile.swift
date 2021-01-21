@@ -14,6 +14,7 @@ struct Profile {
     var email: String
     var dob: Date
     var address: [String]
+    var isAdmin: Bool
     
-    static let `default` = Self(userID: "", firstName: "Venus", lastName: "Dhammiko", email: "venusdhammiko@gmail.com", dob: Date(), address: ["Cipondoh", "Tangerang", "Banten"])
+    static let `default` = Self(userID: "", firstName: "Venus", lastName: "Dhammiko", email: "venusdhammiko@gmail.com", dob: Date(), address: ["Cipondoh", "Tangerang", "Banten"], isAdmin: true)
 }

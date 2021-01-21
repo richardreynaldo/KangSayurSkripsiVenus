@@ -10,6 +10,7 @@ import SwiftUI
 struct ViewBottom: View {
     var title: String
     @Binding var input: String
+    
     var body: some View {
         VStack
         {
@@ -17,16 +18,16 @@ struct ViewBottom: View {
                 Text("\(title)")
                 Spacer()
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal)
             
             HStack{
                 TextField("", text: $input)
                 Spacer()
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal)
             
             Divider()
-                .padding(.horizontal, 32)
+                .padding(.horizontal)
         }
     }
 }
@@ -34,6 +35,7 @@ struct ViewBottom: View {
 struct PasswordBottom: View {
     var title: String
     @Binding var input: String
+    
     var body: some View {
         VStack
         {
@@ -43,7 +45,7 @@ struct PasswordBottom: View {
 //                    .foregroundColor(StyleColors.accountPageCaptionSmall)
                 Spacer()
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal)
             
             HStack{
                 SecureField("", text: $input)
@@ -51,10 +53,10 @@ struct PasswordBottom: View {
                     .disableAutocorrection(true)
                 Spacer()
             }
-            .padding(.horizontal, 32)
+            .padding(.horizontal)
             
             Divider()
-                .padding(.horizontal, 32)
+                .padding(.horizontal)
         }
     }
 }

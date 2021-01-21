@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct CustomTabView: View {
+    @EnvironmentObject var userData: UserData
     @EnvironmentObject var productData: ProductData
-    @State var currentTab: Int = 0
+    @State private var currentTab: Int = 0
     
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
                 HomeView()
                     .navigationBarTitle("Home", displayMode: .inline)
-            }
-            .onAppear {
-                productData.getProductData()
             }
             .tabItem {
                 Image(systemName: "house.fill")
@@ -44,7 +42,12 @@ struct CustomTabView: View {
             }
             .tag(2)
         }
-        .accentColor(StyleColors.primaryRed)
+        .onAppear {
+            DispatchQueue.main.async {
+                userData.getUserData()
+                productData.getProductData()
+            }
+        }
     }
 }
 

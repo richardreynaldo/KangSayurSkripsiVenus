@@ -28,7 +28,6 @@ struct HomeView: View {
             }
         }
         .background(StyleColors.secondaryYellow)
-        
     }
 }
 

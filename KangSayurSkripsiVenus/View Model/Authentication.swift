@@ -52,7 +52,8 @@ class Authentication: NSObject, ObservableObject {
                         "lastName": lastName,
                         "email": email,
                         "dob": dob,
-                        "address": address
+                        "address": address,
+                        "isAdmin": false
                     ]) { err in
                         if let err = err {
                             print("Error adding user: \(err)")
@@ -89,7 +90,7 @@ class Authentication: NSObject, ObservableObject {
         try? auth.signOut()
     }
     
-    func changeEmail(currentEmail: String, newEmail: String, currentPassword: String,  completion: @escaping (Error?) -> Void) {
+    func changeEmail(currentEmail: String, newEmail: String, currentPassword: String, completion: @escaping (Error?) -> Void) {
         let credential = EmailAuthProvider.credential(withEmail: currentEmail, password: currentPassword)
         Auth.auth().currentUser?.reauthenticate(with: credential, completion: { (result, error) in
             if let error = error {

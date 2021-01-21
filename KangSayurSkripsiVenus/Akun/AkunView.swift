@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AkunView: View {
+    @EnvironmentObject var authentication: Authentication
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -53,12 +55,12 @@ struct AkunView: View {
                     
                     Spacer()
                     
-                    NavigationLink(
-                        destination: EmptyView())
-                    {
+                    Button(action: {
+                        authentication.signout()
+                    }, label: {
                         AkunChevron(title: "Keluar")
                             .padding(.horizontal)
-                    }
+                    })
                 }
                 .padding(.top, 20)
             }

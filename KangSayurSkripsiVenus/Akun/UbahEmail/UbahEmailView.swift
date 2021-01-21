@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct UbahEmailView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var authentication: Authentication
+    @EnvironmentObject var userData: UserData
+    
     @State private var newEmail: String = ""
     @State private var password: String = ""
     
@@ -26,20 +31,25 @@ struct UbahEmailView: View {
                 }
                 .navigationBarTitle("Change Email", displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    
                     DispatchQueue.main.async {
-                        //masukin func buat checkemail terus masukkin ke core data
+                        authentication.changeEmail(currentEmail: userData.profile?.email ?? "", newEmail: newEmail, currentPassword: password) { error in
+                            if error != nil {
+                                print("\(error?.localizedDescription ?? "")")
+                            }
+                            else {
+                                print("Email changed successfully.")
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }
                     }
-                    
                 }) {
                     Text("Done")
 //                        .foregroundColor(StyleColors.primaryRed)
 //                        .font(StyleFont.heading2)
-                }).padding(.top, 108)
+                }).padding(.vertical)
             }
         }
-//        .background(StyleColors.secondaryYellow)
-        .edgesIgnoringSafeArea(.top)
+        .background(StyleColors.secondaryYellow)
     }
 }
 struct UbahEmailView_Previews: PreviewProvider {

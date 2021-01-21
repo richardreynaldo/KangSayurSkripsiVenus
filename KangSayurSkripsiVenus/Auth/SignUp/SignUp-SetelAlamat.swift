@@ -22,6 +22,16 @@ struct SignUp_SetelAlamat: View {
     @State private var kodepos = ""
     @State private var address: [String] = []
     
+    @Binding var namaDepan: String
+    @Binding var namaBelakang: String
+    @Binding var birthdate: Date
+    @Binding var email: String
+    @Binding var kataSandi: String
+    
+    var capsuleColor: Color {
+        return jalan.isEmpty || nomor.isEmpty || rt.isEmpty || rw.isEmpty || kelurahan.isEmpty || kecamatan.isEmpty || kota.isEmpty || provinsi.isEmpty || kodepos.isEmpty ? StyleColors.disabledButtonBg : StyleColors.primaryRed
+    }
+    
     func combineData() {
         address.append(perumahan)
         address.append(jalan)
@@ -122,22 +132,23 @@ struct SignUp_SetelAlamat: View {
             .padding(.horizontal, 16)
             
             VStack {
-                NavigationLink(destination: AccView()) {
+                Button(action: {
+                    combineData()
+                    DispatchQueue.main.async {
+                        authentication.signUp(firstName: namaDepan, lastName: namaBelakang, email: email, dob: birthdate, address: address, password: kataSandi)
+                    }
+                }, label: {
                     ZStack {
                         Capsule()
+                            .fill(capsuleColor)
                             .frame(height: 52)
                         
-                        Text("Masuk")
+                        Text("Daftar")
                             .foregroundColor(Color.white)
                     }
-                }
+                })
                 .padding(.top, 20)
                 .padding(.bottom)
-                .simultaneousGesture(TapGesture().onEnded {
-                    combineData()
-                    authentication.tempAddAddress(address: address)
-                    print(authentication.profile ?? Profile.default)
-                })
             }
         }
         .padding([.top, .leading, .trailing])
@@ -145,8 +156,8 @@ struct SignUp_SetelAlamat: View {
     }
 }
 
-struct SignUp_SetelAlamat_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUp_SetelAlamat()
-    }
-}
+//struct SignUp_SetelAlamat_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignUp_SetelAlamat()
+//    }
+//}

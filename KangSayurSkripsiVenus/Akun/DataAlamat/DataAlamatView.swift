@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct DataAlamatView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var userData: UserData
+    
     @State private var perumahan = ""
     @State private var jalan = ""
     @State private var nomor = ""
@@ -18,6 +22,32 @@ struct DataAlamatView: View {
     @State private var kota = ""
     @State private var provinsi = ""
     @State private var kodepos = ""
+    
+    func inputDataFromViewModel() {
+        perumahan = userData.profile?.address[0] ?? ""
+        jalan = userData.profile?.address[1] ?? ""
+        nomor = userData.profile?.address[2] ?? ""
+        rt = userData.profile?.address[3] ?? ""
+        rw = userData.profile?.address[4] ?? ""
+        kelurahan = userData.profile?.address[5] ?? ""
+        kecamatan = userData.profile?.address[6] ?? ""
+        kota = userData.profile?.address[7] ?? ""
+        provinsi = userData.profile?.address[8] ?? ""
+        kodepos = userData.profile?.address[9] ?? ""
+    }
+    
+    func combineAddress() {
+        userData.profile?.address[0] = perumahan
+        userData.profile?.address[1] = jalan
+        userData.profile?.address[2] = nomor
+        userData.profile?.address[3] = rt
+        userData.profile?.address[4] = rw
+        userData.profile?.address[5] = kelurahan
+        userData.profile?.address[6] = kecamatan
+        userData.profile?.address[7] = kota
+        userData.profile?.address[8] = provinsi
+        userData.profile?.address[9] = kodepos
+    }
     
     var body: some View {
         ZStack {
@@ -46,20 +76,22 @@ struct DataAlamatView: View {
                 }
                 .navigationBarTitle("Change Email", displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    
+                    combineAddress()
                     DispatchQueue.main.async {
-                        //masukin func buat gabungin semua alamatnya terus masukkin ke core data
+                        userData.changeUserAddress(address: userData.profile?.address ?? [])
+                        presentationMode.wrappedValue.dismiss()
                     }
                     
                 }) {
                     Text("Done")
 //                        .foregroundColor(StyleColors.primaryRed)
 //                        .font(StyleFont.heading2)
-                }).padding(.top, 108)
+                })
+                .padding(.vertical)
             }
         }
-//        .background(StyleColors.secondaryYellow)
-        .edgesIgnoringSafeArea(.top)
+        .background(StyleColors.secondaryYellow)
+        .onAppear(perform: inputDataFromViewModel)
     }
 }
 

@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct SignIn: View {
+    @EnvironmentObject var authentication: Authentication
+    
     @State private var email = ""
     @State private var password = ""
+    @State private var isPresented: Bool = false
+    
+    var capsuleColor: Color {
+        return email.isEmpty || password.isEmpty ? StyleColors.disabledButtonBg : StyleColors.primaryRed
+    }
 
     var body: some View {
         ScrollView {
@@ -35,26 +42,36 @@ struct SignIn: View {
             
             VStack{
                 Button(action: {
+                    DispatchQueue.main.async {
+                        authentication.signIn(email: email, password: password)
+                    }
                 }, label: {
                     ZStack {
                         Capsule()
+                            .fill(capsuleColor)
                             .frame(height: 52)
                         
                         Text("Masuk")
                             .foregroundColor(Color.white)
                     }
-                }).padding(.top, UIScreen.main.bounds.maxY * 0.357)
+                })
+                .padding(.top, UIScreen.main.bounds.maxY * 0.357)
                 .padding(.bottom)
                 
                 HStack{
                     Text("Belum punya akun?")
                     Button(action: {
+                        isPresented = true
                     }, label: {
                         ZStack {
                             Text("Daftar")
+                                .foregroundColor(StyleColors.primaryRed)
                                 .underline()
                         }
                     })
+                    .fullScreenCover(isPresented: $isPresented) {
+                        SignUp(isPresented: $isPresented)
+                    }
                 }
             }
         }.padding([.top, .leading, .trailing])

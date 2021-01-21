@@ -8,51 +8,60 @@
 import SwiftUI
 
 struct DataDiriView: View {
-    @State var nama: String = ""
-    @State var email: String = ""
+    @Environment(\.presentationMode) var presentationMode
+    
+    @EnvironmentObject var userData: UserData
+    
+    @State var firstName: String = ""
+    @State var lastName: String = ""
     @State var dobString: String = ""
     @State var dob: Date = Date()
     
-    func inputDataFromViewModel(){
-//        buat isi data diri pas dibuka entar dari core data
-//        firstName = viewModel.profile.firstName ?? ""
-//        lastName = viewModel.profile.lastName ?? ""
-//        jgn lupa gabungin nama depan sama nama belakang buat jadi full name
-//        dob = viewModel.profile.dob ?? Date()
+    func inputDataFromViewModel() {
+        firstName = userData.profile?.firstName ?? ""
+        lastName = userData.profile?.lastName ?? ""
+        dob = userData.profile?.dob ?? Date()
     }
     
     var body: some View {
         ZStack {
             ScrollView {
                 VStack {
-                    ViewBottom(title: "Nama", input: $nama)
+                    ViewBottom(title: "Nama depan", input: $firstName)
                         .padding(.bottom)
                     
-                    ViewBottom(title: "Email", input: $email)
+                    ViewBottom(title: "Nama belakang", input: $lastName)
                         .padding(.bottom)
                     
-                    ViewBottom(title: "Tanggal Lahir", input: $dobString)
-                        .padding(.bottom)
+                    DatePicker(selection: $dob, in: ...Date(), displayedComponents: .date) {
+                        Text("Birthdate")
+//                            .font(StyleFont.heading2)
+//                            .foregroundColor(StyleColors.accountPageCaptionSmall)
+                    }
+                    .accentColor(.orange)
+                    .padding(.horizontal)
+
+                    Divider()
+                        .padding(.horizontal)
                     
                     Spacer()
                 }
-                .padding(.top, 108)
+                .padding(.vertical)
             }
         }
         .onAppear {
-            //dob = viewModel.profile.dob ?? Date() //Ini buat Tanggal lahir pake core data entar
+            inputDataFromViewModel()
+            print(userData.profile as Any)
         }
         .navigationBarTitle("Change Info", displayMode: .inline)
         .navigationBarItems(trailing: Button(action: {
-            
             DispatchQueue.main.async {
-                //masukkin func yang buat update infonya sama dismiss jgn lupa
+                userData.changeUserInfo(firstName: firstName, lastName: lastName, dob: dob)
+                presentationMode.wrappedValue.dismiss()
             }
-            
         }) {
             Text("Done")
         })
-        .edgesIgnoringSafeArea(.top)
     }
 }
 

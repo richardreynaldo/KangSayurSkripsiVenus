@@ -28,6 +28,10 @@ class StyleColors {
     static var secondaryYellow : Color {
         return Color(hexString: "FCF9F5")
     }
+    
+    static var disabledButtonBg: Color {
+        return Color(hexString: "BDBDBD")
+    }
 }
 
 extension Color {
