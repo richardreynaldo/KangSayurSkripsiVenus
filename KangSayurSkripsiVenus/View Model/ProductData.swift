@@ -14,12 +14,44 @@ class ProductData: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    // Temporary Function
     func getProductData() {
-        products.append(Product(id: "001", image: "brokoli", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayur"))
-        products.append(Product(id: "002", image: "kailan", name: "Kailan", price: 20000, stock: 20, desc: "Sayur Kailan", category: "Sayur"))
-        products.append(Product(id: "003", image: "bayam hijau", name: "Bayam", price: 15000, stock: 15, desc: "Sayur Bayam", category: "Sayur"))
-        products.append(Product(id: "004", image: "tauge", name: "Tauge", price: 25000, stock: 25, desc: "Sayur Tauge", category: "Sayur"))
-//        db.collection("Product").document("")
+        db.collection("Product").addSnapshotListener { (querySnapshot, erron) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.products = documents.map({ queryDocumentSnapshot -> Product in
+                let data = queryDocumentSnapshot.data()
+                let name = data["name"] as? String ?? ""
+                let price = data["price"] as? Int ?? 0
+                let stock = data["stock"] as? Int ?? 0
+                let desc = data["desc"] as? String ?? ""
+                let category = data["category"] as? String ?? ""
+                
+                return Product(id: queryDocumentSnapshot.documentID, image: name, name: name, price: price, stock: stock, desc: desc, category: category)
+            })
+        }
+    }
+    
+    // Temporary Function
+    func appendToFirebase() {
+        var ref: DocumentReference? = nil
+        
+        for item in products {
+            ref = db.collection("Product").addDocument(data: [
+                "name" : item.name,
+                "price" : item.price,
+                "stock" : item.stock,
+                "desc" : item.desc,
+                "category" : item.category
+            ]) { error in
+                if let error = error {
+                    print("Error adding product to Firebase: \(error)")
+                } else {
+                    print("Product added with ID: \(ref!.documentID)")
+                }
+            }
+        }
     }
 }

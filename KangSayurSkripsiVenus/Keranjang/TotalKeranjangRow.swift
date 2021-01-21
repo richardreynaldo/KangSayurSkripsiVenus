@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TotalKeranjangRow: View {
+    @EnvironmentObject var productData: ProductData
     var price: Int
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -25,6 +27,7 @@ struct TotalKeranjangRow: View {
                 Spacer()
                 
                 Button(action: {
+                    
                 }, label: {
                     ZStack {
                         Capsule()

@@ -20,7 +20,7 @@ struct HomeView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(productData.products.indices) { index in
+                        ForEach(productData.products.indices, id: \.self) { index in
                             CollectionViewCell(product: productData.products[index], index: index)
                         }
                     }
@@ -28,9 +28,7 @@ struct HomeView: View {
             }
         }
         .background(StyleColors.secondaryYellow)
-        .onAppear {
-            productData.getProductData()
-        }
+        
     }
 }
 

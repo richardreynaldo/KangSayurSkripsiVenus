@@ -48,6 +48,7 @@ struct KeranjangView: View {
 //            .onAppear {
 //                productData.getProductData()
 //                cartData.getCartData()
+//                productData.appendToFirebase()
 //            }
         }
     }

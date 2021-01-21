@@ -33,16 +33,16 @@ class CartData: ObservableObject {
     }
     
     func add(index: Int, product: Product) {
-        //        if let index = cart.firstIndex(of: product) {
+        if cart.isEmpty {
+            
+        }
         if cart[index].product.stock > 0 {
             cart[index].product = product
             cart[index].quantity += 1
 //            productData.products[index].stock -= 1
             cart[index].product.stock -= 1
         }
-        //        }
         //        orderHeader.totalOrder! += 1
-        //        db.collection("Cart").addDocument(data: ["cart" : prdoucts])
     }
     
     func append(product: Product) {

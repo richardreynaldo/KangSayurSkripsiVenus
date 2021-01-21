@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomTabView: View {
+    @EnvironmentObject var productData: ProductData
     @State var currentTab: Int = 0
     
     var body: some View {
@@ -15,7 +16,11 @@ struct CustomTabView: View {
             NavigationView {
                 HomeView()
                     .navigationBarTitle("Home", displayMode: .inline)
-            }.tabItem {
+            }
+            .onAppear {
+                productData.getProductData()
+            }
+            .tabItem {
                 Image(systemName: "house.fill")
                 Text("Home")
             }
