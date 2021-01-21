@@ -38,7 +38,6 @@ struct DataDiriView: View {
 //                            .font(StyleFont.heading2)
 //                            .foregroundColor(StyleColors.accountPageCaptionSmall)
                     }
-                    .accentColor(.orange)
                     .padding(.horizontal)
 
                     Divider()
