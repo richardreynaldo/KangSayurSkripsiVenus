@@ -25,7 +25,7 @@ struct HomeView: View {
                             CollectionViewCell(product: productData.products[index], index: index)
                                 .onTapGesture {
 //                                    print("\(cartData.cart.first(where: {$0.product.name == productData.products[index].name}))")
-                                    print("testis\(cartData.cart)")
+                                    cartData.getTotalPriceCart()
                                 }
                         }
                     }

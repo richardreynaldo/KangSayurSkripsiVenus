@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct TotalKeranjangRow: View {
-    @EnvironmentObject var productData: ProductData
     var price: Int
-    
+    var qty: Int
     var body: some View {
         ZStack {
             Rectangle()
@@ -34,7 +33,7 @@ struct TotalKeranjangRow: View {
                             .frame(width: 108, height: 41)
                         
                         //jangan lupa di ganti jadi total dari quantity barang yang di beli 3 nya
-                        Text("Beli(3)")
+                        Text("Beli(\(qty))")
                             .foregroundColor(Color.white)
                     }
                 })
@@ -46,6 +45,6 @@ struct TotalKeranjangRow: View {
 
 struct TotalKeranjangRow_Previews: PreviewProvider {
     static var previews: some View {
-        TotalKeranjangRow(price: 40000)
+        TotalKeranjangRow(price: 40000, qty: 2)
     }
 }

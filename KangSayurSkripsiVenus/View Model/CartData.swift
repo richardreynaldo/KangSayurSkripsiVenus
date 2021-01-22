@@ -81,6 +81,23 @@ class CartData: ObservableObject {
         db.collection("")
     }
     
+    func getQuantityCart()-> Int {
+        var total = 0
+        for i in cart {
+            total += i.quantity
+        }
+        return total
+    }
+    
+    func getTotalPriceCart()-> Int {
+        var total = 0
+        for i in cart{
+            total += (i.quantity * i.product.price)
+        }
+        print("asu\(total)")
+        return total
+    }
+    
     // Temporary Function
     func getCartData() {
         cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
