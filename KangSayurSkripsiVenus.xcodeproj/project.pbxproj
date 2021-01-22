@@ -62,6 +62,8 @@
 		6D7507E025A6CF5600133A56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D7507DF25A6CF5600133A56 /* Preview Assets.xcassets */; };
 		6D7507EB25A6CF5700133A56 /* KangSayurSkripsiVenusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507EA25A6CF5700133A56 /* KangSayurSkripsiVenusTests.swift */; };
 		6D7507F625A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507F525A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift */; };
+		6D8D46A625BAEBAA00118EC4 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D46A525BAEBAA00118EC4 /* HistoryView.swift */; };
+		6D8D46AB25BAEBCA00118EC4 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D46AA25BAEBCA00118EC4 /* HistoryRowView.swift */; };
 		9E3C84C3185571F4E44674C3 /* Pods_KangSayurSkripsiVenusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */; };
 		D2B46AFA9555FE7C7D908463 /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE29FCACCA76AE549CDD443F /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework */; };
 /* End PBXBuildFile section */
@@ -147,6 +149,8 @@
 		6D7507F125A6CF5700133A56 /* KangSayurSkripsiVenusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KangSayurSkripsiVenusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7507F525A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KangSayurSkripsiVenusUITests.swift; sourceTree = "<group>"; };
 		6D7507F725A6CF5700133A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D8D46A525BAEBAA00118EC4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		6D8D46AA25BAEBCA00118EC4 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		7E120A098FC787508EFB8826 /* Pods-KangSayurSkripsiVenus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.debug.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.debug.xcconfig"; sourceTree = "<group>"; };
 		A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KangSayurSkripsiVenusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EBEC5F5999A2CB1FA3F976 /* Pods-KangSayurSkripsiVenus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.release.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.release.xcconfig"; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 		6D7507D725A6CF5400133A56 /* KangSayurSkripsiVenus */ = {
 			isa = PBXGroup;
 			children = (
+				6D8D46A425BAEB9800118EC4 /* History */,
 				2C9D751725B9CE1800FCFC45 /* StartView.swift */,
 				2C9D74F825B6975B00FCFC45 /* CustomTabView.swift */,
 				6D45460825AEFB350024E572 /* Home */,
@@ -449,6 +454,15 @@
 				6D7507F725A6CF5700133A56 /* Info.plist */,
 			);
 			path = KangSayurSkripsiVenusUITests;
+			sourceTree = "<group>";
+		};
+		6D8D46A425BAEB9800118EC4 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				6D8D46A525BAEBAA00118EC4 /* HistoryView.swift */,
+				6D8D46AA25BAEBCA00118EC4 /* HistoryRowView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		925ACA065FE35607F35781BE /* Pods */ = {
@@ -724,6 +738,7 @@
 				2C405A0B25AC41520052CA50 /* CartData.swift in Sources */,
 				2C4059FB25AC3CD00052CA50 /* Profile.swift in Sources */,
 				2C4059F625AC3BFE0052CA50 /* UserData.swift in Sources */,
+				6D8D46A625BAEBAA00118EC4 /* HistoryView.swift in Sources */,
 				2C405A6C25AD71B20052CA50 /* OrderHeader.swift in Sources */,
 				2C405A0325AC40540052CA50 /* Product.swift in Sources */,
 				2C405A7725AD77D40052CA50 /* TestView.swift in Sources */,
@@ -760,6 +775,7 @@
 				6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */,
 				6D4545E425AEFB030024E572 /* AkunBottom.swift in Sources */,
 				6D45461525AEFB350024E572 /* PengirimanRow.swift in Sources */,
+				6D8D46AB25BAEBCA00118EC4 /* HistoryRowView.swift in Sources */,
 				6D45460C25AEFB350024E572 /* TotalKeranjangRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
