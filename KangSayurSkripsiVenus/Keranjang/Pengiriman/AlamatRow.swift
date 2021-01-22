@@ -11,19 +11,23 @@ struct AlamatRow: View {
     @EnvironmentObject var userData: UserData
     
     var body: some View {
-        ZStack{
+        ZStack {
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.size.width, height: 160)
+                .frame(height: 108)
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading) {
                 Text("Alamat Pengiriman")
-                    .font(.title)
-                    .padding([.top, .bottom, .trailing], 8)
+                    .font(Font.custom("Sora-SemiBold", size: 20))
+                    .foregroundColor(StyleColors.titleText)
+                    .padding(.vertical, 4)
                 
                 Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
-                    .padding([.top, .bottom, .trailing], 8)
+                    .font(Font.custom("Sora-Regular", size: 12))
+                    .foregroundColor(StyleColors.secondaryTitleText)
+                    .padding(.bottom, 8)
             }
+            .padding(.horizontal)
         }
     }
 }

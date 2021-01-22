@@ -15,24 +15,40 @@ struct DetailPembayaranRow: View {
         ZStack{
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.size.width, height: 106)
+                .frame(height: 106)
+            
             VStack(alignment: .leading){
                 Text("Detail pembayaran")
-                    .font(.title3)
-                    .padding(.bottom, 5)
-                    .padding([.leading, .trailing], 5)
+                    .font(Font.custom("Sora-SemiBold", size: 20))
+                    .foregroundColor(StyleColors.titleText)
+                    .padding(.bottom, 4)
+                    .padding(.horizontal)
                 
                 HStack{
                     Text("Total Harga")
+                        .font(Font.custom("Sora-Regular", size: 12))
+                        .foregroundColor(StyleColors.titleText)
+                    
                     Spacer()
-                    Text("Rp.\(price)")
-                }.padding([.leading, .trailing], 5)
+                    
+                    Text("Rp\(price)")
+                        .font(Font.custom("Sora-Regular", size: 12))
+                        .foregroundColor(StyleColors.titleText)
+                }
+                .padding(.horizontal)
 
                 HStack{
                     Text("Total Ongkos Kirim")
+                        .font(Font.custom("Sora-SemiBold", size: 12))
+                        .foregroundColor(StyleColors.titleText)
+                    
                     Spacer()
-                    Text("Rp.\(priceOngkos)")
-                }.padding([.leading, .trailing], 5)
+                    
+                    Text("Rp\(priceOngkos)")
+                        .font(Font.custom("Sora-SemiBold", size: 12))
+                        .foregroundColor(StyleColors.titleText)
+                }
+                .padding(.horizontal)
             }
         }
     }

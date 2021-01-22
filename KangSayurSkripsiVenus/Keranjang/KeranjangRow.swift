@@ -29,19 +29,17 @@ struct KeranjangRow: View {
                     Image(product.image)
                         .resizable()
                         .frame(width: 60, height: 60, alignment: .center)
+                        .aspectRatio(contentMode: .fit)
                     
                     VStack(alignment: .leading) {
                         Text(product.name)
-                            //                        .font(StyleFont.captionSmall)
-                            .fontWeight(.light)
-                            //                        .foregroundColor(StyleColors.accountPageCaptionSmall)
+                            .font(Font.custom("Sora-Bold", size: 17))
+                            .foregroundColor(StyleColors.titleText)
                             .padding(.top, 10)
                         
                         Text("Rp\(product.price)/kg")
-                        //                        .font(StyleFont.heading2)
-                        //                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
-                        
-                        //kurang yang tempat sampah buat delete sama + - buat quantity
+                            .font(Font.custom("Sora-Regular", size: 16))
+                            .foregroundColor(StyleColors.titleText)
                     }
                     .padding(.leading)
                     
@@ -70,6 +68,9 @@ struct KeranjangRow: View {
                     
                     VStack{
                         Text("\(cart.quantity)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(StyleColors.secondaryTitleText)
+                        
                         Rectangle()
                             .frame(width: 35, height: 1, alignment: .center)
                     }

@@ -32,6 +32,10 @@ class StyleColors {
     static var disabledButtonBg: Color {
         return Color(hexString: "BDBDBD")
     }
+    
+    static var captionSmall : Color {
+        return Color(hexString: "898A8D")
+    }
 }
 
 extension Color {

@@ -13,16 +13,22 @@ struct TotalPembayaranRow: View {
         ZStack{
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.size.width, height: 65)
-            HStack{
-                VStack(alignment: .leading){
+                .frame(height: 65)
+            
+            HStack {
+                VStack(alignment: .leading) {
                     Text("Total Harga")
-                   
-                }.padding(.leading, 15)
+                        .font(Font.custom("Sora-SemiBold", size: 17))
+                        .foregroundColor(StyleColors.titleText)
+                }
+                
                 Spacer()
-                Text("Rp.\(totalOrder)")
-                    .padding(.trailing, 15)
+                
+                Text("Rp\(totalOrder)")
+                    .font(Font.custom("Sora-Regular", size: 17))
+                    .foregroundColor(StyleColors.titleText)
             }
+            .padding(.horizontal)
         }
     }
 }

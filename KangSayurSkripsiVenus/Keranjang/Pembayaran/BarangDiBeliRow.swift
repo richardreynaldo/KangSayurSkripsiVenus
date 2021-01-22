@@ -8,35 +8,51 @@
 import SwiftUI
 
 struct BarangDiBeliRow: View {
+    @EnvironmentObject var cartData: CartData
+    
     var quantity: Int
     var price: Int
     var quantityxprice: Int
     var nama: String
     
     var body: some View {
-        ZStack{
+        ZStack {
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.size.width, height: 106)
-            VStack(alignment: .leading){
+                .frame(minHeight: 106)
+            
+            VStack(alignment: .leading) {
                 Text("Barang yang di beli")
-                    .font(.title3)
-                    .padding(.bottom, 5)
-                    .padding([.leading, .trailing], 5)
+                    .font(Font.custom("Sora-SemiBold", size: 20))
+                    .foregroundColor(StyleColors.titleText)
+                    .padding(.bottom, 4)
                 
-                HStack{
-                    //vstack yang ini harusnya di loop sesuai belanjaannya apa aja
-                    VStack(alignment: .leading){
-                        Text("\(nama)")
-                        Text("\(quantity) x \(price)")
+                //vstack yang ini harusnya di loop sesuai belanjaannya apa aja
+                LazyVStack(alignment: .leading) {
+                    ForEach(cartData.cart) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("\(item.product.name)")
+                                    .font(Font.custom("Sora-Regular", size: 15))
+                                    .foregroundColor(StyleColors.titleText)
+                                
+                                Text("\(item.quantity) x \(item.product.price)")
+                                    .font(Font.custom("Sora-Regular", size: 12))
+                                    .foregroundColor(StyleColors.titleText)
+                            }
+                            .padding(.bottom, 4)
+                            
+                            Spacer()
+                            
+                            Text("Rp\(item.quantity * item.product.price)")
+                                .font(Font.custom("Sora-SemiBold", size: 12))
+                                .foregroundColor(StyleColors.titleText)
+                        }
                     }
-                    Spacer()
-                    Text("Rp.\(quantityxprice)")
-                    
-                }.padding([.leading, .trailing], 5)
+                }
             }
+            .padding()
         }
-        
     }
 }
 struct BarangDiBeliView_Previews: PreviewProvider {

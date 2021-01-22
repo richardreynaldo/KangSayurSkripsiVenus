@@ -10,24 +10,33 @@ import SwiftUI
 struct MetodePembayaranRow: View {
     var paymentType: String
     var body: some View {
-        ZStack{
+        ZStack {
             Rectangle()
                 .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.size.width, height: 65)
-            HStack{
-                VStack(alignment: .leading){
+                .frame(height: 81)
+            
+            HStack {
+                VStack(alignment: .leading) {
                     Text("Metode Pembayaran")
-                        .font(.title2)
-                    HStack{
-                        Image("bi_cash")
+                        .font(Font.custom("Sora-Regular", size: 20))
+                        .foregroundColor(StyleColors.titleText)
+                    
+                    HStack {
+                        Image(systemName: "dollarsign.circle")
                             .resizable()
                             .frame(width: 20, height: 20, alignment: .center)
                             .scaledToFit()
+                            .foregroundColor(StyleColors.titleText)
+                        
                         Text("\(paymentType)")
+                            .font(Font.custom("Sora-Regular", size: 15))
+                            .foregroundColor(StyleColors.titleText)
                     }
-                }.padding(.leading, 15)
+                }
+                
                 Spacer()
             }
+            .padding(.horizontal)
         }
     }
 }

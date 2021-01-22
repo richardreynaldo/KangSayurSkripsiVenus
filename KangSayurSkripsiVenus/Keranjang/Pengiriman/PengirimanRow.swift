@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PengirimanRow: View {
+    var gambar: String
     var nama: String
     var harga: Int
     var quantity: Int
@@ -18,36 +19,38 @@ struct PengirimanRow: View {
                 .fill(Color.white)
             
             HStack {
-                
-                // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
-                
-                Text("GAMBAR")
-                        .font(.title)
+                Image(gambar)
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.vertical)
                 
                 VStack(alignment: .leading) {
                     Text("\(nama)")
-//                        .font(StyleFont.captionSmall)
-                    Text("\(quantity) barang(\(quantity)kg)")
-                        .fontWeight(.light)
-//                        .foregroundColor(StyleColors.accountPageCaptionSmall)
+                        .font(Font.custom("Sora-Regular", size: 17))
+                        .foregroundColor(StyleColors.titleText)
                     
-                    Text("Rp.\(harga)")
-//                        .font(StyleFont.heading2)
-//                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
+                    Text("\(quantity) barang(\(quantity)kg)")
+                        .font(Font.custom("Sora-Regular", size: 12))
+                        .foregroundColor(StyleColors.titleText)
+                    
+                    Text("Rp\(harga)")
+                        .font(Font.custom("Sora-Bold", size: 16))
+                        .foregroundColor(StyleColors.secondaryTitleText)
                     
                     //kurang yang tempat sampah buat delete sama + - buat quantity
                 }
-                .padding(.leading, 14)
+                .padding(.leading)
                 
-                 Spacer()
+                Spacer()
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal)
         }
     }
 }
 
 struct PengirimanRow_Previews: PreviewProvider {
     static var previews: some View {
-        PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 2)
+        PengirimanRow(gambar: "Brokoli", nama: "Brokoli", harga: 20000, quantity: 2)
     }
 }

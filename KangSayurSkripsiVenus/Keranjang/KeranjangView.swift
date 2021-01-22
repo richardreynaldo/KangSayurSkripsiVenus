@@ -32,9 +32,6 @@ struct KeranjangView: View {
                             ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
                                 KeranjangRow(product: item.product, cart: item, index: index)
                                     .padding(.horizontal)
-                                    .onTapGesture(perform: {
-                                        print("cok \(item.id)")
-                                    })
                                     .padding(.vertical, 4)
                             }
                         }

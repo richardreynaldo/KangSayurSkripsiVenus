@@ -342,11 +342,11 @@
 		6D4545F825AEFB330024E572 /* Keranjang */ = {
 			isa = PBXGroup;
 			children = (
-				6D4545F925AEFB330024E572 /* TotalKeranjangRow.swift */,
 				6D4545FA25AEFB330024E572 /* KeranjangView.swift */,
 				6D4545FB25AEFB330024E572 /* KeranjangRow.swift */,
-				6D4545FC25AEFB330024E572 /* Pembayaran */,
+				6D4545F925AEFB330024E572 /* TotalKeranjangRow.swift */,
 				6D45460225AEFB330024E572 /* Pengiriman */,
+				6D4545FC25AEFB330024E572 /* Pembayaran */,
 			);
 			path = Keranjang;
 			sourceTree = "<group>";
@@ -354,11 +354,11 @@
 		6D4545FC25AEFB330024E572 /* Pembayaran */ = {
 			isa = PBXGroup;
 			children = (
+				6D45460125AEFB330024E572 /* PembayaranView.swift */,
 				6D4545FD25AEFB330024E572 /* BarangDiBeliRow.swift */,
+				6D45460025AEFB330024E572 /* DetailPembayaranRow.swift */,
 				6D4545FE25AEFB330024E572 /* MetodePembayaranRow.swift */,
 				6D4545FF25AEFB330024E572 /* TotalPembayaranRow.swift */,
-				6D45460025AEFB330024E572 /* DetailPembayaranRow.swift */,
-				6D45460125AEFB330024E572 /* PembayaranView.swift */,
 			);
 			path = Pembayaran;
 			sourceTree = "<group>";
@@ -366,11 +366,11 @@
 		6D45460225AEFB330024E572 /* Pengiriman */ = {
 			isa = PBXGroup;
 			children = (
-				6D45460325AEFB330024E572 /* TotalPembelianRow.swift */,
-				6D45460425AEFB330024E572 /* PengirimanRow.swift */,
-				6D45460525AEFB330024E572 /* RingkasanRow.swift */,
 				6D45460625AEFB330024E572 /* PengirimanView.swift */,
 				6D45460725AEFB330024E572 /* AlamatRow.swift */,
+				6D45460425AEFB330024E572 /* PengirimanRow.swift */,
+				6D45460525AEFB330024E572 /* RingkasanRow.swift */,
+				6D45460325AEFB330024E572 /* TotalPembelianRow.swift */,
 			);
 			path = Pengiriman;
 			sourceTree = "<group>";
