@@ -47,6 +47,7 @@ class CartData: ObservableObject {
     
     func append(product: Product) {
         cart.append(Cart(id: product.id, product: product, quantity: 1))
+        
     }
     
     func remove(index: Int, product: Product) {
@@ -97,6 +98,50 @@ class CartData: ObservableObject {
         print("asu\(total)")
         return total
     }
+    
+    func appendCartToFirebase() {
+        var ref: DocumentReference? = nil
+        for i in cart{
+            ref = db.collection("Cart").addDocument(data: [
+                "productId": i.product.id,
+                "quantity": i.quantity,
+                "userId" : globalUserID
+            ]) { err in
+                if let err = err {
+                    print("Error adding Cart: \(err)")
+                } else {
+                    print("Cart added with ID: \(ref!.documentID)")
+                }
+            }
+            print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
+            db.collection("Product").document(i.product.id).updateData([
+                "category": i.product.category,
+                "desc":i.product.desc,
+                "name":i.product.name,
+                "price":i.product.price,
+                "stock":i.product.stock
+            ])
+        }
+        cart.removeAll()
+    }
+    
+//    func appendCartToHistory(cartData:CartData) {
+//        var ref: DocumentReference? = nil
+//        for i in cartData. {
+//            ref = db.collection("History").addDocument(data: [
+//                "cartItem": i.cartData,
+//                "totalCart": cartData.getQuantityCart(),
+//                "userId" : globalUserID
+//            ]) { err in
+//                if let err = err {
+//                    print("Error adding Cart: \(err)")
+//                } else {
+//                    print("Cart added with ID: \(ref!.documentID)")
+//                }
+//            }
+//        }
+//
+//    }
     
     // Temporary Function
     func getCartData() {

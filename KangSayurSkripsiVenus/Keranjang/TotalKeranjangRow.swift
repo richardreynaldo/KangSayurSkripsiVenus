@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TotalKeranjangRow: View {
+    @EnvironmentObject var cartData:CartData
     var price: Int
     var qty: Int
     var body: some View {
@@ -26,7 +27,7 @@ struct TotalKeranjangRow: View {
                 Spacer()
                 
                 Button(action: {
-                    
+                    cartData.appendCartToFirebase()
                 }, label: {
                     ZStack {
                         Capsule()
