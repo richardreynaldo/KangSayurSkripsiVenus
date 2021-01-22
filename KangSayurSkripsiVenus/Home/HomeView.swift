@@ -23,10 +23,6 @@ struct HomeView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(productData.products.indices, id: \.self) { index in
                             CollectionViewCell(product: productData.products[index], index: index)
-                                .onTapGesture {
-//                                    print("\(cartData.cart.first(where: {$0.product.name == productData.products[index].name}))")
-                                    cartData.getTotalPriceCart()
-                                }
                         }
                     }
                 }

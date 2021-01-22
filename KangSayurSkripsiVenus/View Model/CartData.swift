@@ -33,21 +33,17 @@ class CartData: ObservableObject {
     }
     
     func add(index: Int, product: Product) {
-        if cart.isEmpty {
-            
-        }
         if cart[index].product.stock > 0 {
             cart[index].product = product
             cart[index].quantity += 1
 //            productData.products[index].stock -= 1
-            cart[index].product.stock -= 1
+//            cart[index].product.stock -= 1
         }
         //        orderHeader.totalOrder! += 1
     }
     
     func append(product: Product) {
         cart.append(Cart(id: product.id, product: product, quantity: 1))
-        
     }
     
     func remove(index: Int, product: Product) {
@@ -56,10 +52,10 @@ class CartData: ObservableObject {
 //            cart.remove(at: index)
             cart[index].quantity -= 1
 //            productData.products[index].stock += 1
-            cart[index].product.stock += 1
+//            cart[index].product.stock += 1
         }
         else if cart[index].quantity == 1 {
-            cart[index].product.stock += 1
+//            cart[index].product.stock += 1
             cart.remove(at: index)
         }
         //            orderHeader.totalOrder! -= 1
@@ -101,7 +97,8 @@ class CartData: ObservableObject {
     
     func appendCartToFirebase() {
         var ref: DocumentReference? = nil
-        for i in cart{
+        
+        for i in cart {
             ref = db.collection("Cart").addDocument(data: [
                 "productId": i.product.id,
                 "quantity": i.quantity,
@@ -114,12 +111,9 @@ class CartData: ObservableObject {
                 }
             }
             print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
+            
             db.collection("Product").document(i.product.id).updateData([
-                "category": i.product.category,
-                "desc":i.product.desc,
-                "name":i.product.name,
-                "price":i.product.price,
-                "stock":i.product.stock
+                "stock": i.product.stock - i.quantity
             ])
         }
         cart.removeAll()

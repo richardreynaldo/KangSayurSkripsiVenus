@@ -15,7 +15,7 @@ class ProductData: ObservableObject {
     private var db = Firestore.firestore()
     
     func getProductData() {
-        db.collection("Product").addSnapshotListener { (querySnapshot, erron) in
+        db.collection("Product").addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return

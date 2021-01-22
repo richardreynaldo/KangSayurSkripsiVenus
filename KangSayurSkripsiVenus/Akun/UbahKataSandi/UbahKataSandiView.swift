@@ -34,7 +34,6 @@ struct UbahKataSandiView: View {
                 }
                 .navigationBarTitle("Change Password", displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    
                     DispatchQueue.main.async {
                         authentication.changePassword(email: userData.profile?.email ?? "", currentPassword: oldPass, newPassword: newPass) { error in
                             if error != nil {
@@ -48,7 +47,6 @@ struct UbahKataSandiView: View {
                             }
                         }
                     }
-                    
                 }) {
                     Text("Done")
 //                        .foregroundColor(StyleColors.primaryRed)

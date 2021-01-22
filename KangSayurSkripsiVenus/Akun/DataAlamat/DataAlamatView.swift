@@ -54,25 +54,25 @@ struct DataAlamatView: View {
             ScrollView {
                 VStack{
                     ViewBottom(title: "Perumahan", input: $perumahan)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Nama Jalan", input: $jalan)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Nomor", input: $nomor)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "RT", input: $rt)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "RW", input: $rw)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Kelurahan", input: $kelurahan)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Kecamatan", input: $kecamatan)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Kota", input: $kota)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Provinsi", input: $provinsi)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                     ViewBottom(title: "Kode Pos", input: $kodepos)
-                    //    .padding(.bottom)
+                        .padding(.bottom)
                 }
                 .navigationBarTitle("Change Email", displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
@@ -82,7 +82,6 @@ struct DataAlamatView: View {
                         userData.getUserData()
                         presentationMode.wrappedValue.dismiss()
                     }
-                    
                 }) {
                     Text("Done")
 //                        .foregroundColor(StyleColors.primaryRed)
