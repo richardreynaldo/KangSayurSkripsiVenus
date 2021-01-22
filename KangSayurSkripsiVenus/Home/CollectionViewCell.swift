@@ -54,10 +54,18 @@ struct CollectionViewCell: View {
                 .padding(.leading, 8)
                 
                 Button(action: {
+                    print("\(cartData.cart.first(where: { $0.product.name == product.name })?.quantity != nil)")
+                }, label: {
+                    Text("cek cok")
+                })
+                
+                Button(action: {
                     //jangan lupa kasih action buat masukkin ke cart
 //                    cartData.add(index: index, product: product)
+                    
                     cartData.append(product: product)
-//                    disabled1 = true
+                    
+                    print("\(cartData.cart.first(where: { $0.product.name == product.name })?.quantity)")
                     
                 }, label: {
                     ZStack {
@@ -68,7 +76,10 @@ struct CollectionViewCell: View {
                             .foregroundColor(Color.white)
                     }
                 })
-//                .disabled(product.stock == 0 || disabled1)
+                .disabled( product.stock == 0
+//                    || (cartData.cart.first(where: { $0.product.name == product.name })?.quantity != 0)
+                            || (cartData.cart.first(where: { $0.product.name == product.name })?.quantity != nil )
+                )
             }
             .padding()
         }

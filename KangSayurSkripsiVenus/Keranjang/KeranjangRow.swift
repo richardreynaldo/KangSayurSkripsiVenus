@@ -9,6 +9,7 @@ import SwiftUI
 
 struct KeranjangRow: View {
     @EnvironmentObject var cartData: CartData
+    @EnvironmentObject var productData: ProductData
     var product: Product
     var cart: Cart
     var index: Int
@@ -61,6 +62,7 @@ struct KeranjangRow: View {
                     
                     Button(action: {
                         cartData.remove(index: index, product: product)
+                        
                     }, label: {
                         Image(systemName: "minus.circle")
                     })
