@@ -43,7 +43,7 @@ class CartData: ObservableObject {
     }
     
     func append(product: Product) {
-        cart.append(Cart(id: product.id, product: product, quantity: 1))
+        cart.append(Cart(id: product.id, product: product, quantity: 1, dateTime: Date(),status: false))
     }
     
     func remove(index: Int, product: Product) {
@@ -101,7 +101,9 @@ class CartData: ObservableObject {
             ref = db.collection("Cart").addDocument(data: [
                 "productId": i.product.id,
                 "quantity": i.quantity,
-                "userId" : globalUserID
+                "userId" : globalUserID,
+                "dateTime" : i.dateTime,
+                "status" : i.status
             ]) { err in
                 if let err = err {
                     print("Error adding Cart: \(err)")
@@ -137,8 +139,8 @@ class CartData: ObservableObject {
 //    }
     
     // Temporary Function
-    func getCartData() {
-        cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
-        cart.append(Cart(id: "0002", product: Product.example, quantity: 1))
-    }
+//    func getCartData() {
+//        cart.append(Cart(id: "0001", product: Product.example, quantity: 1))
+//        cart.append(Cart(id: "0002", product: Product.example, quantity: 1))
+//    }
 }

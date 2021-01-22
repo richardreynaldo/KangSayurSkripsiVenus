@@ -78,7 +78,7 @@ struct CartView: View {
             }
             .onAppear {
                 productData.getProductData()
-                cartData.getCartData()
+//                cartData.getCartData()
             }
         }
     }
