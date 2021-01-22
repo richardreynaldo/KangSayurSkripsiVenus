@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct PengirimanView: View {
+    @EnvironmentObject var cartData: CartData
+    
     var body: some View {
-        GeometryReader{
-            geometry in
-            VStack{
-                Group{
-                    AlamatRow()
-                }
+        GeometryReader{ geometry in
+            VStack {
+                AlamatRow()
+                
                 ScrollView{
-                    VStack{
+                    LazyVStack{
                         PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
                         PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
                         PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
@@ -28,9 +28,9 @@ struct PengirimanView: View {
                         PengirimanRow(nama: "Brokoli", harga: 20000, quantity: 1)
                         PengirimanRow(nama: "Bayam Merah", harga: 20000, quantity: 2)
                     }
-                   
                 }
-                Group{
+                
+                Group {
                     RingkasanRow(quantity: 3, price: 40000, priceOngkos: 10000)
                     TotalPembelianRow(totalOrder: 50000)
                 }
@@ -38,7 +38,6 @@ struct PengirimanView: View {
         }
         .navigationBarTitle("Pengiriman")
         .background(StyleColors.background)
-        
     }
 }
 

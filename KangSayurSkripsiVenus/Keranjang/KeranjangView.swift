@@ -41,7 +41,7 @@ struct KeranjangView: View {
                         //jangan lupa di ganti sama actual total price*quantity terus tambahin
                     }
                     
-                    TotalKeranjangRow(price: cartData.getTotalPriceCart(),qty: cartData.getQuantityCart())
+                    TotalKeranjangRow(price: cartData.getTotalPriceCart(), qty: cartData.getQuantityCart())
                 }
             }
             .background(StyleColors.secondaryYellow)

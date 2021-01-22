@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct TotalKeranjangRow: View {
-    @EnvironmentObject var cartData:CartData
+    @EnvironmentObject var cartData: CartData
     var price: Int
     var qty: Int
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -26,9 +27,7 @@ struct TotalKeranjangRow: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    cartData.appendCartToFirebase()
-                }, label: {
+                NavigationLink(destination: PengirimanView()) {
                     ZStack {
                         Capsule()
                             .frame(width: 108, height: 41)
@@ -37,8 +36,22 @@ struct TotalKeranjangRow: View {
                         Text("Beli(\(qty))")
                             .foregroundColor(Color.white)
                     }
-                })
+                }
                 .padding(.trailing)
+                
+//                Button(action: {
+//                    cartData.appendCartToFirebase()
+//                }, label: {
+//                    ZStack {
+//                        Capsule()
+//                            .frame(width: 108, height: 41)
+//
+//                        //jangan lupa di ganti jadi total dari quantity barang yang di beli 3 nya
+//                        Text("Beli(\(qty))")
+//                            .foregroundColor(Color.white)
+//                    }
+//                })
+//                .padding(.trailing)
             }
         }
     }
