@@ -21,7 +21,7 @@ struct KangSayurSkripsiVenusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HistoryView()
+            RiwayatPembelianView()
                 .environmentObject(Authentication.shared)
                 .environmentObject(UserData())
                 .environmentObject(ProductData())

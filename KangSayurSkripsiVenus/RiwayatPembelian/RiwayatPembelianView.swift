@@ -1,5 +1,5 @@
 //
-//  HistoryView.swift
+//  RiwayatPembelianView.swift
 //  KangSayurSkripsiVenus
 //
 //  Created by Laurentius Richard Reynaldo on 22/01/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryView: View {
+struct RiwayatPembelianView: View {
     private let calendar = Calendar.current
     private let year = Calendar.current.component(.year, from: Date())
     var body: some View {
@@ -26,8 +26,8 @@ struct HistoryView: View {
     }
 }
 
-struct HistoryView_Previews: PreviewProvider {
+struct RiwayatPembelianView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryView()
+        RiwayatPembelianView()
     }
 }

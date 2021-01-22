@@ -1,5 +1,5 @@
 //
-//  HistoryRowView.swift
+//  RiwayatPembelianRow.swift
 //  KangSayurSkripsiVenus
 //
 //  Created by Laurentius Richard Reynaldo on 22/01/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryRowView: View {
+struct RiwayatPembelianRow: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -42,10 +42,11 @@ struct HistoryRowView: View {
             .padding(.horizontal, 22)
         }
     }
+
 }
 
-struct HistoryRowView_Previews: PreviewProvider {
+struct RiwayatPembelianRow_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryRowView()
+        RiwayatPembelianRow()
     }
 }
