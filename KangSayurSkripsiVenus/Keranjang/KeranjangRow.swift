@@ -10,6 +10,7 @@ import SwiftUI
 struct KeranjangRow: View {
     @EnvironmentObject var cartData: CartData
     @EnvironmentObject var productData: ProductData
+    @State var disabled1 = false
     var product: Product
     var cart: Cart
     var index: Int
@@ -62,7 +63,7 @@ struct KeranjangRow: View {
                     
                     Button(action: {
                         cartData.remove(index: index, product: product)
-                        
+                        disabled1 = false
                     }, label: {
                         Image(systemName: "minus.circle")
                     })
@@ -74,11 +75,18 @@ struct KeranjangRow: View {
                     }
                     
                     Button(action: {
-                        cartData.add(index: index, product: product)
-                        print("lonte \(product.stock)")
+                        if cart.quantity == product.stock
+                        {
+                            disabled1 = true
+                        }
+                        else
+                        {
+                            cartData.add(index: index, product: product)
+                        }
                     }, label: {
                         Image(systemName: "plus.circle")
                     })
+                    .disabled(disabled1)
                 }
             }
             .padding()
