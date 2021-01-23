@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RiwayatPembelianRow: View {
+    var image: String
+    var date: Date
+    var name: String
+    var status: Bool
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -17,15 +21,15 @@ struct RiwayatPembelianRow: View {
                 
                 // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
                 
-                Text("GAMBAR")
+                Text("\(image)")
                         .font(.title)
                 
                 VStack(alignment: .leading) {
-                    Text("tanggal")
+                    Text("\(date)")
 //                        .font(StyleFont.captionSmall)
-                    Text("nama produk")
+                    Text("\(name)")
                         .fontWeight(.light)
-                    Text("Status")
+                    Text("\(String(status))")
 //                        .foregroundColor(StyleColors.accountPageCaptionSmall)
                     
 //                        .font(StyleFont.heading2)
@@ -45,8 +49,8 @@ struct RiwayatPembelianRow: View {
 
 }
 
-struct RiwayatPembelianRow_Previews: PreviewProvider {
-    static var previews: some View {
-        RiwayatPembelianRow()
-    }
-}
+//struct RiwayatPembelianRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RiwayatPembelianRow()
+//    }
+//}
