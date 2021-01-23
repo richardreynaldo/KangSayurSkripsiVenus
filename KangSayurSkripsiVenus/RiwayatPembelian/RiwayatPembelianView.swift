@@ -17,9 +17,12 @@ struct RiwayatPembelianView: View {
             geometry in
             ZStack{
                 List{
-                    ForEach(Array(stride(from: 1, to: 13, by: 1)).reversed(), id:\.self) { month in
+                    ForEach(Array(stride(from: 1, to: 13, by: 1)), id:\.self) { month in
                         Section(header: Text(String(calendar.monthSymbols[month-1]) + " " + String(year))) {
-                            Text("\(historyData.history.count)")
+                            ForEach(historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  2021}), id:\.id) {
+                                history in
+                                RiwayatPembelianRow(image: history.product.image, date: history.dateTime, name: history.product.name, status: history.status)
+                            }
                         }
                     }
                 }
