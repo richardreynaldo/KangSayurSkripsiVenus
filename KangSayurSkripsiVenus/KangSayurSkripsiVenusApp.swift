@@ -26,6 +26,7 @@ struct KangSayurSkripsiVenusApp: App {
                 .environmentObject(UserData())
                 .environmentObject(ProductData())
                 .environmentObject(CartData())
+                .environmentObject(HistoryData())
         }
     }
 }

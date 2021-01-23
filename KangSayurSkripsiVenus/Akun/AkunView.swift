@@ -14,6 +14,14 @@ struct AkunView: View {
         ZStack {
             ScrollView {
                 VStack {
+                    
+                    NavigationLink(
+                        destination: RiwayatPembelianView())
+                    {
+                        AkunChevron(title: "Riwayat")
+                            .foregroundColor(StyleColors.titleText)
+                            .padding(.horizontal)
+                    }
                     NavigationLink(
                         destination: DataDiriView())
                     {

@@ -64,6 +64,8 @@
 		6D7507F625A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7507F525A6CF5700133A56 /* KangSayurSkripsiVenusUITests.swift */; };
 		6D8D46E625BAF06900118EC4 /* RiwayatPembelianView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D46E525BAF06900118EC4 /* RiwayatPembelianView.swift */; };
 		6D8D46EE25BAF08100118EC4 /* RiwayatPembelianRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D46ED25BAF08100118EC4 /* RiwayatPembelianRow.swift */; };
+		6D8D46FF25BC1A7500118EC4 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D46FE25BC1A7500118EC4 /* History.swift */; };
+		6D8D470425BC1C2A00118EC4 /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D470325BC1C2A00118EC4 /* HistoryData.swift */; };
 		9E3C84C3185571F4E44674C3 /* Pods_KangSayurSkripsiVenusTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */; };
 		D2B46AFA9555FE7C7D908463 /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE29FCACCA76AE549CDD443F /* Pods_KangSayurSkripsiVenus_KangSayurSkripsiVenusUITests.framework */; };
 /* End PBXBuildFile section */
@@ -151,6 +153,8 @@
 		6D7507F725A6CF5700133A56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D8D46E525BAF06900118EC4 /* RiwayatPembelianView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatPembelianView.swift; sourceTree = "<group>"; };
 		6D8D46ED25BAF08100118EC4 /* RiwayatPembelianRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiwayatPembelianRow.swift; sourceTree = "<group>"; };
+		6D8D46FE25BC1A7500118EC4 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		6D8D470325BC1C2A00118EC4 /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		7E120A098FC787508EFB8826 /* Pods-KangSayurSkripsiVenus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.debug.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.debug.xcconfig"; sourceTree = "<group>"; };
 		A010A7267AA65ECCF6BBBFE0 /* Pods_KangSayurSkripsiVenusTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KangSayurSkripsiVenusTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EBEC5F5999A2CB1FA3F976 /* Pods-KangSayurSkripsiVenus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KangSayurSkripsiVenus.release.xcconfig"; path = "Target Support Files/Pods-KangSayurSkripsiVenus/Pods-KangSayurSkripsiVenus.release.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				2C4059F525AC3BFE0052CA50 /* UserData.swift */,
 				2C9D745E25B139FE00FCFC45 /* ProductData.swift */,
 				2C405A0A25AC41520052CA50 /* CartData.swift */,
+				6D8D470325BC1C2A00118EC4 /* HistoryData.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				2C405A0225AC40540052CA50 /* Product.swift */,
 				2C9D74B525B297A400FCFC45 /* Cart.swift */,
 				2C405A6B25AD71B20052CA50 /* OrderHeader.swift */,
+				6D8D46FE25BC1A7500118EC4 /* History.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -739,6 +745,7 @@
 				2C4059FB25AC3CD00052CA50 /* Profile.swift in Sources */,
 				2C4059F625AC3BFE0052CA50 /* UserData.swift in Sources */,
 				2C405A6C25AD71B20052CA50 /* OrderHeader.swift in Sources */,
+				6D8D470425BC1C2A00118EC4 /* HistoryData.swift in Sources */,
 				2C405A0325AC40540052CA50 /* Product.swift in Sources */,
 				6D8D46EE25BAF08100118EC4 /* RiwayatPembelianRow.swift in Sources */,
 				2C405A7725AD77D40052CA50 /* TestView.swift in Sources */,
@@ -750,6 +757,7 @@
 				6D4545E625AEFB030024E572 /* UbahEmailView.swift in Sources */,
 				6D8D46E625BAF06900118EC4 /* RiwayatPembelianView.swift in Sources */,
 				6D4545CA25AEFAE20024E572 /* Colors.swift in Sources */,
+				6D8D46FF25BC1A7500118EC4 /* History.swift in Sources */,
 				6D45461A25AEFB350024E572 /* CollectionViewCell.swift in Sources */,
 				6D45461125AEFB350024E572 /* TotalPembayaranRow.swift in Sources */,
 				6D45461625AEFB350024E572 /* RingkasanRow.swift in Sources */,
