@@ -15,12 +15,11 @@ class HistoryData: ObservableObject {
     private var db = Firestore.firestore()
 
     func getHistoryData(productData: ProductData) {
-        db.collection("Cart").whereField("userId", isEqualTo: globalUserID).order(by: "dateTime", descending: true).addSnapshotListener { (querySnapshot, error) in
+        db.collection("Cart").whereField("userId", isEqualTo: globalUserID).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
-            
             self.history = documents.map({ queryDocumentSnapshot -> History in
                 let data = queryDocumentSnapshot.data()
                 let quantity = data["quantity"] as? Int ?? 0
