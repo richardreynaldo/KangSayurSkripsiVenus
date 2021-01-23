@@ -27,7 +27,9 @@ struct PengirimanView: View {
                                 }
                             }
                             .background(StyleColors.secondaryYellow)
+                            .padding(.vertical, 8)
                         }
+                        .padding(.vertical, -8)
                         
                         ZStack {
                             VStack {

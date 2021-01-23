@@ -28,6 +28,7 @@ struct HomeView: View {
 //                            CollectionViewCell(product: productData.products[index], index: index)
 //                        }
                     }
+                    .padding(.vertical, 8)
                 }
                 .padding(.top, -8)
             }

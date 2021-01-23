@@ -33,8 +33,10 @@ struct PembayaranView: View {
                             
                             Divider()
                         }
+                        .padding(.bottom, 8)
                     }
                     .background(StyleColors.secondaryYellow)
+                    .padding(.bottom, -8)
                     
                     Spacer()
                     

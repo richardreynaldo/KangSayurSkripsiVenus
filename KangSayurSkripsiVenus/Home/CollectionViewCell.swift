@@ -78,9 +78,7 @@ struct CollectionViewCell: View {
             }
             .padding()
         }
-        .offset(y: 8)
         .padding(.horizontal, 10)
-        .padding(.bottom)
     }
 }
 

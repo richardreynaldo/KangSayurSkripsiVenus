@@ -35,8 +35,10 @@ struct KeranjangView: View {
                                     .padding(.vertical, 4)
                             }
                         }
+                        .padding(.vertical, 8)
                         //jangan lupa di ganti sama actual total price*quantity terus tambahin
                     }
+                    .padding(.bottom, -8)
                     
                     TotalKeranjangRow(price: cartData.getTotalPriceCart(), qty: cartData.getQuantityCart())
                 }

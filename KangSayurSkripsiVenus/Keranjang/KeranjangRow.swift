@@ -76,12 +76,9 @@ struct KeranjangRow: View {
                     }
                     
                     Button(action: {
-                        if cart.quantity == product.stock
-                        {
+                        if cart.quantity == product.stock {
                             disabled1 = true
-                        }
-                        else
-                        {
+                        } else {
                             cartData.add(index: index, product: product)
                         }
                     }, label: {
