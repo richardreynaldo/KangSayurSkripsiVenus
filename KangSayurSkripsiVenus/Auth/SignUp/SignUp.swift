@@ -108,6 +108,7 @@ struct SignUp: View {
                                 }
                             })
                         }
+                        .padding(.top, -8)
                     }
                     
                    

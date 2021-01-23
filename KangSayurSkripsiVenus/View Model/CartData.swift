@@ -43,7 +43,7 @@ class CartData: ObservableObject {
     }
     
     func append(product: Product) {
-        cart.append(Cart(id: product.id, product: product, quantity: 1, dateTime: Date(),status: false))
+        cart.append(Cart(id: product.id, product: product, quantity: 1, dateTime: Date(), isChecked: false, status: false))
     }
     
     func remove(index: Int, product: Product) {

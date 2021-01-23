@@ -12,16 +12,21 @@ struct ViewBottom: View {
     @Binding var input: String
     
     var body: some View {
-        VStack
-        {
-            HStack{
+        VStack {
+            HStack {
                 Text("\(title)")
+                    .font(Font.custom("Sora-SemiBold", size: 17))
+                    .foregroundColor(StyleColors.titleText)
+                
                 Spacer()
             }
             .padding(.horizontal)
             
             HStack{
                 TextField("", text: $input)
+                    .font(Font.custom("Sora-Regular", size: 16))
+                    .foregroundColor(StyleColors.secondaryTitleText)
+                
                 Spacer()
             }
             .padding(.horizontal)

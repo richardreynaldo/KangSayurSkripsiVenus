@@ -32,14 +32,14 @@ struct DetailPembayaranRow: View {
                     Spacer()
                     
                     Text("Rp\(price)")
-                        .font(Font.custom("Sora-Regular", size: 12))
+                        .font(Font.custom("Sora-SemiBold", size: 12))
                         .foregroundColor(StyleColors.titleText)
                 }
                 .padding(.horizontal)
 
                 HStack{
                     Text("Total Ongkos Kirim")
-                        .font(Font.custom("Sora-SemiBold", size: 12))
+                        .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
                     
                     Spacer()

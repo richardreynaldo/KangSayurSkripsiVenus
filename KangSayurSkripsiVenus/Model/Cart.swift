@@ -12,5 +12,6 @@ struct Cart: Codable, Equatable, Identifiable {
     var product: Product
     var quantity: Int
     var dateTime: Date
+    var isChecked: Bool
     var status: Bool
 }

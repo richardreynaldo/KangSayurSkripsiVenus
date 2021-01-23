@@ -12,7 +12,7 @@ struct CollectionViewCell: View {
     @State var disabled1 : Bool = false
     
     var product: Product
-    var index: Int
+//    var index: Int
     
     static let row = 2
     static let column = 9
@@ -44,7 +44,7 @@ struct CollectionViewCell: View {
                     Text(product.stock == 0 ? "Tidak Tersedia" : "Tersedia")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
-                        .padding(.bottom, 1)
+                        .padding(.bottom, 0.5)
                     
                     Text("Rp\(product.price)/kg")
                         .font(Font.custom("Sora-Bold", size: 12))
@@ -57,7 +57,7 @@ struct CollectionViewCell: View {
                 Button(action: {
                     //jangan lupa kasih action buat masukkin ke cart
 //                    cartData.add(index: index, product: product)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         cartData.append(product: product)
                     }
                     
@@ -78,7 +78,9 @@ struct CollectionViewCell: View {
             }
             .padding()
         }
+        .offset(y: 8)
         .padding(.horizontal, 10)
+        .padding(.bottom)
     }
 }
 

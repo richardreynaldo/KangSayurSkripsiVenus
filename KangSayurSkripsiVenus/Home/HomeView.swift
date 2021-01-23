@@ -21,11 +21,15 @@ struct HomeView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(productData.products.indices, id: \.self) { index in
-                            CollectionViewCell(product: productData.products[index], index: index)
+                        ForEach(productData.products.filter({ text.isEmpty ? true : $0.name.contains(text) })) { item in
+                            CollectionViewCell(product: item)
                         }
+//                        ForEach(productData.products.indices, id: \.self) { index in
+//                            CollectionViewCell(product: productData.products[index], index: index)
+//                        }
                     }
                 }
+                .padding(.top, -8)
             }
         }
         .background(StyleColors.secondaryYellow)

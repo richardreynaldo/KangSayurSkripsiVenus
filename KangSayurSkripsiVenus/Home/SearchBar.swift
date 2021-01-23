@@ -17,8 +17,8 @@ struct SearchBar: View {
             HStack {
                 TextField("Cari sayur...", text: $text)
                     .textCase(.lowercase)
-                    .padding(15)
-                    .padding(.horizontal, 25)
+                    .padding()
+                    .padding(.horizontal, 32)
                     .background(Color(.systemGray6))
                     .foregroundColor(.black)
                     .cornerRadius(8)
@@ -27,31 +27,37 @@ struct SearchBar: View {
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.gray)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 15)
+                                .padding(.leading)
                         
                         
                             if isEditing{
-                                Button(action: {
-                                    self.text = ""
-                                }, label: {
-                                    Image(systemName: "multiply.circle.fill")
-                                        .foregroundColor(.gray)
-                                        .padding(.trailing, 8)
-                                })
+                                if text.isEmpty == false {
+                                    Button(action: {
+                                        self.text = ""
+                                    }, label: {
+                                        Image(systemName: "multiply.circle.fill")
+                                            .foregroundColor(.gray)
+                                            .padding(.trailing, 8)
+                                    })
+                                }
                             }
                         }
-                    ).onTapGesture {
+                    )
+                    .onTapGesture {
                         self.isEditing = true
                     }
+                    .transition(.move(edge: .trailing))
+                    .animation(.default)
+                
                 if isEditing {
                     Button(action: {
                         self.isEditing = false
-                        
+                        self.text = ""
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                     }){
                         Text("Cancel")
                     }
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 16)
                     .transition(.move(edge: .trailing))
                     .animation(.default)
                 }

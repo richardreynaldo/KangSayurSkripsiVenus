@@ -57,8 +57,9 @@ struct SignIn: View {
                 })
                 .padding(.top, UIScreen.main.bounds.maxY * 0.357)
                 .padding(.bottom)
+                .padding(.horizontal)
                 
-                HStack{
+                HStack {
                     Text("Belum punya akun?")
                     Button(action: {
                         isPresented = true
@@ -73,8 +74,10 @@ struct SignIn: View {
                         SignUp(isPresented: $isPresented)
                     }
                 }
+                .padding(.top, -8)
             }
-        }.padding([.top, .leading, .trailing])
+        }
+        .padding([.top, .leading, .trailing])
         .padding(.bottom, 8)
     }
 }

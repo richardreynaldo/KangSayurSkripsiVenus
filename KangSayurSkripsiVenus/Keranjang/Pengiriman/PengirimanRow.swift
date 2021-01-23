@@ -33,6 +33,7 @@ struct PengirimanRow: View {
                     Text("\(quantity) barang(\(quantity)kg)")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
+                        .padding(.vertical, 1)
                     
                     Text("Rp\(harga)")
                         .font(Font.custom("Sora-Bold", size: 16))

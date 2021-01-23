@@ -51,10 +51,13 @@ struct SignUp_SetelAlamat: View {
                 Text("Setel Alamat")
                     .font(.largeTitle).foregroundColor(Color.black)
                     .padding(.bottom, 10)
+                
                 Text("Alamat akan digunakan \n sebagai tujuan pengiriman")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-            }.padding(.top, 15)
+            }
+            .padding(.top)
+            
             VStack(alignment: .leading){
                 Group{
                     TextField("Perumahan", text: $perumahan)
@@ -128,8 +131,9 @@ struct SignUp_SetelAlamat: View {
                     
                     Divider()
                 }
-            }.padding(.top, 20)
-            .padding(.horizontal, 16)
+            }
+            .padding(.top, 20)
+            .padding(.horizontal, 32)
             
             VStack {
                 Button(action: {
@@ -147,12 +151,10 @@ struct SignUp_SetelAlamat: View {
                             .foregroundColor(Color.white)
                     }
                 })
-                .padding(.top, 20)
-                .padding(.bottom)
+                .padding()
+                .padding([.top, .horizontal])
             }
         }
-        .padding([.top, .leading, .trailing])
-        .padding(.bottom, 8)
     }
 }
 
