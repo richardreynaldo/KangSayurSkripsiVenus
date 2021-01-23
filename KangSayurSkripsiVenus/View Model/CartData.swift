@@ -12,7 +12,6 @@ import SwiftUI
 class CartData: ObservableObject {
     @Published var cart = [Cart]()
     @Published var orderHeader = OrderHeader()
-    
     private var db = Firestore.firestore()
     
     var totalProduct: Int {
@@ -119,6 +118,8 @@ class CartData: ObservableObject {
         }
         cart.removeAll()
     }
+    
+    
     
 //    func appendCartToHistory(cartData:CartData) {
 //        var ref: DocumentReference? = nil

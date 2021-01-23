@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomTabView: View {
     @EnvironmentObject var userData: UserData
     @EnvironmentObject var productData: ProductData
+    @EnvironmentObject var historyData: HistoryData
     @State private var currentTab: Int = 0
     
     var body: some View {
@@ -46,6 +47,7 @@ struct CustomTabView: View {
             DispatchQueue.main.async {
                 userData.getUserData()
                 productData.getProductData()
+                historyData.getHistoryData(productData: productData)
             }
         }
     }
