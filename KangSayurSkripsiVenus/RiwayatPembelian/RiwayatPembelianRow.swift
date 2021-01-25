@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct RiwayatPembelianRow: View {
-    var image: String
-    var date: Date
-    var name: String
-    var status: Bool
+    var history: History
+    
+    static let dateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "d MMMM yyyy, h:mm a"
+        return formatter
+    }()
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -21,19 +26,27 @@ struct RiwayatPembelianRow: View {
                 
                 // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
                 
-                Text("\(image)")
-                        .font(.title)
+                Image(history.product.name)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .aspectRatio(contentMode: .fit)
                 
                 VStack(alignment: .leading) {
-                    Text("\(date)")
-//                        .font(StyleFont.captionSmall)
-                    Text("\(name)")
+                    Text("\(history.dateTime, formatter: Self.dateFormat)")
+                        .font(StyleFont.captionSmall)
                         .fontWeight(.light)
-                    Text("\(String(status))")
-//                        .foregroundColor(StyleColors.accountPageCaptionSmall)
+                        .foregroundColor(StyleColors.captionSmall)
+                        .padding(.top, 10)
                     
-//                        .font(StyleFont.heading2)
-//                        .foregroundColor(StyleColors.accountPageLargeTitleH1H2Text)
+                    Text("\(history.product.name)")
+                        .font(StyleFont.heading2)
+                        .foregroundColor(StyleColors.titleText)
+                    
+                    Text("Status: \(history.status ? "Delivered" : "Preparing")")
+                        .font(StyleFont.subtitle)
+                        .fontWeight(.light)
+                        .foregroundColor(StyleColors.titleText)
+                        .padding(.bottom, 14)
                     
                     //kurang yang tempat sampah buat delete sama + - buat quantity
                 }

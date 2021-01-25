@@ -66,6 +66,7 @@ struct KeranjangRow: View {
                     }, label: {
                         Image(systemName: "minus.circle")
                     })
+                    .disabled(!cart.isChecked)
                     
                     VStack{
                         Text("\(cart.quantity)")
@@ -86,6 +87,7 @@ struct KeranjangRow: View {
                         Image(systemName: "plus.circle")
                     })
                     .disabled(disabled1)
+                    .disabled(!cart.isChecked)
                 }
             }
             .padding()

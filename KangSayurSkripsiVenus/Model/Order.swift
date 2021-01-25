@@ -13,5 +13,10 @@ struct Order: Codable, Equatable, Identifiable {
     var paymentType: String = ""
     var status: Bool = false
     var totalOrder: Int = 0
+    var totalPrice: Int = 0
     var cart: [Cart] = []
+    
+    mutating func removeOrderData() {
+        self = Order()
+    }
 }

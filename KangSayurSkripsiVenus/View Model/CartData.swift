@@ -62,7 +62,8 @@ class CartData: ObservableObject {
                 order.orderDate = Date()
                 order.paymentType = "Cash on Delivery"
                 order.status = false
-                order.totalOrder = getTotalPriceCart()
+                order.totalOrder = getQuantityCart()
+                order.totalPrice = getTotalPriceCart()
                 order.cart.append(item)
                 print("Orders: \(order.cart)")
             }
@@ -93,13 +94,31 @@ class CartData: ObservableObject {
     func appendCartToFirebase() {
         var ref: DocumentReference? = nil
         
-        for i in cart {
-            ref = db.collection("Cart").addDocument(data: [
-                "productId": i.product.id,
-                "quantity": i.quantity,
-                "userId" : globalUserID,
-                "dateTime" : i.dateTime,
-                "status" : i.status
+//        ref = db.collection("Order").document(globalUserID).collection("Cart").addDocument(data: [
+//            "userID" : globalUserID,
+//            "orderData": Date(),
+//            "paymentType": order.paymentType,
+//            "status" : order.status,
+//            "totalOrder" : order.totalOrder,
+//            "totalPrice" : order.totalPrice
+//        ]) { err in
+//            if let err = err {
+//                print("Error adding Cart: \(err)")
+//            } else {
+//                print("Cart added with ID: \(ref!.documentID)")
+//            }
+//        }
+        
+        for i in order.cart {
+            ref = db.collection("Order").addDocument(data: [
+                "userID" : globalUserID,
+                "productID" : i.product.id,
+                "quantity" : i.quantity,
+                "orderDate": Date(),
+                "paymentType": order.paymentType,
+                "status" : order.status,
+                "totalOrder" : order.totalOrder,
+                "totalPrice" : order.totalPrice
             ]) { err in
                 if let err = err {
                     print("Error adding Cart: \(err)")
@@ -113,7 +132,32 @@ class CartData: ObservableObject {
                 "stock": i.product.stock - i.quantity
             ])
         }
+        
+//        for i in cart {
+//            if i.isChecked {
+//                ref = db.collection("Cart").addDocument(data: [
+//                    "productId": i.product.id,
+//                    "quantity": i.quantity,
+//                    "userId" : globalUserID,
+//                    "dateTime" : i.dateTime,
+//                    "status" : i.status
+//                ]) { err in
+//                    if let err = err {
+//                        print("Error adding Cart: \(err)")
+//                    } else {
+//                        print("Cart added with ID: \(ref!.documentID)")
+//                    }
+//                }
+//                print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
+//
+//                db.collection("Product").document(i.product.id).updateData([
+//                    "stock": i.product.stock - i.quantity
+//                ])
+//            }
+//        }
+        
         cart.removeAll()
+        order.removeOrderData()
     }
     
     

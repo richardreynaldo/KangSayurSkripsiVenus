@@ -28,6 +28,6 @@ struct Product: Codable, Equatable, Identifiable, Hashable {
     }
 
     #if DEBUG
-    static let example = Product(id: "001", image: "brokoli", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran")
+    static let example = Product(id: "001", image: "Brokoli", name: "Brokoli", price: 10000, stock: 10, desc: "Sayur Brokoli", category: "Sayuran")
     #endif
 }

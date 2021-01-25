@@ -10,11 +10,6 @@ import SwiftUI
 struct BarangDiBeliRow: View {
     @EnvironmentObject var cartData: CartData
     
-    var quantity: Int
-    var price: Int
-    var quantityxprice: Int
-    var nama: String
-    
     var body: some View {
         ZStack {
             Rectangle()
@@ -29,7 +24,7 @@ struct BarangDiBeliRow: View {
                 
                 //vstack yang ini harusnya di loop sesuai belanjaannya apa aja
                 LazyVStack(alignment: .leading) {
-                    ForEach(cartData.cart) { item in
+                    ForEach(cartData.order.cart) { item in
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("\(item.product.name)")
@@ -57,6 +52,6 @@ struct BarangDiBeliRow: View {
 }
 struct BarangDiBeliView_Previews: PreviewProvider {
     static var previews: some View {
-        BarangDiBeliRow(quantity: 1, price: 20000, quantityxprice: 20000, nama: "Brokoli")
+        BarangDiBeliRow()
     }
 }

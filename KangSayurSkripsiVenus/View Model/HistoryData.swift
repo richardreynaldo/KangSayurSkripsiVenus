@@ -15,7 +15,7 @@ class HistoryData: ObservableObject {
     private var db = Firestore.firestore()
 
     func getHistoryData(productData: ProductData) {
-        db.collection("Cart").whereField("userId", isEqualTo: globalUserID).addSnapshotListener { (querySnapshot, error) in
+        db.collection("Order").whereField("userID", isEqualTo: globalUserID).order(by: "status").order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -23,15 +23,36 @@ class HistoryData: ObservableObject {
             self.history = documents.map({ queryDocumentSnapshot -> History in
                 let data = queryDocumentSnapshot.data()
                 let quantity = data["quantity"] as? Int ?? 0
-                let productId = data["productId"] as? String ?? ""
+                let productID = data["productID"] as? String ?? ""
                 let status = data["status"] as? Bool ?? false
-                let timeStamp = data["dateTime"] as? Timestamp ?? Timestamp()
+                let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
                 let dateTime = timeStamp.dateValue()
                 
                 
-                return History(id: queryDocumentSnapshot.documentID, product: productData.products.first(where: {$0.id == productId})!, quantity: quantity, dateTime: dateTime, status: status)
+                return History(id: queryDocumentSnapshot.documentID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity, dateTime: dateTime, status: status)
             })
         }
     }
+    
+//    func alternateGetHistoryData(productData: ProductData) {
+//        // Listen to document metadata.
+//        db.collection("Order").document(globalUserID).collection("Order").getDocuments { querySnapshot, error in
+//            guard let documents = querySnapshot?.documents else {
+//                print("No documents")
+//                return
+//            }
+//            self.history = documents.map({ queryDocumentSnapshot -> History in
+//                let data = queryDocumentSnapshot.data()
+//                let quantity = data["quantity"] as? Int ?? 0
+//                let productId = data["productId"] as? String ?? ""
+//                let status = data["status"] as? Bool ?? false
+//                let timeStamp = data["dateTime"] as? Timestamp ?? Timestamp()
+//                let dateTime = timeStamp.dateValue()
+//                
+//                
+//                return History(id: queryDocumentSnapshot.documentID, product: productData.products.first(where: {$0.id == productId}) ?? Product.example, quantity: quantity, dateTime: dateTime, status: status)
+//            })
+//        }
+//    }
     
 }

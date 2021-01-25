@@ -17,7 +17,7 @@ struct PembayaranView: View {
                 VStack {
                     ScrollView {
                         VStack(spacing:0) {
-                            BarangDiBeliRow(quantity: 2, price: 20000, quantityxprice: 40000, nama: "Brokoli")
+                            BarangDiBeliRow()
                             
                             Divider()
                             
@@ -25,11 +25,11 @@ struct PembayaranView: View {
                             
                             Divider()
                             
-                            DetailPembayaranRow(price: cartData.getTotalPriceCart(), priceOngkos: 10000)
+                            DetailPembayaranRow(price: cartData.order.totalPrice, priceOngkos: 10000)
                             
                             Divider()
                             
-                            MetodePembayaranRow(paymentType: "Cash on Delivery")
+                            MetodePembayaranRow(paymentType: cartData.order.paymentType)
                             
                             Divider()
                         }
@@ -42,7 +42,7 @@ struct PembayaranView: View {
                     
                     ZStack {
                         VStack {
-                            TotalPembayaranRow(totalOrder: cartData.getTotalPriceCart() + 10000)
+                            TotalPembayaranRow(totalOrder: cartData.order.totalPrice + 10000)
                             
                             ZStack {
                                 Button(action: {

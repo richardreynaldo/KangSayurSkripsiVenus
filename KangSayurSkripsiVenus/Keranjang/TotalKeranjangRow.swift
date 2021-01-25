@@ -26,7 +26,7 @@ struct TotalKeranjangRow: View {
                         .font(Font.custom("Sora-SemiBold", size: 17, relativeTo: .subheadline))
                         .foregroundColor(StyleColors.titleText)
                     
-                    Text("Rp\(cartData.order.totalOrder)")
+                    Text("Rp\(price)")
                         .font(Font.custom("Sora-Regular", size: 16))
                         .foregroundColor(StyleColors.secondaryTitleText)
                 }
@@ -62,7 +62,7 @@ struct TotalKeranjangRow: View {
                     }
                 })
                 .padding(.trailing)
-                .disabled(cartData.cart.isEmpty)
+                .disabled(cartData.getQuantityCart() == 0)
                 .fullScreenCover(isPresented: $isPresented) {
                     PengirimanView(isPresented: $isPresented)
                 }

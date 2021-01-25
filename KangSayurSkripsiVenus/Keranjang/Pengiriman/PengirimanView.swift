@@ -33,8 +33,8 @@ struct PengirimanView: View {
                         
                         ZStack {
                             VStack {
-                                RingkasanRow(quantity: cartData.getQuantityCart(), price: cartData.getTotalPriceCart(), priceOngkos: 10000)
-                                TotalPembelianRow(isPresented: $isPresented, totalOrder: cartData.getTotalPriceCart() + 10000)
+                                RingkasanRow(quantity: cartData.order.totalOrder, price: cartData.order.totalPrice, priceOngkos: 10000)
+                                TotalPembelianRow(isPresented: $isPresented, totalOrder: cartData.order.totalPrice + 10000)
                                     .padding(.top, -7.5)
                             }
                         }
@@ -44,6 +44,7 @@ struct PengirimanView: View {
             }
             .navigationBarTitle("Pengiriman", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
+                cartData.order.removeOrderData()
                 isPresented = false
             }, label: {
                 Image(systemName: "xmark.circle.fill")
