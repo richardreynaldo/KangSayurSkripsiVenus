@@ -112,14 +112,9 @@ struct CheckAllView: View {
         isAllChecked = !isAllChecked
         
         cartData.cart.updateEach { item in
-            if item.isChecked {
-                item.isChecked = isAllChecked
-                cartData.order.totalOrder = cartData.getTotalPriceCart()
-            }
-            else {
-                item.isChecked = isAllChecked
-                cartData.order.totalOrder = cartData.getTotalPriceCart()
-            }
+            item.isChecked = isAllChecked
+            cartData.order.totalOrder = cartData.getTotalPriceCart()
+            isCheckedChecker = isAllChecked
         }
     }
     
@@ -129,9 +124,10 @@ struct CheckAllView: View {
                 Image(systemName: isAllChecked ? "checkmark.square": "square")
             }
         }
-        .onChange(of: cartData.cart) { value in
+        .onChange(of: isCheckedChecker) { value in
             if cartData.cart.allSatisfy(\.isChecked) {
                 isAllChecked = true
+                isCheckedChecker = true
             } else {
                 isAllChecked = false
             }
@@ -147,13 +143,14 @@ struct CheckView: View {
     
     func toggle() {
         isChecked = !isChecked
-        if isChecked {
-            cartData.cart[index].isChecked = isChecked
-            cartData.order.totalOrder = cartData.getTotalPriceCart()
-        }
-        else {
-            cartData.cart[index].isChecked = isChecked
-            cartData.order.totalOrder = cartData.getTotalPriceCart()
+        cartData.cart[index].isChecked = isChecked
+        cartData.order.totalOrder = cartData.getTotalPriceCart()
+        
+        if cartData.cart.allSatisfy(\.isChecked) {
+            isAllChecked = true
+            isCheckedChecker = true
+        } else {
+            isAllChecked = false
         }
     }
     
@@ -163,16 +160,10 @@ struct CheckView: View {
                 Image(systemName: isChecked ? "checkmark.square": "square")
             }
         }
-        .onChange(of: isAllChecked, perform: { value in
-            if isAllChecked {
-                isChecked = isAllChecked
-                cartData.cart[index].isChecked = isAllChecked
-                cartData.order.totalOrder = cartData.getTotalPriceCart()
-            } else {
-                isChecked = isAllChecked
-                cartData.cart[index].isChecked = isAllChecked
-                cartData.order.totalOrder = cartData.getTotalPriceCart()
-            }
+        .onChange(of: isCheckedChecker, perform: { value in
+            isChecked = isCheckedChecker
+            cartData.cart[index].isChecked = isCheckedChecker
+            cartData.order.totalOrder = cartData.getTotalPriceCart()
         })
     }
 }

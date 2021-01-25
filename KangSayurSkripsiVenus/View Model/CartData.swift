@@ -58,13 +58,13 @@ class CartData: ObservableObject {
     func checkout() {
         for item in cart {
             if item.isChecked {
-                order.id = UUID().uuidString
+//                order.id = UUID().uuidString
                 order.orderDate = Date()
                 order.paymentType = "Cash on Delivery"
                 order.status = false
                 order.totalOrder = getTotalPriceCart()
                 order.cart.append(item)
-                print(order.cart)
+                print("Orders: \(order.cart)")
             }
         }
     }

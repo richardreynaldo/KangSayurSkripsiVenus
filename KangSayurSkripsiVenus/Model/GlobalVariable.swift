@@ -8,6 +8,7 @@
 import Foundation
 
 var globalUserID: String = ""
+var isCheckedChecker: Bool = false
 
 extension Array where Element: Equatable {
     func indexes(of element: Element) -> [Int] {
