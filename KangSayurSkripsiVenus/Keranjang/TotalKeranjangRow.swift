@@ -26,7 +26,7 @@ struct TotalKeranjangRow: View {
                         .font(Font.custom("Sora-SemiBold", size: 17, relativeTo: .subheadline))
                         .foregroundColor(StyleColors.titleText)
                     
-                    Text("Rp\(price)")
+                    Text("Rp\(cartData.order.totalOrder)")
                         .font(Font.custom("Sora-Regular", size: 16))
                         .foregroundColor(StyleColors.secondaryTitleText)
                 }
@@ -48,6 +48,7 @@ struct TotalKeranjangRow: View {
 //                .padding(.trailing)
                 
                 Button(action: {
+                    cartData.checkout()
                     isPresented = true
                 }, label: {
                     ZStack {

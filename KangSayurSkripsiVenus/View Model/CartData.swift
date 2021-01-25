@@ -11,7 +11,7 @@ import SwiftUI
 
 class CartData: ObservableObject {
     @Published var cart = [Cart]()
-    @Published var orderHeader = OrderHeader()
+    @Published var order = Order()
     private var db = Firestore.firestore()
     
     var totalProduct: Int {
@@ -56,21 +56,35 @@ class CartData: ObservableObject {
     }
     
     func checkout() {
-        db.collection("")
+        for item in cart {
+            if item.isChecked {
+                order.id = UUID().uuidString
+                order.orderDate = Date()
+                order.paymentType = "Cash on Delivery"
+                order.status = false
+                order.totalOrder = getTotalPriceCart()
+                order.cart.append(item)
+                print(order.cart)
+            }
+        }
     }
     
     func getQuantityCart()-> Int {
         var total = 0
         for i in cart {
-            total += i.quantity
+            if i.isChecked {
+                total += i.quantity
+            }
         }
         return total
     }
     
     func getTotalPriceCart()-> Int {
         var total = 0
-        for i in cart{
-            total += (i.quantity * i.product.price)
+        for i in cart {
+            if i.isChecked {
+                total += (i.quantity * i.product.price)
+            }
         }
         print("asu\(total)")
         return total

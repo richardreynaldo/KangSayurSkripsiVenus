@@ -20,7 +20,7 @@ struct PengirimanView: View {
                         
                         ScrollView {
                             LazyVStack {
-                                ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
+                                ForEach(Array(cartData.order.cart.enumerated()), id: \.1.id) { (index, item) in
                                     PengirimanRow(gambar: item.product.name, nama: item.product.name, harga: item.product.price, quantity: item.quantity)
                                         .padding(.horizontal, 8)
                                         .padding(.vertical, 0)

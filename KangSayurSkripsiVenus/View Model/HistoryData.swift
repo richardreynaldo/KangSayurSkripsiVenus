@@ -11,7 +11,7 @@ import SwiftUI
 
 class HistoryData: ObservableObject {
     @Published var history = [History]()
-    @Published var orderHeader = OrderHeader()
+    @Published var order: Order?
     private var db = Firestore.firestore()
 
     func getHistoryData(productData: ProductData) {

@@ -12,13 +12,14 @@ var total : Int = 0
 struct KeranjangView: View {
     @EnvironmentObject var productData: ProductData
     @EnvironmentObject var cartData: CartData
+    @State var isAllChecked: Bool = false
     
     var body: some View {
         ZStack {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        CheckView()
+                        CheckAllView(isAllChecked: $isAllChecked)
                         Text("Pilih semua")
                             .lineLimit(1)
                             .frame(width: 100,alignment: .leading)
@@ -30,7 +31,7 @@ struct KeranjangView: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
-                                KeranjangRow(product: item.product, cart: item, index: index)
+                                KeranjangRow(isAllChecked: $isAllChecked, product: item.product, cart: item, index: index)
                                     .padding(.horizontal)
                                     .padding(.vertical, 4)
                             }

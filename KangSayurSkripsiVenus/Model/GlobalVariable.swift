@@ -14,3 +14,11 @@ extension Array where Element: Equatable {
         return self.enumerated().filter({ element == $0.element }).map({ $0.offset })
     }
 }
+
+extension MutableCollection {
+  mutating func updateEach(_ update: (inout Element) -> Void) {
+    for i in indices {
+      update(&self[i])
+    }
+  }
+}

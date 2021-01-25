@@ -11,6 +11,7 @@ struct KeranjangRow: View {
     @EnvironmentObject var cartData: CartData
     @EnvironmentObject var productData: ProductData
     @State var disabled1 = false
+    @Binding var isAllChecked: Bool
     var product: Product
     var cart: Cart
     var index: Int
@@ -22,7 +23,7 @@ struct KeranjangRow: View {
             
             VStack {
                 HStack {
-                    CheckView()
+                    CheckView(isAllChecked: $isAllChecked, index: index)
                     
                     // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
                     
@@ -103,11 +104,57 @@ struct KeranjangRow: View {
 //    }
 //}
 
+struct CheckAllView: View {
+    @EnvironmentObject var cartData: CartData
+    @Binding var isAllChecked: Bool
+    
+    func toggle() {
+        isAllChecked = !isAllChecked
+        
+        cartData.cart.updateEach { item in
+            if item.isChecked {
+                item.isChecked = isAllChecked
+                cartData.order.totalOrder = cartData.getTotalPriceCart()
+            }
+            else {
+                item.isChecked = isAllChecked
+                cartData.order.totalOrder = cartData.getTotalPriceCart()
+            }
+        }
+    }
+    
+    var body: some View {
+        Button(action: toggle) {
+            HStack {
+                Image(systemName: isAllChecked ? "checkmark.square": "square")
+            }
+        }
+        .onChange(of: cartData.cart) { value in
+            if cartData.cart.allSatisfy(\.isChecked) {
+                isAllChecked = true
+            } else {
+                isAllChecked = false
+            }
+        }
+    }
+}
+
 struct CheckView: View {
+    @EnvironmentObject var cartData: CartData
+    @Binding var isAllChecked: Bool
     @State var isChecked: Bool = false
+    var index: Int
     
     func toggle() {
         isChecked = !isChecked
+        if isChecked {
+            cartData.cart[index].isChecked = isChecked
+            cartData.order.totalOrder = cartData.getTotalPriceCart()
+        }
+        else {
+            cartData.cart[index].isChecked = isChecked
+            cartData.order.totalOrder = cartData.getTotalPriceCart()
+        }
     }
     
     var body: some View {
@@ -116,5 +163,16 @@ struct CheckView: View {
                 Image(systemName: isChecked ? "checkmark.square": "square")
             }
         }
+        .onChange(of: isAllChecked, perform: { value in
+            if isAllChecked {
+                isChecked = isAllChecked
+                cartData.cart[index].isChecked = isAllChecked
+                cartData.order.totalOrder = cartData.getTotalPriceCart()
+            } else {
+                isChecked = isAllChecked
+                cartData.cart[index].isChecked = isAllChecked
+                cartData.order.totalOrder = cartData.getTotalPriceCart()
+            }
+        })
     }
 }
