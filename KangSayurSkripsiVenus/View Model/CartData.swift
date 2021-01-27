@@ -94,21 +94,7 @@ class CartData: ObservableObject {
     func appendCartToFirebase() {
         var ref: DocumentReference? = nil
         
-//        ref = db.collection("Order").document(globalUserID).collection("Cart").addDocument(data: [
-//            "userID" : globalUserID,
-//            "orderData": Date(),
-//            "paymentType": order.paymentType,
-//            "status" : order.status,
-//            "totalOrder" : order.totalOrder,
-//            "totalPrice" : order.totalPrice
-//        ]) { err in
-//            if let err = err {
-//                print("Error adding Cart: \(err)")
-//            } else {
-//                print("Cart added with ID: \(ref!.documentID)")
-//            }
-//        }
-        
+        // Current Working Code
         for i in order.cart {
             ref = db.collection("Order").addDocument(data: [
                 "userID" : globalUserID,
@@ -127,37 +113,75 @@ class CartData: ObservableObject {
                 }
             }
             print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
-            
+
             db.collection("Product").document(i.product.id).updateData([
                 "stock": i.product.stock - i.quantity
             ])
         }
         
-//        for i in cart {
-//            if i.isChecked {
-//                ref = db.collection("Cart").addDocument(data: [
-//                    "productId": i.product.id,
-//                    "quantity": i.quantity,
-//                    "userId" : globalUserID,
-//                    "dateTime" : i.dateTime,
-//                    "status" : i.status
-//                ]) { err in
-//                    if let err = err {
-//                        print("Error adding Cart: \(err)")
-//                    } else {
-//                        print("Cart added with ID: \(ref!.documentID)")
-//                    }
-//                }
-//                print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
-//
-//                db.collection("Product").document(i.product.id).updateData([
-//                    "stock": i.product.stock - i.quantity
-//                ])
-//            }
-//        }
-        
         cart.removeAll()
         order.removeOrderData()
+        
+        
+        // Alternate Code
+        /* orderRef = db.collection("Order").document(globalUserID).collection("Orders").addDocument(data: [
+            "userID" : globalUserID,
+            "orderDate": Date(),
+            "paymentType": order.paymentType,
+            "status" : order.status,
+            "totalOrder" : order.totalOrder,
+            "totalPrice" : order.totalPrice
+        ]) { err in
+            if let err = err {
+                print("Error adding Cart: \(err)")
+            } else {
+                print("Cart added with ID: \(orderRef!.documentID)")
+            }
+        }
+        
+        for i in order.cart {
+            db.collection("Order").document(globalUserID).collection("Orders").document(orderRef!.documentID).collection("Cart").addDocument(data: [
+                "productID" : i.product.id,
+                "quantity" : i.quantity,
+                "status" : order.status
+            ]) { err in
+                if let err = err {
+                    print("Error adding Cart: \(err)")
+                } else {
+                    print("Cart added with ID: \(orderRef!.documentID)")
+                }
+            }
+            print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
+            
+            db.collection("Product").document(i.product.id).updateData([
+                "stock": i.product.stock - i.quantity
+            ])
+        } */
+        
+        
+        // OG Code
+        /* for i in cart {
+            if i.isChecked {
+                ref = db.collection("Cart").addDocument(data: [
+                    "productId": i.product.id,
+                    "quantity": i.quantity,
+                    "userId" : globalUserID,
+                    "dateTime" : i.dateTime,
+                    "status" : i.status
+                ]) { err in
+                    if let err = err {
+                        print("Error adding Cart: \(err)")
+                    } else {
+                        print("Cart added with ID: \(ref!.documentID)")
+                    }
+                }
+                print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
+
+                db.collection("Product").document(i.product.id).updateData([
+                    "stock": i.product.stock - i.quantity
+                ])
+            }
+        } */
     }
     
     

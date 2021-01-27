@@ -126,6 +126,12 @@ struct CheckAllView: View {
                 Image(systemName: isAllChecked ? "checkmark.square": "square")
             }
         }
+        .disabled(cartData.cart.isEmpty)
+        .onAppear(perform: {
+            if cartData.cart.isEmpty {
+                isAllChecked = false
+            }
+        })
         .onChange(of: isCheckedChecker) { value in
             if cartData.cart.allSatisfy(\.isChecked) {
                 isAllChecked = true

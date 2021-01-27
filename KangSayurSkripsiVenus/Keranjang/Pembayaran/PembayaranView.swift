@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PembayaranView: View {
     @EnvironmentObject var cartData: CartData
+    @State private var showingAlert: Bool = false
     @Binding var isPresented: Bool
     
     var body: some View {
@@ -46,10 +47,7 @@ struct PembayaranView: View {
                             
                             ZStack {
                                 Button(action: {
-                                    DispatchQueue.main.async {
-                                        cartData.appendCartToFirebase()
-                                        isPresented = false
-                                    }
+                                    showingAlert = true
                                 }, label: {
                                     ZStack {
                                         Capsule()
@@ -61,6 +59,14 @@ struct PembayaranView: View {
                                     }
                                 })
                                 .padding()
+                                .alert(isPresented: $showingAlert) {
+                                    Alert(title: Text("Success"), message: Text("Order Placed!"), dismissButton: .default(Text("OK"), action: {
+                                        DispatchQueue.main.async {
+                                            cartData.appendCartToFirebase()
+                                            isPresented = false
+                                        }
+                                    }))
+                                }
                             }
                             .background(Color.white)
                             .padding(.top, -7.5)

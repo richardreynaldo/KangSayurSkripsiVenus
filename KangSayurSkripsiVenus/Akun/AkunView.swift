@@ -14,9 +14,8 @@ struct AkunView: View {
         ZStack {
             ScrollView {
                 VStack {
-                    
                     NavigationLink(
-                        destination: RiwayatPembelianView())
+                        destination: RiwayatView())
                     {
                         AkunChevron(title: "Riwayat")
                             .foregroundColor(StyleColors.titleText)
@@ -53,13 +52,6 @@ struct AkunView: View {
                             .foregroundColor(StyleColors.titleText)
                             .padding(.horizontal)
                     }
-                    
-//                    NavigationLink(
-//                        destination: RiwayatView())
-//                    {
-//                        AccountChevron(title: "Lihat Riwayat Pemesanan")
-//                            .padding(.horizontal)
-//                    }
                     
                     Spacer()
                     
