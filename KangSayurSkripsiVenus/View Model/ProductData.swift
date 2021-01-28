@@ -15,7 +15,8 @@ class ProductData: ObservableObject {
     private var db = Firestore.firestore()
     
     func getProductData() {
-        db.collection("Product").addSnapshotListener { (querySnapshot, error) in
+        // Get product data once – Code runs manually
+        db.collection("Product").getDocuments { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -32,10 +33,67 @@ class ProductData: ObservableObject {
                 return Product(id: queryDocumentSnapshot.documentID, image: name, name: name, price: price, stock: stock, desc: desc, category: category)
             })
         }
+        
+        
+        // Get product data everytime a change or changes happens – Code runs automatically
+        /* db.collection("Product").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.products = documents.map({ queryDocumentSnapshot -> Product in
+                let data = queryDocumentSnapshot.data()
+                let name = data["name"] as? String ?? ""
+                let price = data["price"] as? Int ?? 0
+                let stock = data["stock"] as? Int ?? 0
+                let desc = data["desc"] as? String ?? ""
+                let category = data["category"] as? String ?? ""
+                
+                return Product(id: queryDocumentSnapshot.documentID, image: name, name: name, price: price, stock: stock, desc: desc, category: category)
+            })
+        } */
     }
     
+    func getProductStock()-> Int {
+        var total = 0
+        for i in products {
+            total += i.stock
+        }
+        return total
+    }
+    
+    func updateProductStock() {
+        for i in products {
+            db.collection("Product").document(i.id).updateData([
+                "stock" : i.stock
+            ]) { error in
+                if let error = error {
+                    print("Error updating product stock: \(error)")
+                } else {
+                    print("Product stock successfully updated!")
+                }
+            }
+        }
+    }
+    
+    func updateProductData(product: Product, name: String, price: Int, stock: Int) {
+        db.collection("Product").document(product.id).updateData([
+            "name" : name,
+            "price" : price,
+            "stock" : stock
+        ]) { error in
+            if let error = error {
+                print("Error updating product data: \(error)")
+            } else {
+                print("Product data successfully updated!")
+            }
+        }
+    }
+    
+    
     // Temporary Function
-    func appendToFirebase() {
+    /* func appendToFirebase() {
         var ref: DocumentReference? = nil
         
         for item in products {
@@ -53,5 +111,5 @@ class ProductData: ObservableObject {
                 }
             }
         }
-    }
+    } */
 }

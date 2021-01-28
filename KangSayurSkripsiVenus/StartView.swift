@@ -13,13 +13,16 @@ struct StartView: View {
     var body: some View {
         Group {
             if authentication.loggedInUser != nil {
-                CustomTabView()
-                    .accentColor(StyleColors.primaryRed)
+                if authentication.profile?.isAdmin ?? false {
+                    CustomTabView()
+                } else {
+                    CustomAdminTabView()
+                }
             } else {
                 SignIn()
-                    .accentColor(StyleColors.primaryRed)
             }
         }
+        .accentColor(StyleColors.primaryRed)
     }
 }
 

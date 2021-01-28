@@ -34,6 +34,9 @@ struct HomeView: View {
             }
         }
         .background(StyleColors.secondaryYellow)
+        .onAppear {
+            productData.getProductData()
+        }
     }
 }
 

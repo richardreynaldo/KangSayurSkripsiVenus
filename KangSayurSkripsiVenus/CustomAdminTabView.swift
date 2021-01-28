@@ -1,13 +1,13 @@
 //
-//  TabView.swift
+//  CustomAdminTabView.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Rayhan Martiza Faluda on 19/01/21.
+//  Created by Rayhan Martiza Faluda on 28/01/21.
 //
 
 import SwiftUI
 
-struct CustomTabView: View {
+struct CustomAdminTabView: View {
     @EnvironmentObject var userData: UserData
     @EnvironmentObject var productData: ProductData
     @EnvironmentObject var historyData: HistoryData
@@ -16,21 +16,21 @@ struct CustomTabView: View {
     var body: some View {
         TabView(selection: $currentTab) {
             NavigationView {
-                HomeView()
-                    .navigationBarTitle("Home", displayMode: .inline)
+                StokView()
+                    .navigationBarTitle("Stok", displayMode: .inline)
             }
             .tabItem {
-                Image(systemName: "house.fill")
-                Text("Home")
+                Image(systemName: "list.number")
+                Text("Stok")
             }
             .tag(0)
             
             NavigationView {
                 KeranjangView()
-                    .navigationBarTitle("Keranjang", displayMode: .inline)
+                    .navigationBarTitle("Pesanan", displayMode: .inline)
             }.tabItem {
                 Image(systemName: "cart.fill")
-                Text("Keranjang")
+                Text("Pesanan")
             }
             .tag(1)
             
@@ -52,8 +52,8 @@ struct CustomTabView: View {
     }
 }
 
-struct TabView_Previews: PreviewProvider {
+struct CustomAdminTabView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabView()
+        CustomAdminTabView()
     }
 }

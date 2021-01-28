@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
 class UserData: ObservableObject {
+    // For isAdmin validation using @AppStorage – Currently not in used
+    /* @AppStorage("isAdmin") var isAdmin = Account.isAdmin */
+    
     @Published var profile: Profile?
     
     private let userID = Auth.auth().currentUser?.uid
