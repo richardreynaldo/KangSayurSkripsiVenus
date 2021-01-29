@@ -28,7 +28,8 @@ struct CustomTabView: View {
             NavigationView {
                 KeranjangView()
                     .navigationBarTitle("Keranjang", displayMode: .inline)
-            }.tabItem {
+            }
+            .tabItem {
                 Image(systemName: "cart.fill")
                 Text("Keranjang")
             }
@@ -37,7 +38,8 @@ struct CustomTabView: View {
             NavigationView {
                 AkunView()
                     .navigationBarTitle("Akun", displayMode: .inline)
-            }.tabItem {
+            }
+            .tabItem {
                 Image(systemName: "person.fill")
                 Text("Akun")
             }

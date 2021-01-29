@@ -1,13 +1,13 @@
 //
-//  RiwayatPembelianRow.swift
+//  PesananRow.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Laurentius Richard Reynaldo on 22/01/21.
+//  Created by Rayhan Martiza Faluda on 29/01/21.
 //
 
 import SwiftUI
 
-struct RiwayatRow: View {
+struct PesananRow: View {
     var history: History
     
     static let dateFormat: DateFormatter = {
@@ -57,11 +57,10 @@ struct RiwayatRow: View {
             .padding(.horizontal, 22)
         }
     }
-
 }
 
-struct RiwayatRow_Previews: PreviewProvider {
+struct PesananRow_Previews: PreviewProvider {
     static var previews: some View {
-        RiwayatRow(history: History.example)
+        PesananRow(history: History.example)
     }
 }

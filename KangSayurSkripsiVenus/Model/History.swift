@@ -13,4 +13,8 @@ struct History: Codable, Equatable, Identifiable {
     var quantity: Int
     var dateTime: Date
     var status: Bool
+    
+    #if DEBUG
+    static let example = History(id: "001", product: Product.example, quantity: 10, dateTime: Date(), status: false)
+    #endif
 }

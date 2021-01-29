@@ -26,9 +26,10 @@ struct CustomAdminTabView: View {
             .tag(0)
             
             NavigationView {
-                KeranjangView()
+                PesananView()
                     .navigationBarTitle("Pesanan", displayMode: .inline)
-            }.tabItem {
+            }
+            .tabItem {
                 Image(systemName: "cart.fill")
                 Text("Pesanan")
             }
@@ -37,7 +38,8 @@ struct CustomAdminTabView: View {
             NavigationView {
                 AkunView()
                     .navigationBarTitle("Akun", displayMode: .inline)
-            }.tabItem {
+            }
+            .tabItem {
                 Image(systemName: "person.fill")
                 Text("Akun")
             }

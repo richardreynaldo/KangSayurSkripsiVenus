@@ -14,6 +14,9 @@
 		2C405A1625AC4E7E0052CA50 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A1525AC4E7E0052CA50 /* Authentication.swift */; };
 		2C405A3E25AC66A50052CA50 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A3D25AC66A50052CA50 /* GlobalVariable.swift */; };
 		2C405A7725AD77D40052CA50 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C405A7625AD77D40052CA50 /* TestView.swift */; };
+		2C466EA325C42452001747CB /* PesananView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EA225C42452001747CB /* PesananView.swift */; };
+		2C466EAB25C4245A001747CB /* PesananRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EAA25C4245A001747CB /* PesananRow.swift */; };
+		2C466EB025C42477001747CB /* PesananDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EAF25C42477001747CB /* PesananDetailView.swift */; };
 		2C6A6DCE25AC19AF002E9FFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */; };
 		2C958C6325C2E31F00C32465 /* CustomAdminTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C958C6225C2E31F00C32465 /* CustomAdminTabView.swift */; };
 		2C958C6A25C308C700C32465 /* StokView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C958C6925C308C700C32465 /* StokView.swift */; };
@@ -100,6 +103,9 @@
 		2C405A1525AC4E7E0052CA50 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		2C405A3D25AC66A50052CA50 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
 		2C405A7625AD77D40052CA50 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		2C466EA225C42452001747CB /* PesananView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananView.swift; sourceTree = "<group>"; };
+		2C466EAA25C4245A001747CB /* PesananRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananRow.swift; sourceTree = "<group>"; };
+		2C466EAF25C42477001747CB /* PesananDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananDetailView.swift; sourceTree = "<group>"; };
 		2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C958C6225C2E31F00C32465 /* CustomAdminTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAdminTabView.swift; sourceTree = "<group>"; };
 		2C958C6925C308C700C32465 /* StokView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StokView.swift; sourceTree = "<group>"; };
@@ -231,6 +237,26 @@
 				6D8D46FE25BC1A7500118EC4 /* History.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2C466EA025C4243B001747CB /* User */ = {
+			isa = PBXGroup;
+			children = (
+				6D4545FA25AEFB330024E572 /* KeranjangView.swift */,
+				6D4545FB25AEFB330024E572 /* KeranjangRow.swift */,
+				6D4545F925AEFB330024E572 /* TotalKeranjangRow.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		2C466EA125C42446001747CB /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				2C466EA225C42452001747CB /* PesananView.swift */,
+				2C466EAA25C4245A001747CB /* PesananRow.swift */,
+				2C466EAF25C42477001747CB /* PesananDetailView.swift */,
+			);
+			path = Admin;
 			sourceTree = "<group>";
 		};
 		2C958C6725C2E5A400C32465 /* User */ = {
@@ -375,16 +401,15 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		6D4545F825AEFB330024E572 /* Keranjang */ = {
+		6D4545F825AEFB330024E572 /* Keranjang–Pesanan */ = {
 			isa = PBXGroup;
 			children = (
-				6D4545FA25AEFB330024E572 /* KeranjangView.swift */,
-				6D4545FB25AEFB330024E572 /* KeranjangRow.swift */,
-				6D4545F925AEFB330024E572 /* TotalKeranjangRow.swift */,
+				2C466EA125C42446001747CB /* Admin */,
+				2C466EA025C4243B001747CB /* User */,
 				6D45460225AEFB330024E572 /* Pengiriman */,
 				6D4545FC25AEFB330024E572 /* Pembayaran */,
 			);
-			path = Keranjang;
+			path = "Keranjang–Pesanan";
 			sourceTree = "<group>";
 		};
 		6D4545FC25AEFB330024E572 /* Pembayaran */ = {
@@ -449,7 +474,7 @@
 				2C9D74F825B6975B00FCFC45 /* CustomTabView.swift */,
 				2C958C6225C2E31F00C32465 /* CustomAdminTabView.swift */,
 				6D45460825AEFB350024E572 /* Home–Stok */,
-				6D4545F825AEFB330024E572 /* Keranjang */,
+				6D4545F825AEFB330024E572 /* Keranjang–Pesanan */,
 				6D4545EC25AEFB0B0024E572 /* Auth */,
 				6D4545CF25AEFB030024E572 /* Akun */,
 				6D4545C525AEFAE20024E572 /* Theme */,
@@ -763,8 +788,10 @@
 				2C9D745F25B139FE00FCFC45 /* ProductData.swift in Sources */,
 				2C405A0B25AC41520052CA50 /* CartData.swift in Sources */,
 				2C4059FB25AC3CD00052CA50 /* Profile.swift in Sources */,
+				2C466EA325C42452001747CB /* PesananView.swift in Sources */,
 				2C4059F625AC3BFE0052CA50 /* UserData.swift in Sources */,
 				6D8D470425BC1C2A00118EC4 /* HistoryData.swift in Sources */,
+				2C466EB025C42477001747CB /* PesananDetailView.swift in Sources */,
 				2C405A0325AC40540052CA50 /* Product.swift in Sources */,
 				2C958C6325C2E31F00C32465 /* CustomAdminTabView.swift in Sources */,
 				2C405A7725AD77D40052CA50 /* TestView.swift in Sources */,
@@ -807,6 +834,7 @@
 				6D7507D925A6CF5400133A56 /* KangSayurSkripsiVenusApp.swift in Sources */,
 				6D4545E425AEFB030024E572 /* AkunBottom.swift in Sources */,
 				6D45461525AEFB350024E572 /* PengirimanRow.swift in Sources */,
+				2C466EAB25C4245A001747CB /* PesananRow.swift in Sources */,
 				6D45460C25AEFB350024E572 /* TotalKeranjangRow.swift in Sources */,
 				2C9D755725BE995F00FCFC45 /* Order.swift in Sources */,
 			);

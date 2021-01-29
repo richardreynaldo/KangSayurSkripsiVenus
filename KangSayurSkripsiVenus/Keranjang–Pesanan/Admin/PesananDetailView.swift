@@ -1,13 +1,13 @@
 //
-//  RiwayatDetailView.swift
+//  PesananDetail.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Venus Dhammiko on 08/01/21.
+//  Created by Rayhan Martiza Faluda on 29/01/21.
 //
 
 import SwiftUI
 
-struct RiwayatDetailView: View {
+struct PesananDetailView: View {
     @EnvironmentObject var userData: UserData
     @State private var isActionSheetShow = false
     @State private var showAlert = false
@@ -97,13 +97,12 @@ struct RiwayatDetailView: View {
             }
         }
         .background(StyleColors.secondaryYellow)
-        .navigationBarTitle("Riwayat")
+        .navigationBarTitle("Pesanan")
     }
 }
 
-
-struct RiwayatDetailView_Previews: PreviewProvider {
+struct PesananDetail_Previews: PreviewProvider {
     static var previews: some View {
-        RiwayatDetailView(history: History.example)
+        PesananDetailView(history: History.example)
     }
 }
