@@ -14,7 +14,7 @@ struct StokDetailView: View {
     @State private var namaProduk: String = ""
     @State private var stokProduk: Int = 0
     @State private var hargaProduk: Int = 0
-    
+    @State private var stockProduk: String = ""
     var body: some View {
         ZStack {
             ScrollView {
@@ -62,11 +62,21 @@ struct StokDetailView: View {
                             }
                             .padding(.top)
                             
-                            TextField("Stok", value: $stokProduk, formatter: NumberFormatter())
+                            
+                            
+//                            TextField("Stok", value: $stokProduk, formatter: NumberFormatter())
+//
+//                                .keyboardType(.decimalPad)
+//                                .disableAutocorrection(true)
+//                                .font(Font.custom("Sora-Regular", size: 15))
+//                                .foregroundColor(StyleColors.secondaryTitleText)
+//
+                            TextField("Stok", text: $stockProduk)
                                 .keyboardType(.decimalPad)
                                 .disableAutocorrection(true)
                                 .font(Font.custom("Sora-Regular", size: 15))
                                 .foregroundColor(StyleColors.secondaryTitleText)
+                            
                             
                             Divider()
                         }
@@ -98,14 +108,16 @@ struct StokDetailView: View {
         .background(StyleColors.secondaryYellow)
         .navigationTitle(product.name)
         .navigationBarItems(trailing: Button(action: {
-            productData.updateProductData(product: product, name: namaProduk, price: hargaProduk, stock: stokProduk)
+            
+            
+            productData.updateProductData(product: product, name: namaProduk, price: hargaProduk, stock: Int(stockProduk) ?? 0)
         }, label: {
             Text("Save")
         }))
         .onAppear {
             namaProduk = product.name
-            stokProduk = product.stock
             hargaProduk = product.price
+            stockProduk = String(product.stock)
             print("Product ID: \(product.id)")
         }
     }
