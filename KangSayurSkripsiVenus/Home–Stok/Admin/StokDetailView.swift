@@ -12,8 +12,7 @@ struct StokDetailView: View {
     var product: Product
     
     @State private var namaProduk: String = ""
-    @State private var stokProduk: Int = 0
-    @State private var hargaProduk: Int = 0
+    @State private var hargaProduk: String = ""
     @State private var stockProduk: String = ""
     var body: some View {
         ZStack {
@@ -91,7 +90,7 @@ struct StokDetailView: View {
                             }
                             .padding(.top)
                             
-                            TextField("Harga", value: $hargaProduk, formatter: NumberFormatter())
+                            TextField("Harga", text: $hargaProduk)
                                 .keyboardType(.decimalPad)
                                 .disableAutocorrection(true)
                                 .font(Font.custom("Sora-Regular", size: 15))
@@ -110,13 +109,13 @@ struct StokDetailView: View {
         .navigationBarItems(trailing: Button(action: {
             
             
-            productData.updateProductData(product: product, name: namaProduk, price: hargaProduk, stock: Int(stockProduk) ?? 0)
+            productData.updateProductData(product: product, name: namaProduk, price: Int(hargaProduk) ?? 0, stock: Int(stockProduk) ?? 0)
         }, label: {
             Text("Save")
         }))
         .onAppear {
             namaProduk = product.name
-            hargaProduk = product.price
+            hargaProduk = String(product.price)
             stockProduk = String(product.stock)
             print("Product ID: \(product.id)")
         }
