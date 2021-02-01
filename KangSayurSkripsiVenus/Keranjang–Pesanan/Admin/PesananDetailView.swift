@@ -53,9 +53,21 @@ struct PesananDetailView: View {
                             .padding(.bottom, 4)
                         
                         Group {
-                            Text("Nama: \(history.product.name)") //nama produk
-                            Text("Kuantitas: \(history.quantity) kg") //berat produk
-                            Text("Harga: Rp\(history.product.price)/kg") //harga produk
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Nama") //nama produk
+                                    Text("Kuantitas") //berat produk
+                                    Text("Harga") //harga produk
+                                }
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .trailing) {
+                                    Text(history.product.name) //nama produk
+                                    Text("\(history.quantity) kg") //berat produk
+                                    Text("Rp\(history.product.price)/kg") //harga produk
+                                }
+                            }
                             
                             Divider()
                         }
@@ -68,11 +80,25 @@ struct PesananDetailView: View {
                             .padding(.bottom, 4)
                         
                         Group {
-                            Text("ID: \(history.id)") //id order
-                            Text("Tanggal: \(history.dateTime, formatter: Self.dateFormat)") //tanggal order
-                            Text("Waktu: \(history.dateTime, formatter: Self.timeFormat)") //waktu order
-                            Text("Status: \(history.status ? "Delivered" : "Preparing")") //status order
-                            Text("Total: Rp\(history.product.price * history.quantity)") //total order
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("ID") //id order
+                                    Text("Tanggal") //tanggal order
+                                    Text("Waktu") //waktu order
+                                    Text("Status") //status order
+                                    Text("Total") //total order
+                                }
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .trailing) {
+                                    Text(history.id) //id order
+                                    Text("\(history.dateTime, formatter: Self.dateFormat)") //tanggal order
+                                    Text("\(history.dateTime, formatter: Self.timeFormat)") //waktu order
+                                    Text("\(history.status ? "Delivered" : "Preparing")") //status order
+                                    Text("Rp\(history.product.price * history.quantity)") //total order
+                                }
+                            }
                             
                             Divider()
                         }

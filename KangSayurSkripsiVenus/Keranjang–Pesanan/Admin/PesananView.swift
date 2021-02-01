@@ -47,14 +47,14 @@ struct PesananView: View {
                 LazyVStack {
                     ForEach(Array(stride(from: 1, to: 13, by: 1)).reversed(), id:\.self) { month in
                         if (!historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  2021}).isEmpty) {
-                            Section(header: Text(String(calendar.monthSymbols[month-1]) + " " + String(year))) {
+                            VStack {
+                                Text(String(calendar.monthSymbols[month-1]) + " " + String(year))
+                                    .font(Font.custom("Sora-SemiBold", size: 15))
+                                    .foregroundColor(StyleColors.titleText)
+                                
                                 ForEach(historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  2021}), id:\.id) { history in
-                                    ZStack {
+                                    NavigationLink(destination: PesananDetailView(history: history)) {
                                         PesananRow(history: history)
-                                        
-                                        NavigationLink(destination: PesananDetailView(history: history)) {
-                                            EmptyView()
-                                        }
                                     }
                                 }
                             }

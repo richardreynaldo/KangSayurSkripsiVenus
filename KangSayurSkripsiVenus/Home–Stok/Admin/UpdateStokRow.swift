@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UpdateStokRow: View {
     @EnvironmentObject var productData: ProductData
+    @Binding var isLoading: Bool
     var qty: Int
     
     var body: some View {
@@ -32,7 +33,13 @@ struct UpdateStokRow: View {
                 Spacer()
                 
                 Button(action: {
-                    productData.updateProductStock()
+                    isLoading = true
+                    DispatchQueue.main.async {
+                        productData.updateProductStock()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            isLoading = false
+                        }
+                    }
                 }, label: {
                     ZStack {
                         Capsule()
@@ -50,8 +57,8 @@ struct UpdateStokRow: View {
     }
 }
 
-struct UpdateStokRow_Previews: PreviewProvider {
-    static var previews: some View {
-        UpdateStokRow(qty: 10)
-    }
-}
+//struct UpdateStokRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateStokRow(qty: 10)
+//    }
+//}

@@ -23,6 +23,8 @@ struct StartView: View {
             }
         }
         .accentColor(StyleColors.primaryRed)
+        .animation(.default)
+        .transition(.opacity)
     }
 }
 

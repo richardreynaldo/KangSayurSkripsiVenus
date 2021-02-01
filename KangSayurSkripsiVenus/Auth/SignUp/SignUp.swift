@@ -80,7 +80,7 @@ struct SignUp: View {
                         }
                     }
                     .padding(.top, 80)
-                    .padding(.horizontal, 16)
+                    .padding(.horizontal, 32)
                     
                     VStack {
                         NavigationLink(destination: SignUp_SetelAlamat(namaDepan: $namaDepan, namaBelakang: $namaBelakang, birthdate: $birthdate, email: $email, kataSandi: $kataSandi)) {
@@ -95,6 +95,7 @@ struct SignUp: View {
                         }
                         .padding(.top, 70)
                         .padding(.bottom)
+                        .padding(.horizontal, 32)
                         
                         HStack {
                             Text("Sudah punya akun?")
@@ -109,11 +110,9 @@ struct SignUp: View {
                             })
                         }
                         .padding(.top, -8)
+                        .padding(.bottom)
                     }
-                    
-                   
                 }
-                .padding([.top, .leading, .trailing])
             }
             .navigationBarHidden(true)
         }

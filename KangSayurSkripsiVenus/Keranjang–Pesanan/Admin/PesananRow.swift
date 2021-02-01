@@ -35,7 +35,7 @@ struct PesananRow: View {
                     Text("\(history.dateTime, formatter: Self.dateFormat)")
                         .font(Font.custom("Sora-Light", size: 10))
                         .foregroundColor(StyleColors.captionSmall)
-                        .padding(.top, 10)
+                        .padding(.top, 8)
                     
                     Text("\(history.product.name)")
                         .font(Font.custom("Sora-Bold", size: 15))
@@ -44,17 +44,17 @@ struct PesananRow: View {
                     Text("Status: \(history.status ? "Delivered" : "Preparing")")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
-                        .padding(.bottom, 14)
+                        .padding(.bottom, 8)
                     
                     //kurang yang tempat sampah buat delete sama + - buat quantity
                 }
-                .padding(.leading, 14)
+                .padding(.leading)
                 
                  Spacer()
                 
                 Image(systemName: "chevron.right")
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal)
         }
     }
 }
