@@ -13,7 +13,6 @@ struct CustomAdminTabView: View {
     @EnvironmentObject var historyData: HistoryData
     
     @State private var currentTab: Int = 0
-    @State private var isLoading: Bool = false
     
     var body: some View {
         GeometryReader { geometry in

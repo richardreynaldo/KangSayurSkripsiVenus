@@ -17,6 +17,7 @@
 		2C466EA325C42452001747CB /* PesananView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EA225C42452001747CB /* PesananView.swift */; };
 		2C466EAB25C4245A001747CB /* PesananRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EAA25C4245A001747CB /* PesananRow.swift */; };
 		2C466EB025C42477001747CB /* PesananDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466EAF25C42477001747CB /* PesananDetailView.swift */; };
+		2C466ED225C96DDD001747CB /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C466ED125C96DDD001747CB /* Loader.swift */; };
 		2C6A6DCE25AC19AF002E9FFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */; };
 		2C958C6325C2E31F00C32465 /* CustomAdminTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C958C6225C2E31F00C32465 /* CustomAdminTabView.swift */; };
 		2C958C6A25C308C700C32465 /* StokView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C958C6925C308C700C32465 /* StokView.swift */; };
@@ -106,6 +107,7 @@
 		2C466EA225C42452001747CB /* PesananView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananView.swift; sourceTree = "<group>"; };
 		2C466EAA25C4245A001747CB /* PesananRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananRow.swift; sourceTree = "<group>"; };
 		2C466EAF25C42477001747CB /* PesananDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PesananDetailView.swift; sourceTree = "<group>"; };
+		2C466ED125C96DDD001747CB /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		2C6A6DCD25AC19AF002E9FFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C958C6225C2E31F00C32465 /* CustomAdminTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAdminTabView.swift; sourceTree = "<group>"; };
 		2C958C6925C308C700C32465 /* StokView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StokView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				2C405A0A25AC41520052CA50 /* CartData.swift */,
 				2C9D753425BE68A800FCFC45 /* OrderData.swift */,
 				6D8D470325BC1C2A00118EC4 /* HistoryData.swift */,
+				2C466ED125C96DDD001747CB /* Loader.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				6D45461525AEFB350024E572 /* PengirimanRow.swift in Sources */,
 				2C466EAB25C4245A001747CB /* PesananRow.swift in Sources */,
 				6D45460C25AEFB350024E572 /* TotalKeranjangRow.swift in Sources */,
+				2C466ED225C96DDD001747CB /* Loader.swift in Sources */,
 				2C9D755725BE995F00FCFC45 /* Order.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

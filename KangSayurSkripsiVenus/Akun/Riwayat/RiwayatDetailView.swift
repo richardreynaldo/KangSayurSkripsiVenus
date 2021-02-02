@@ -10,7 +10,6 @@ import SwiftUI
 struct RiwayatDetailView: View {
     @EnvironmentObject var userData: UserData
     @EnvironmentObject var historyData: HistoryData
-    @State private var isLoading: Bool = false
     @State private var isShowingAlert: Bool = false
     
     var history: History
@@ -136,12 +135,8 @@ struct RiwayatDetailView: View {
                         .padding(.vertical)
                         .alert(isPresented: $isShowingAlert) {
                             Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
-                                isLoading = true
                                 DispatchQueue.main.async {
                                     historyData.confirmOrder(history: history)
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                        isLoading = false
-                                    }
                                 }
                             }, secondaryButton: .cancel(Text("Tidak")))}
                     }

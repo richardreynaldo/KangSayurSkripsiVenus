@@ -28,6 +28,7 @@ struct KangSayurSkripsiVenusApp: App {
                 .environmentObject(CartData())
                 .environmentObject(OrderData())
                 .environmentObject(HistoryData())
+                .environmentObject(Loader())
                 .onAppear {
                     UIApplication.shared.addTapGestureRecognizer()
                 }

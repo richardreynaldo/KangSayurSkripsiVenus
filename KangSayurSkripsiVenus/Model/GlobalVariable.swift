@@ -8,6 +8,8 @@
 import Foundation
 
 var globalUserID: String = ""
+var isActive: Bool = false
+var isLoading: Bool = false
 var isCheckedChecker: Bool = false
 
 // For isAdmin validation using @AppStorage – Currently not in used

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct StokView: View {
     @EnvironmentObject var productData: ProductData
-    @State private var isLoading: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -30,7 +29,7 @@ struct StokView: View {
                     }
                     .padding(.bottom, -8)
                     
-                    UpdateStokRow(isLoading: $isLoading, qty: productData.getProductStock())
+                    UpdateStokRow(qty: productData.getProductStock())
                 }
                 .disabled(isLoading)
                 .blur(radius: isLoading ? 3 : 0)

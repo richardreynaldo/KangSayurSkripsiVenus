@@ -14,6 +14,7 @@ class UserData: ObservableObject {
     // For isAdmin validation using @AppStorage – Currently not in used
     /* @AppStorage("isAdmin") var isAdmin = Account.isAdmin */
     
+    @ObservedObject var loader = Loader()
     @Published var profile: Profile?
     
     private let userID = Auth.auth().currentUser?.uid
@@ -28,6 +29,8 @@ class UserData: ObservableObject {
     private var isAdmin: Bool = false
     
     func getUserData() {
+        loader.showLoader()
+        
         db.collection("User").document(globalUserID).getDocument { (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
@@ -43,10 +46,13 @@ class UserData: ObservableObject {
                 
                 self.profile = Profile(userID: globalUserID, firstName: self.firstName, lastName: self.lastName, email: self.email, dob: self.dob, address: self.address, isAdmin: self.isAdmin)
                 
+                isActive = true
                 print("This is your profile: \(self.profile ?? Profile.default)")
                 print("This is your userID: \(globalUserID)")
+                self.loader.removeLoader()
             } else {
                 print("Document does not exist")
+                self.loader.removeLoader()
             }
         }
     }

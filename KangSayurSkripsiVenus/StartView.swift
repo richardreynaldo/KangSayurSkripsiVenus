@@ -10,7 +10,7 @@ import SwiftUI
 struct StartView: View {
     @EnvironmentObject var authentication: Authentication
     @EnvironmentObject var userData: UserData
-    @State private var isActive: Bool = false
+//    @State private var isActive: Bool = false
     
     var body: some View {
         Group {
@@ -39,11 +39,8 @@ struct StartView: View {
                         }
                     }
                     .onAppear {
-                        DispatchQueue.main.async {
+                        DispatchQueue.global(qos: .userInitiated).async {
                             userData.getUserData()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                isActive = true
-                            }
                         }
                     }
                 }

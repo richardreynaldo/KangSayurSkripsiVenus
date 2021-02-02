@@ -13,7 +13,6 @@ struct SignIn: View {
     @State private var email = ""
     @State private var password = ""
     @State private var isPresented: Bool = false
-    @State private var isLoading: Bool = false
     
     var capsuleColor: Color {
         return email.isEmpty || password.isEmpty ? StyleColors.disabledButtonBg : StyleColors.primaryRed
@@ -46,12 +45,8 @@ struct SignIn: View {
                     
                     VStack{
                         Button(action: {
-                            isLoading = true
                             DispatchQueue.main.async {
                                 authentication.signIn(email: email, password: password)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    isLoading = false
-                                }
                             }
                         }, label: {
                             ZStack {

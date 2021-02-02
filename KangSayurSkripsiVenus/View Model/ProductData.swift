@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 import FirebaseFirestore
 
 class ProductData: ObservableObject {
-//    @Published var categories = [Category]()
+    @ObservedObject var loader = Loader()
     @Published var products = [Product]()
     
     private var db = Firestore.firestore()
@@ -64,20 +65,26 @@ class ProductData: ObservableObject {
     }
     
     func updateProductStock() {
+        loader.showLoader()
+        
         for i in products {
             db.collection("Product").document(i.id).updateData([
                 "stock" : i.stock
             ]) { error in
                 if let error = error {
                     print("Error updating product stock: \(error)")
+                    self.loader.removeLoader()
                 } else {
                     print("Product stock successfully updated!")
+                    self.loader.removeLoader()
                 }
             }
         }
     }
     
     func updateProductData(product: Product, name: String, price: Int, stock: Int) {
+        loader.showLoader()
+        
         db.collection("Product").document(product.id).updateData([
             "name" : name,
             "price" : price,
@@ -85,8 +92,10 @@ class ProductData: ObservableObject {
         ]) { error in
             if let error = error {
                 print("Error updating product data: \(error)")
+                self.loader.removeLoader()
             } else {
                 print("Product data successfully updated!")
+                self.loader.removeLoader()
             }
         }
     }

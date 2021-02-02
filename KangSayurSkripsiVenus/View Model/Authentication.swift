@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 import AuthenticationServices
 import FirebaseAuth
 import FirebaseFirestore
 
 class Authentication: NSObject, ObservableObject {
+    @ObservedObject var loader = Loader()
+    
     @Published var profile: Profile?
     @Published var loggedInUser: User?
     @Published var isAuthenticating = false
@@ -40,6 +43,7 @@ class Authentication: NSObject, ObservableObject {
     func signUp(firstName: String, lastName: String, email: String, dob: Date, address: [String], password: String) {
         isAuthenticating = true
         error = nil
+        loader.showLoader()
         
         auth.createUser(withEmail: email, password: password) { (auth, error) in
             DispatchQueue.main.async {
@@ -57,12 +61,15 @@ class Authentication: NSObject, ObservableObject {
                     ]) { err in
                         if let err = err {
                             print("Error adding user: \(err)")
+                            self.loader.removeLoader()
                         } else {
                             print("User added with ID: \(user.uid)")
+                            self.loader.removeLoader()
                         }
                     }
                 } else if let error = error {
                     self.error = error as NSError
+                    self.loader.removeLoader()
                 }
             }
         }
@@ -71,6 +78,7 @@ class Authentication: NSObject, ObservableObject {
     func signIn(email: String, password: String) {
         isAuthenticating = true
         error = nil
+        loader.showLoader()
         
         auth.signIn(withEmail: email, password: password) { (auth, error) in
             DispatchQueue.main.async {
@@ -79,8 +87,10 @@ class Authentication: NSObject, ObservableObject {
                     self.loggedInUser = user
                     print("Sign in successful with \(String(describing: self.loggedInUser))")
                     globalUserID = user.uid
+                    self.loader.removeLoader()
                 } else if let error = error {
                     self.error = error as NSError
+                    self.loader.removeLoader()
                 }
             }
         }

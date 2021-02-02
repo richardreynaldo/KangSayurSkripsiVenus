@@ -41,9 +41,10 @@ struct UbahKataSandiView: View {
                             }
                             else {
                                 print("Password changed successfully.")
-                                //isLoading = false
-                                userData.getUserData()
-                                presentationMode.wrappedValue.dismiss()
+                                DispatchQueue.main.async {
+                                    userData.getUserData()
+                                    presentationMode.wrappedValue.dismiss()
+                                }
                             }
                         }
                     }

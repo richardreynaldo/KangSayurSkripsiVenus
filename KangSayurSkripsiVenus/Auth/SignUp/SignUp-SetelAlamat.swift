@@ -10,8 +10,6 @@ import SwiftUI
 struct SignUp_SetelAlamat: View {
     @EnvironmentObject var authentication: Authentication
     
-    @State private var isLoading: Bool = false
-    
     @State private var perumahan = ""
     @State private var jalan = ""
     @State private var nomor = ""
@@ -142,12 +140,8 @@ struct SignUp_SetelAlamat: View {
                     VStack {
                         Button(action: {
                             combineData()
-                            isLoading = true
                             DispatchQueue.main.async {
                                 authentication.signUp(firstName: namaDepan, lastName: namaBelakang, email: email, dob: birthdate, address: address, password: kataSandi)
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    isLoading = false
-                                }
                             }
                         }, label: {
                             ZStack {
