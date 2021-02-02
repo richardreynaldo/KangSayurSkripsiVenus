@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AkunView: View {
     @EnvironmentObject var authentication: Authentication
+    @State private var isShowingAlert: Bool = false
     
     var body: some View {
         ZStack {
@@ -56,11 +57,17 @@ struct AkunView: View {
                     Spacer()
                     
                     Button(action: {
-                        authentication.signout()
+                        isShowingAlert = true
                     }, label: {
                         AkunChevron(title: "Keluar")
                             .padding(.horizontal)
                     })
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(title: Text("Keluar?"), message: Text("Apakah anda yakin ingin keluar?"), primaryButton: .destructive(Text("Ya")) {
+                            DispatchQueue.main.async {
+                                authentication.signout()
+                            }
+                        }, secondaryButton: .cancel(Text("Tidak")))}
                 }
                 .padding(.top, 20)
             }
