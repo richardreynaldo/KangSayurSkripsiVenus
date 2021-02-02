@@ -13,6 +13,12 @@ struct TotalKeranjangRow: View {
     
     var price: Int
     var qty: Int
+    var totalHargaTextColor: Color {
+        return cartData.cart.isEmpty ? StyleColors.disabledButtonBg : StyleColors.titleText
+    }
+    var priceTextColor: Color {
+        return cartData.cart.isEmpty ? StyleColors.disabledButtonBg : StyleColors.secondaryTitleText
+    }
     
     var body: some View {
         ZStack {
@@ -24,11 +30,11 @@ struct TotalKeranjangRow: View {
                 VStack(alignment: .leading) {
                     Text("Total Harga")
                         .font(Font.custom("Sora-SemiBold", size: 17, relativeTo: .subheadline))
-                        .foregroundColor(StyleColors.titleText)
+                        .foregroundColor(totalHargaTextColor)
                     
                     Text("Rp\(price)")
                         .font(Font.custom("Sora-Regular", size: 16))
-                        .foregroundColor(StyleColors.secondaryTitleText)
+                        .foregroundColor(priceTextColor)
                 }
                 .padding(.leading)
                 

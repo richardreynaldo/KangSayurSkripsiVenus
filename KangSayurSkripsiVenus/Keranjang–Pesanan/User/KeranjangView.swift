@@ -14,43 +14,38 @@ struct KeranjangView: View {
     @EnvironmentObject var cartData: CartData
     @State var isAllChecked: Bool = false
     
+    var textColor: Color {
+        return cartData.cart.isEmpty ? StyleColors.disabledButtonBg : StyleColors.titleText
+    }
+    
     var body: some View {
         ZStack {
-            GeometryReader { geometry in
-                VStack {
-                    HStack {
-                        CheckAllView(isAllChecked: $isAllChecked)
-                        Text("Pilih semua")
-                            .lineLimit(1)
-                            .frame(width: 100,alignment: .leading)
-                        
-                    }
-                    .padding(.top)
-                    .padding(.trailing,240)
-                    
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
-                                KeranjangRow(isAllChecked: $isAllChecked, product: item.product, cart: item, index: index)
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 4)
-                            }
-                        }
-                        .padding(.vertical, 8)
-                        //jangan lupa di ganti sama actual total price*quantity terus tambahin
-                    }
-                    .padding(.bottom, -8)
-                    
-                    TotalKeranjangRow(price: cartData.getTotalPriceCart(), qty: cartData.getQuantityCart())
+            VStack {
+                HStack {
+                    CheckAllView(isAllChecked: $isAllChecked)
+                    Text("Pilih semua")
+                        .font(Font.custom("Sora-Bold", size: 17))
+                        .foregroundColor(textColor)
                 }
+                .padding(.top)
+                .padding(.trailing,240)
+                
+                ScrollView {
+                    LazyVStack {
+                        ForEach(Array(cartData.cart.enumerated()), id: \.1.id) { (index, item) in
+                            KeranjangRow(isAllChecked: $isAllChecked, product: item.product, cart: item, index: index)
+                                .padding(.horizontal)
+                                .padding(.vertical, 4)
+                        }
+                    }
+                    .padding(.vertical, 8)
+                }
+                .padding(.bottom, -8)
+                
+                TotalKeranjangRow(price: cartData.getTotalPriceCart(), qty: cartData.getQuantityCart())
             }
-            .background(StyleColors.secondaryYellow)
-//            .onAppear {
-//                productData.getProductData()
-//                cartData.getCartData()
-//                productData.appendToFirebase()
-//            }
         }
+        .background(StyleColors.secondaryYellow)
     }
 }
     

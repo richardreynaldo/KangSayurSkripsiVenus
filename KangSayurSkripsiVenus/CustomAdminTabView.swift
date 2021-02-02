@@ -49,30 +49,10 @@ struct CustomAdminTabView: View {
                     }
                     .tag(2)
                 }
-                .disabled(isLoading)
-                .blur(radius: isLoading ? 3 : 0)
                 .onAppear {
-                    isLoading = true
                     DispatchQueue.main.async {
-                        userData.getUserData()
                         historyData.getHistoryData(productData: productData)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                            isLoading = false
-                        }
                     }
-                }
-                
-                if isLoading {
-                    Rectangle()
-                        .fill(Color.white.opacity(0.75))
-                        .cornerRadius(15)
-                        .shadow(color: Color(.lightGray), radius: 4, x: 0.0, y: 0.0)
-                        .frame(width: geometry.size.width / 2, height: geometry.size.height / 5)
-                    
-                    ProgressView("Loading...")
-                        .scaleEffect(1.0, anchor: .center)
-                        .progressViewStyle(CircularProgressViewStyle(tint: StyleColors.primaryRed))
-                        .foregroundColor(StyleColors.primaryRed)
                 }
             }
         }

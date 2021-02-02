@@ -53,8 +53,10 @@ struct PesananView: View {
                                     .foregroundColor(StyleColors.titleText)
                                 
                                 ForEach(historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  2021}), id:\.id) { history in
-                                    NavigationLink(destination: PesananDetailView(history: history)) {
-                                        PesananRow(history: history)
+                                    if history.status == false {
+                                        NavigationLink(destination: PesananDetailView(history: history)) {
+                                            PesananRow(history: history)
+                                        }
                                     }
                                 }
                             }

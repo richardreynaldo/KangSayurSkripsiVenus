@@ -9,8 +9,9 @@ import SwiftUI
 
 struct RiwayatDetailView: View {
     @EnvironmentObject var userData: UserData
-    @State private var isActionSheetShow = false
-    @State private var showAlert = false
+    @EnvironmentObject var historyData: HistoryData
+    @State private var isLoading: Bool = false
+    @State private var isShowingAlert: Bool = false
     
     var history: History
     
@@ -37,66 +38,133 @@ struct RiwayatDetailView: View {
     }
     
     var body: some View {
-        ZStack {
-            ScrollView {
-                LazyVStack (alignment: .center) {
-                    //INI DI TENGAH TARO GAMBAR PRODUK AJA
-                    Image(history.product.name)
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .aspectRatio(contentMode: .fit)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Informasi Produk")
-                            .font(Font.custom("Sora-SemiBold", size: 17))
-                            .foregroundColor(StyleColors.titleText)
-                            .padding(.bottom, 4)
+        GeometryReader { geometry in
+            ZStack {
+                ScrollView {
+                    LazyVStack (alignment: .center) {
+                        //INI DI TENGAH TARO GAMBAR PRODUK AJA
+                        Image(history.product.name)
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .aspectRatio(contentMode: .fit)
                         
-                        Group {
-                            Text("Nama: \(history.product.name)") //nama produk
-                            Text("Kuantitas: \(history.quantity) kg") //berat produk
-                            Text("Harga: Rp\(history.product.price)/kg") //harga produk
+                        VStack(alignment: .leading) {
+                            Text("Informasi Produk")
+                                .font(Font.custom("Sora-SemiBold", size: 17))
+                                .foregroundColor(StyleColors.titleText)
+                                .padding(.bottom, 4)
                             
-                            Divider()
-                        }
-                        .font(Font.custom("Sora-Regular", size: 16))
-                        .foregroundColor(StyleColors.secondaryTitleText)
-                        
-                        Text("Detail Order")
-                            .font(Font.custom("Sora-SemiBold", size: 17))
-                            .foregroundColor(StyleColors.titleText)
-                            .padding(.bottom, 4)
-                        
-                        Group {
-                            Text("ID: \(history.id)") //id order
-                            Text("Tanggal: \(history.dateTime, formatter: Self.dateFormat)") //tanggal order
-                            Text("Waktu: \(history.dateTime, formatter: Self.timeFormat)") //waktu order
-                            Text("Status: \(history.status ? "Delivered" : "Preparing")") //status order
-                            Text("Total: Rp\(history.product.price * history.quantity)") //total order
+                            Group {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Nama") //nama produk
+                                        Text("Kuantitas") //berat produk
+                                        Text("Harga") //harga produk
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        Text(history.product.name) //nama produk
+                                        Text("\(history.quantity) kg") //berat produk
+                                        Text("Rp\(history.product.price)/kg") //harga produk
+                                    }
+                                }
+                                
+                                Divider()
+                            }
+                            .font(Font.custom("Sora-Regular", size: 16))
+                            .foregroundColor(StyleColors.secondaryTitleText)
                             
-                            Divider()
-                        }
-                        .font(Font.custom("Sora-Regular", size: 16))
-                        .foregroundColor(StyleColors.secondaryTitleText)
-                        
-                        Text("Alamat")
-                            .font(Font.custom("Sora-SemiBold", size: 17))
-                            .foregroundColor(StyleColors.titleText)
-                            .padding(.bottom, 4)
-                        
-                        Group {
-                            Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
+                            Text("Detail Order")
+                                .font(Font.custom("Sora-SemiBold", size: 17))
+                                .foregroundColor(StyleColors.titleText)
+                                .padding(.bottom, 4)
                             
-                            Divider()
+                            Group {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("ID") //id order
+                                        Text("Tanggal") //tanggal order
+                                        Text("Waktu") //waktu order
+                                        Text("Status") //status order
+                                        Text("Total") //total order
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        Text(history.id) //id order
+                                        Text("\(history.dateTime, formatter: Self.dateFormat)") //tanggal order
+                                        Text("\(history.dateTime, formatter: Self.timeFormat)") //waktu order
+                                        Text("\(history.status ? "Delivered" : "Preparing")") //status order
+                                        Text("Rp\(history.product.price * history.quantity)") //total order
+                                    }
+                                }
+                                
+                                Divider()
+                            }
+                            .font(Font.custom("Sora-Regular", size: 16))
+                            .foregroundColor(StyleColors.secondaryTitleText)
+                            
+                            Text("Alamat")
+                                .font(Font.custom("Sora-SemiBold", size: 17))
+                                .foregroundColor(StyleColors.titleText)
+                                .padding(.bottom, 4)
+                            
+                            Group {
+                                Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
+                                
+                                Divider()
+                            }
+                            .font(Font.custom("Sora-Regular", size: 16))
+                            .foregroundColor(StyleColors.secondaryTitleText)
                         }
-                        .font(Font.custom("Sora-Regular", size: 16))
-                        .foregroundColor(StyleColors.secondaryTitleText)
+                        
+                        Button(action: {
+                            isShowingAlert = true
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.primaryRed)
+                                    .frame(height: 52)
+                                
+                                Text("Konfirmasi Pesanan Diterima")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .padding(.vertical)
+                        .alert(isPresented: $isShowingAlert) {
+                            Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
+                                isLoading = true
+                                DispatchQueue.main.async {
+                                    historyData.confirmOrder(history: history)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                        isLoading = false
+                                    }
+                                }
+                            }, secondaryButton: .cancel(Text("Tidak")))}
                     }
+                    .padding()
                 }
-                .padding()
+                .disabled(isLoading)
+                .blur(radius: isLoading ? 3 : 0)
+                
+                if isLoading {
+                    Rectangle()
+                        .fill(Color.white.opacity(0.75))
+                        .cornerRadius(15)
+                        .shadow(color: Color(.lightGray), radius: 4, x: 0.0, y: 0.0)
+                        .frame(width: geometry.size.width / 2, height: geometry.size.height / 5)
+                    
+                    ProgressView("Mengonfirmasikan...")
+                        .scaleEffect(1.0, anchor: .center)
+                        .progressViewStyle(CircularProgressViewStyle(tint: StyleColors.primaryRed))
+                        .foregroundColor(StyleColors.primaryRed)
+                }
             }
+            .background(StyleColors.secondaryYellow)
         }
-        .background(StyleColors.secondaryYellow)
         .navigationBarTitle("Riwayat")
     }
 }

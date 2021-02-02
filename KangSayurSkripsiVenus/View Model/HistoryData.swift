@@ -33,6 +33,16 @@ class HistoryData: ObservableObject {
         }
     }
     
+    func confirmOrder(history: History) {
+        db.collection("Order").document(history.id).updateData(["status" : true]) { error in
+            if let error = error {
+                print("Error updating product status: \(error)")
+            } else {
+                print("Product status successfully updated!")
+            }
+        }
+    }
+    
     // Alternate Function
     /* func alternateGetHistoryData(productData: ProductData) {
         // Listen to document metadata.
