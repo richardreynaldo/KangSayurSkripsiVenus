@@ -36,15 +36,11 @@ class HistoryData: ObservableObject {
     }
     
     func confirmOrder(history: History) {
-        loader.showLoader()
-        
         db.collection("Order").document(history.id).updateData(["status" : true]) { error in
             if let error = error {
                 print("Error updating product status: \(error)")
-                self.loader.removeLoader()
             } else {
                 print("Product status successfully updated!")
-                self.loader.removeLoader()
             }
         }
     }

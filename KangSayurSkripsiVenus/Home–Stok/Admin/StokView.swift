@@ -41,7 +41,7 @@ struct StokView: View {
                         .shadow(color: Color(.lightGray), radius: 4, x: 0.0, y: 0.0)
                         .frame(width: geometry.size.width / 2, height: geometry.size.height / 5)
                     
-                    ProgressView("Updating...")
+                    ProgressView("Loading...")
                         .scaleEffect(1.0, anchor: .center)
                         .progressViewStyle(CircularProgressViewStyle(tint: StyleColors.primaryRed))
                         .foregroundColor(StyleColors.primaryRed)
