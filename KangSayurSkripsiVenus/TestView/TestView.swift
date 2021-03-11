@@ -2,7 +2,7 @@
 //  TestView.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Rayhan Martiza Faluda on 12/01/21.
+//  Created by Venus Dhammiko on 12/01/21.
 //
 
 import SwiftUI

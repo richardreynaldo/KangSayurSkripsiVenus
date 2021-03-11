@@ -2,7 +2,7 @@
 //  KangSayurSkripsiVenusApp.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Laurentius Richard Reynaldo on 07/01/21.
+//  Created by Venus Dhammiko on 07/01/21.
 //
 
 import SwiftUI

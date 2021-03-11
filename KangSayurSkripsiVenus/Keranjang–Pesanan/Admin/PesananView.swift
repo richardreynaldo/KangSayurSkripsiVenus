@@ -2,7 +2,7 @@
 //  PesananView.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Rayhan Martiza Faluda on 29/01/21.
+//  Created by Venus Dhammiko on 29/01/21.
 //
 
 import SwiftUI

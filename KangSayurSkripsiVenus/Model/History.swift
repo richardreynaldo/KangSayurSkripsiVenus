@@ -2,7 +2,7 @@
 //  History.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Laurentius Richard Reynaldo on 23/01/21.
+//  Created by Venus Dhammiko on 23/01/21.
 //
 
 import Foundation

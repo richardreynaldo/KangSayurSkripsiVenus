@@ -2,7 +2,7 @@
 //  StokView.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Rayhan Martiza Faluda on 28/01/21.
+//  Created by Venus Dhammiko on 28/01/21.
 //
 
 import SwiftUI

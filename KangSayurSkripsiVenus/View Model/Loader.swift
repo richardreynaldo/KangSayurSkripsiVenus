@@ -2,7 +2,7 @@
 //  Loader.swift
 //  KangSayurSkripsiVenus
 //
-//  Created by Rayhan Martiza Faluda on 02/02/21.
+//  Created by Venus Dhammiko on 02/02/21.
 //
 
 import Foundation
