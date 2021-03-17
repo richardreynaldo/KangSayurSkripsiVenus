@@ -27,7 +27,7 @@ struct AlamatRow: View {
                     .foregroundColor(StyleColors.secondaryTitleText)
                     .padding(.bottom, 8)
             }
-            .padding(.horizontal)
+            .offset(x: -12)
         }
     }
 }

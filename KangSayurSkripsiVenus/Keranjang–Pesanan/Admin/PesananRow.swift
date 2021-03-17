@@ -23,9 +23,6 @@ struct PesananRow: View {
                 .fill(Color.white)
             
             HStack {
-                
-                // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
-                
                 Image(history.product.name)
                     .resizable()
                     .frame(width: 50, height: 50)
@@ -45,8 +42,6 @@ struct PesananRow: View {
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
                         .padding(.bottom, 8)
-                    
-                    //kurang yang tempat sampah buat delete sama + - buat quantity
                 }
                 .padding(.leading)
                 

@@ -26,7 +26,7 @@ struct RingkasanRow: View {
                     .padding(.horizontal)
                 
                 HStack {
-                    Text("Total Harga(\(quantity) Barang)")
+                    Text("Total Harga (\(quantity) Barang)")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
                     
