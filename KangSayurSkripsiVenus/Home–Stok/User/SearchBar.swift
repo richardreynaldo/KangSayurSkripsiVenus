@@ -16,7 +16,7 @@ struct SearchBar: View {
         ZStack {
             HStack {
                 TextField("Cari sayur...", text: $text)
-                    .textCase(.lowercase)
+//                    .textCase(.lowercase)
                     .padding()
                     .padding(.horizontal, 32)
                     .background(Color(.systemGray6))

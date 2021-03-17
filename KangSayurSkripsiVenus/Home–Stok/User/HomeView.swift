@@ -21,7 +21,7 @@ struct HomeView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(productData.products.filter({ text.isEmpty ? true : $0.name.contains(text) })) { item in
+                        ForEach(productData.products.filter({ text.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(text) })) { item in
                             CollectionViewCell(product: item)
                         }
 //                        ForEach(productData.products.indices, id: \.self) { index in
