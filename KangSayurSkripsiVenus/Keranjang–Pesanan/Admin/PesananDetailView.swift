@@ -41,10 +41,10 @@ struct PesananDetailView: View {
             ScrollView {
                 LazyVStack (alignment: .center) {
                     //INI DI TENGAH TARO GAMBAR PRODUK AJA
-                    Image(history.product.name)
+                    /* Image(history.product.name)
                         .resizable()
                         .frame(width: 200, height: 200)
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fit) */
                     
                     VStack(alignment: .leading) {
                         Text("Informasi Produk")
@@ -63,9 +63,9 @@ struct PesananDetailView: View {
                                 Spacer()
                                 
                                 VStack(alignment: .trailing) {
-                                    Text(history.product.name) //nama produk
-                                    Text("\(history.quantity) kg") //berat produk
-                                    Text("Rp\(history.product.price)/kg") //harga produk
+                                    Text(history.orders[0].product.name) //nama produk
+                                    Text("\(history.orders[0].quantity) kg") //berat produk
+                                    Text("Rp\(history.orders[0].product.price)/kg") //harga produk
                                 }
                             }
                             
@@ -93,10 +93,10 @@ struct PesananDetailView: View {
                                 
                                 VStack(alignment: .trailing) {
                                     Text(history.id) //id order
-                                    Text("\(history.dateTime, formatter: Self.dateFormat)") //tanggal order
-                                    Text("\(history.dateTime, formatter: Self.timeFormat)") //waktu order
-                                    Text("\(history.status ? "Delivered" : "Preparing")") //status order
-                                    Text("Rp\(history.product.price * history.quantity)") //total order
+                                    Text("\(history.orderDate, formatter: Self.dateFormat)") //tanggal order
+                                    Text("\(history.orderDate, formatter: Self.timeFormat)") //waktu order
+                                    Text(history.status) //status order
+                                    Text("Rp\(history.totalPrice)") //total order
                                 }
                             }
                             

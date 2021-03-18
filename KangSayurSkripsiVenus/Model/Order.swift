@@ -11,7 +11,7 @@ struct Order: Codable, Equatable, Identifiable {
     var id: String = ""
     var orderDate: Date = Date()
     var paymentType: String = ""
-    var status: Bool = false
+    var status: String = ""
     var totalOrder: Int = 0
     var totalPrice: Int = 0
     var cart: [Cart] = []

@@ -25,14 +25,14 @@ struct PesananView: View {
                 LazyVStack {
                     ForEach(Array(stride(from: 2020, to: 2025, by: 1)).reversed(), id:\.self) { year in
                         ForEach(Array(stride(from: 1, to: 13, by: 1)).reversed(), id:\.self) { month in
-                            if (!historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  year}).isEmpty) {
+                            if (!historyData.history.filter({calendar.component(.month, from: $0.orderDate) ==  month && calendar.component(.year, from: $0.orderDate) ==  year}).isEmpty) {
                                 VStack {
                                     Text(String(calendar.monthSymbols[month-1]) + " " + String(year))
                                         .font(Font.custom("Sora-SemiBold", size: 15))
                                         .foregroundColor(StyleColors.titleText)
                                     
-                                    ForEach(historyData.history.filter({calendar.component(.month, from: $0.dateTime) ==  month && calendar.component(.year, from: $0.dateTime) ==  year}), id:\.id) { history in
-                                        if history.status == false {
+                                    ForEach(historyData.history.filter({calendar.component(.month, from: $0.orderDate) ==  month && calendar.component(.year, from: $0.orderDate) ==  year}), id:\.id) { history in
+                                        if history.status == "Preparing" || history.status == "Delivering" {
                                             NavigationLink(destination: PesananDetailView(history: history)) {
                                                 PesananRow(history: history)
                                             }

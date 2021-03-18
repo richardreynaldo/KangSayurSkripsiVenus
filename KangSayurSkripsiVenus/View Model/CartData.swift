@@ -61,7 +61,7 @@ class CartData: ObservableObject {
 //                order.id = UUID().uuidString
                 order.orderDate = Date()
                 order.paymentType = "Cash on Delivery"
-                order.status = false
+                order.status = "Preparing"
                 order.totalOrder = getQuantityCart()
                 order.totalPrice = getTotalPriceCart()
                 order.cart.append(item)
@@ -95,7 +95,7 @@ class CartData: ObservableObject {
         var ref: DocumentReference? = nil
         
         // Current Working Code
-        for i in order.cart {
+        /* for i in order.cart {
             ref = db.collection("Order").addDocument(data: [
                 "userID" : globalUserID,
                 "productID" : i.product.id,
@@ -120,11 +120,11 @@ class CartData: ObservableObject {
         }
         
         cart.removeAll()
-        order.removeOrderData()
+        order.removeOrderData() */
         
         
         // Alternate Code
-        /* orderRef = db.collection("Order").document(globalUserID).collection("Orders").addDocument(data: [
+        ref = db.collection("Order").addDocument(data: [
             "userID" : globalUserID,
             "orderDate": Date(),
             "paymentType": order.paymentType,
@@ -135,20 +135,20 @@ class CartData: ObservableObject {
             if let err = err {
                 print("Error adding Cart: \(err)")
             } else {
-                print("Cart added with ID: \(orderRef!.documentID)")
+                print("Cart added with ID: \(ref!.documentID)")
             }
         }
         
         for i in order.cart {
-            db.collection("Order").document(globalUserID).collection("Orders").document(orderRef!.documentID).collection("Cart").addDocument(data: [
+            db.collection("Order").document(ref!.documentID).collection("Orders").addDocument(data: [
+                "orderID" : ref!.documentID,
                 "productID" : i.product.id,
-                "quantity" : i.quantity,
-                "status" : order.status
+                "quantity" : i.quantity
             ]) { err in
                 if let err = err {
                     print("Error adding Cart: \(err)")
                 } else {
-                    print("Cart added with ID: \(orderRef!.documentID)")
+                    print("Cart added with ID: \(ref!.documentID)")
                 }
             }
             print("CEK123\(i.quantity) Ini stock \(i.product.stock)")
@@ -156,7 +156,10 @@ class CartData: ObservableObject {
             db.collection("Product").document(i.product.id).updateData([
                 "stock": i.product.stock - i.quantity
             ])
-        } */
+        }
+        
+        cart.removeAll()
+        order.removeOrderData()
         
         
         // OG Code

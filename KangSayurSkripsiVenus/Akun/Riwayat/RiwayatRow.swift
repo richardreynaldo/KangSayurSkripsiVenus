@@ -23,30 +23,25 @@ struct RiwayatRow: View {
                 .fill(Color.white)
             
             HStack {
-                
-                // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
-                
-                Image(history.product.name)
+                /* Image(history.product.name)
                     .resizable()
                     .frame(width: 50, height: 50)
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fit) */
                 
                 VStack(alignment: .leading) {
-                    Text("\(history.dateTime, formatter: Self.dateFormat)")
+                    Text("\(history.orderDate, formatter: Self.dateFormat)")
                         .font(Font.custom("Sora-Light", size: 10))
                         .foregroundColor(StyleColors.captionSmall)
                         .padding(.top, 10)
                     
-                    Text("\(history.product.name)")
+                    Text("\(history.id)")
                         .font(Font.custom("Sora-Bold", size: 15))
                         .foregroundColor(StyleColors.titleText)
                     
-                    Text("Status: \(history.status ? "Delivered" : "Preparing")")
+                    Text("Status: \(history.status)")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
                         .padding(.bottom, 14)
-                    
-                    //kurang yang tempat sampah buat delete sama + - buat quantity
                 }
                 .padding(.leading, 14)
                 
