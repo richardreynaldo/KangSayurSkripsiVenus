@@ -47,6 +47,8 @@ struct RiwayatDetailView: View {
                             .frame(width: 200, height: 200)
                             .aspectRatio(contentMode: .fit) */
                         
+                        
+                        
                         VStack(alignment: .leading) {
                             Text("Informasi Produk")
                                 .font(Font.custom("Sora-SemiBold", size: 17))
@@ -54,7 +56,9 @@ struct RiwayatDetailView: View {
                                 .padding(.bottom, 4)
                             
                             Group {
-                                ForEach(history.orders) { item in
+                                ForEach(history.orders.filter({
+                                    $0.orderID == history.id
+                                })) { item in
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Text("Nama") //nama produk

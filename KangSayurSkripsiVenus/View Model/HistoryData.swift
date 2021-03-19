@@ -16,6 +16,11 @@ class HistoryData: ObservableObject {
     @Published var orders = [Orders]()
     private var db = Firestore.firestore()
 
+    
+//    func getOrdersData() -> Orders {
+//
+//    }
+    
     func getHistoryData(productData: ProductData) {
         // Current Working Code
         db.collection("Order").whereField("userID", isEqualTo: globalUserID).order(by: "status").order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
@@ -33,18 +38,17 @@ class HistoryData: ObservableObject {
                 let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
                 let orderDate = timeStamp.dateValue()
                 
-                self.db.collection("Order").document(queryDocumentSnapshot.documentID).collection("Orders").getDocuments { (snapshot, err) in
+                self.db.collection("Orders").addSnapshotListener { (snapshot, err) in
                     guard let documents = snapshot?.documents else {
                         print("No documents")
                         return
                     }
-                    
                     self.orders = documents.map({ documentSnapshot -> Orders in
                         let data = documentSnapshot.data()
                         let productID = data["productID"] as? String ?? ""
                         let quantity = data["quantity"] as? Int ?? 0
-                        
-                        return Orders(id: documentSnapshot.documentID, orderID: queryDocumentSnapshot.documentID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity)
+                        let orderID = data["orderID"] as? String ?? ""
+                        return Orders(id: documentSnapshot.documentID, orderID: orderID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity)
                     })
                 }
                 
@@ -52,7 +56,8 @@ class HistoryData: ObservableObject {
                 print("totalOrder: \(totalOrder)")
                 print("orders: \(self.orders)")
                 
-                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders)
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders
+                )
             })
         }
         
@@ -112,7 +117,7 @@ class HistoryData: ObservableObject {
     } */
     
     func confirmOrder(history: History) {
-        db.collection("Order").document(history.id).updateData(["status" : true]) { error in
+        db.collection("Order").document(history.id).updateData(["status" : "preparing"]) { error in
             if let error = error {
                 print("Error updating product status: \(error)")
             } else {

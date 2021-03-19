@@ -140,7 +140,7 @@ class CartData: ObservableObject {
         }
         
         for i in order.cart {
-            db.collection("Order").document(ref!.documentID).collection("Orders").addDocument(data: [
+            db.collection("Orders").addDocument(data: [
                 "orderID" : ref!.documentID,
                 "productID" : i.product.id,
                 "quantity" : i.quantity
