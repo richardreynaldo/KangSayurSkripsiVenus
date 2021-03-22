@@ -135,19 +135,19 @@ struct RiwayatDetailView: View {
                         }, label: {
                             ZStack {
                                 Capsule()
-                                    .fill(history.status == "Delivered" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
+                                    .fill(history.status == "Received" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
                                     .frame(height: 52)
                                 
-                                Text(history.status == "Delivered" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
+                                Text(history.status == "Received" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
                                     .foregroundColor(Color.white)
                             }
                         })
                         .padding(.vertical, 8)
-                        .disabled(history.status == "Delivered")
+                        .disabled(history.status == "Received")
                         .alert(isPresented: $isShowingAlert) {
                             Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
                                 DispatchQueue.main.async {
-                                    historyData.confirmOrder(history: history)
+                                    historyData.receiveOrder(history: history)
                                 }
                             }, secondaryButton: .cancel(Text("Tidak")))}
                     }

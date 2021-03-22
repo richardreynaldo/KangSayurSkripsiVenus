@@ -32,7 +32,7 @@ struct PesananView: View {
                                         .foregroundColor(StyleColors.titleText)
                                     
                                     ForEach(historyData.history.filter({calendar.component(.month, from: $0.orderDate) ==  month && calendar.component(.year, from: $0.orderDate) ==  year}), id:\.id) { history in
-                                        if history.status == "Preparing" || history.status == "Delivering" {
+                                        if history.status == "Waiting" || history.status == "Preparing" || history.status == "Delivering" {
                                             NavigationLink(destination: PesananDetailView(history: history)) {
                                                 PesananRow(history: history)
                                             }

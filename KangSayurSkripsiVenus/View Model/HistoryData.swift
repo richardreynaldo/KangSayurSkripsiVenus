@@ -182,7 +182,37 @@ class HistoryData: ObservableObject {
     } */
     
     func confirmOrder(history: History) {
-        db.collection("Order").document(history.id).updateData(["status" : "Delivered"]) { error in
+        db.collection("Order").document(history.id).updateData(["status" : "Preparing"]) { error in
+            if let error = error {
+                print("Error updating product status: \(error)")
+            } else {
+                print("Product status successfully updated!")
+            }
+        }
+    }
+    
+    func cancelOrder(history: History) {
+        db.collection("Order").document(history.id).updateData(["status" : "Cancelled"]) { error in
+            if let error = error {
+                print("Error updating product status: \(error)")
+            } else {
+                print("Product status successfully updated!")
+            }
+        }
+    }
+    
+    func deliverOrder(history: History) {
+        db.collection("Order").document(history.id).updateData(["status" : "Delivering"]) { error in
+            if let error = error {
+                print("Error updating product status: \(error)")
+            } else {
+                print("Product status successfully updated!")
+            }
+        }
+    }
+    
+    func receiveOrder(history: History) {
+        db.collection("Order").document(history.id).updateData(["status" : "Received"]) { error in
             if let error = error {
                 print("Error updating product status: \(error)")
             } else {

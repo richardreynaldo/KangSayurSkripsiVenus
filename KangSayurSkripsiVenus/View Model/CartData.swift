@@ -61,7 +61,7 @@ class CartData: ObservableObject {
 //                order.id = UUID().uuidString
                 order.orderDate = Date()
                 order.paymentType = "Cash on Delivery"
-                order.status = "Preparing"
+                order.status = "Waiting"
                 order.totalOrder = getQuantityCart()
                 order.totalPrice = getTotalPriceCart()
                 order.cart.append(item)
