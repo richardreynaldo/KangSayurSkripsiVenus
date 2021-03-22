@@ -14,6 +14,7 @@ struct Order: Codable, Equatable, Identifiable {
     var status: String = ""
     var totalOrder: Int = 0
     var totalPrice: Int = 0
+    var userID: String = ""
     var cart: [Cart] = []
     
     mutating func removeOrderData() {

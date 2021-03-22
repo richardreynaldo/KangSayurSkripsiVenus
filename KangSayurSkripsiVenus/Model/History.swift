@@ -14,6 +14,7 @@ struct History: Codable, Equatable, Identifiable {
     var status: String = ""
     var totalOrder: Int = 0
     var totalPrice: Int = 0
+    var userID: String = ""
     var orders: [Orders] = []
     
     mutating func removeHistoryData() {

@@ -14,6 +14,7 @@ class HistoryData: ObservableObject {
     
     @Published var history = [History]()
     @Published var orders = [Orders]()
+    @Published var profilePemesan: ProfilePemesan?
     private var db = Firestore.firestore()
 
     
@@ -35,6 +36,7 @@ class HistoryData: ObservableObject {
                 let status = data["status"] as? String ?? ""
                 let totalOrder = data["totalOrder"] as? Int ?? 0
                 let totalPrice = data["totalPrice"] as? Int ?? 0
+                let userID = data["userID"] as? String ?? ""
                 let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
                 let orderDate = timeStamp.dateValue()
                 
@@ -56,7 +58,7 @@ class HistoryData: ObservableObject {
                 print("totalOrder: \(totalOrder)")
                 print("orders: \(self.orders)")
                 
-                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders)
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, userID: userID, orders: self.orders)
             })
         }
         
@@ -102,6 +104,7 @@ class HistoryData: ObservableObject {
                 let status = data["status"] as? String ?? ""
                 let totalOrder = data["totalOrder"] as? Int ?? 0
                 let totalPrice = data["totalPrice"] as? Int ?? 0
+                let userID = data["userID"] as? String ?? ""
                 let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
                 let orderDate = timeStamp.dateValue()
                 
@@ -119,11 +122,33 @@ class HistoryData: ObservableObject {
                     })
                 }
                 
+                self.db.collection("User").document(userID).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let data = document.data()
+                        
+                        let firstName = data?["firstName"] as? String ?? ""
+                        let lastName = data?["lastName"] as? String ?? ""
+                        let email = data?["email"] as? String ?? ""
+                        let timestamp = data?["dob"] as? Timestamp
+                        let address = data?["address"] as? [String] ?? []
+                        let isAdmin = data?["isAdmin"] as? Bool ?? false
+                        
+                        let dob = timestamp?.dateValue() ?? Date()
+                        
+                        self.profilePemesan = ProfilePemesan(userID: globalUserID, firstName: firstName, lastName: lastName, email: email, dob: dob, address: address, isAdmin: isAdmin)
+                        
+                        print("This is your profile: \(self.profilePemesan ?? ProfilePemesan.default)")
+                        print("This is your userID: \(userID)")
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+                
                 print("documents: \(queryDocumentSnapshot)")
                 print("totalOrder: \(totalOrder)")
                 print("orders: \(self.orders)")
                 
-                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders)
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, userID: userID, orders: self.orders)
             })
         }
     }

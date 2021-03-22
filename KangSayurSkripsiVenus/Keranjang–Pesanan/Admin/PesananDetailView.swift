@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PesananDetailView: View {
-    @EnvironmentObject var userData: UserData
     @EnvironmentObject var historyData: HistoryData
     @State private var isActionSheetShow = false
     @State private var isShowingAlert: Bool = false
@@ -120,7 +119,7 @@ struct PesananDetailView: View {
                             .padding(.bottom, 4)
                         
                         Group {
-                            Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
+                            Text("\(historyData.profilePemesan!.address[0]), \(historyData.profilePemesan!.address[1]) \(historyData.profilePemesan!.address[2]), RT \(historyData.profilePemesan!.address[3]) RW \(historyData.profilePemesan!.address[4]), Kelurahan \(historyData.profilePemesan!.address[5]), Kecamatan \(historyData.profilePemesan!.address[6]), Kota \(historyData.profilePemesan!.address[7]), \(historyData.profilePemesan!.address[8]), \(historyData.profilePemesan!.address[9])")
                             
                             Divider()
                         }
