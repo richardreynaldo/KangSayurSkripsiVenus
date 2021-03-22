@@ -23,7 +23,7 @@ class HistoryData: ObservableObject {
     
     func getHistoryData(productData: ProductData) {
         // Current Working Code
-        db.collection("Order").whereField("userID", isEqualTo: globalUserID).order(by: "status").order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
+        db.collection("Order").whereField("userID", isEqualTo: globalUserID).order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -38,7 +38,7 @@ class HistoryData: ObservableObject {
                 let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
                 let orderDate = timeStamp.dateValue()
                 
-                self.db.collection("Orders").addSnapshotListener { (snapshot, err) in
+                self.db.collection("Orders").order(by: "quantity").addSnapshotListener { (snapshot, err) in
                     guard let documents = snapshot?.documents else {
                         print("No documents")
                         return
@@ -117,7 +117,7 @@ class HistoryData: ObservableObject {
     } */
     
     func confirmOrder(history: History) {
-        db.collection("Order").document(history.id).updateData(["status" : "preparing"]) { error in
+        db.collection("Order").document(history.id).updateData(["status" : "Delivered"]) { error in
             if let error = error {
                 print("Error updating product status: \(error)")
             } else {

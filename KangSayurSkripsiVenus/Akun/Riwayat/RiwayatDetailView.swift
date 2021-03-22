@@ -65,6 +65,7 @@ struct RiwayatDetailView: View {
                                             Text("Kuantitas") //berat produk
                                             Text("Harga") //harga produk
                                         }
+                                        .font(Font.custom("Sora-Light", size: 16))
                                         
                                         Spacer()
                                         
@@ -73,12 +74,13 @@ struct RiwayatDetailView: View {
                                             Text("\(item.quantity) kg") //berat produk
                                             Text("Rp\(item.product.price)/kg") //harga produk
                                         }
+                                        .font(Font.custom("Sora-Regular", size: 16))
                                     }
                                     
                                     Divider()
                                 }
                             }
-                            .font(Font.custom("Sora-Regular", size: 16))
+                            /* .font(Font.custom("Sora-Regular", size: 16)) */
                             .foregroundColor(StyleColors.secondaryTitleText)
                             
                             Text("Detail Order")
@@ -95,6 +97,7 @@ struct RiwayatDetailView: View {
                                         Text("Status") //status order
                                         Text("Total") //total order
                                     }
+                                    .font(Font.custom("Sora-Light", size: 16))
                                     
                                     Spacer()
                                     
@@ -105,11 +108,12 @@ struct RiwayatDetailView: View {
                                         Text(history.status) //status order
                                         Text("Rp\(history.totalPrice)") //total order
                                     }
+                                    .font(Font.custom("Sora-Regular", size: 16))
                                 }
                                 
                                 Divider()
                             }
-                            .font(Font.custom("Sora-Regular", size: 16))
+                            /* .font(Font.custom("Sora-Regular", size: 16)) */
                             .foregroundColor(StyleColors.secondaryTitleText)
                             
                             Text("Alamat")
@@ -131,14 +135,15 @@ struct RiwayatDetailView: View {
                         }, label: {
                             ZStack {
                                 Capsule()
-                                    .fill(StyleColors.primaryRed)
+                                    .fill(history.status == "Delivered" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
                                     .frame(height: 52)
                                 
-                                Text("Konfirmasi Pesanan Diterima")
+                                Text(history.status == "Delivered" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
                                     .foregroundColor(Color.white)
                             }
                         })
-                        .padding(.vertical)
+                        .padding(.vertical, 8)
+                        .disabled(history.status == "Delivered")
                         .alert(isPresented: $isShowingAlert) {
                             Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
                                 DispatchQueue.main.async {

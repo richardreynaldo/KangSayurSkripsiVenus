@@ -130,7 +130,7 @@ class CartData: ObservableObject {
             "paymentType": order.paymentType,
             "status" : order.status,
             "totalOrder" : order.totalOrder,
-            "totalPrice" : order.totalPrice
+            "totalPrice" : order.totalPrice + 10000
         ]) { err in
             if let err = err {
                 print("Error adding Cart: \(err)")

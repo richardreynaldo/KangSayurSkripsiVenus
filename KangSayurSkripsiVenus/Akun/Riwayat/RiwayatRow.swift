@@ -41,15 +41,15 @@ struct RiwayatRow: View {
                     Text("Status: \(history.status)")
                         .font(Font.custom("Sora-Regular", size: 12))
                         .foregroundColor(StyleColors.titleText)
-                        .padding(.bottom, 14)
+                        .padding(.bottom, 10)
                 }
-                .padding(.leading, 14)
+                .padding(.leading, 10)
                 
                  Spacer()
                 
                 Image(systemName: "chevron.right")
             }
-            .padding(.horizontal, 22)
+            .padding(.horizontal, 20)
         }
     }
 
