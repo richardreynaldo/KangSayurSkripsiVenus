@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PesananDetailView: View {
     @EnvironmentObject var userData: UserData
+    @EnvironmentObject var historyData: HistoryData
     @State private var isActionSheetShow = false
-    @State private var showAlert = false
+    @State private var isShowingAlert: Bool = false
     
     var history: History
     
@@ -53,25 +54,31 @@ struct PesananDetailView: View {
                             .padding(.bottom, 4)
                         
                         Group {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("Nama") //nama produk
-                                    Text("Kuantitas") //berat produk
-                                    Text("Harga") //harga produk
+                            ForEach(history.orders.filter({
+                                $0.orderID == history.id
+                            })) { item in
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text("Nama") //nama produk
+                                        Text("Kuantitas") //berat produk
+                                        Text("Harga") //harga produk
+                                    }
+                                    .font(Font.custom("Sora-Light", size: 16))
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        Text(item.product.name) //nama produk
+                                        Text("\(item.quantity) kg") //berat produk
+                                        Text("Rp\(item.product.price)/kg") //harga produk
+                                    }
+                                    .font(Font.custom("Sora-Regular", size: 16))
                                 }
                                 
-                                Spacer()
-                                
-                                VStack(alignment: .trailing) {
-                                    Text(history.orders[0].product.name) //nama produk
-                                    Text("\(history.orders[0].quantity) kg") //berat produk
-                                    Text("Rp\(history.orders[0].product.price)/kg") //harga produk
-                                }
+                                Divider()
                             }
-                            
-                            Divider()
                         }
-                        .font(Font.custom("Sora-Regular", size: 16))
+                        /* .font(Font.custom("Sora-Regular", size: 16)) */
                         .foregroundColor(StyleColors.secondaryTitleText)
                         
                         Text("Detail Order")
@@ -88,6 +95,7 @@ struct PesananDetailView: View {
                                     Text("Status") //status order
                                     Text("Total") //total order
                                 }
+                                .font(Font.custom("Sora-Light", size: 16))
                                 
                                 Spacer()
                                 
@@ -98,11 +106,12 @@ struct PesananDetailView: View {
                                     Text(history.status) //status order
                                     Text("Rp\(history.totalPrice)") //total order
                                 }
+                                .font(Font.custom("Sora-Regular", size: 16))
                             }
                             
                             Divider()
                         }
-                        .font(Font.custom("Sora-Regular", size: 16))
+                        /* .font(Font.custom("Sora-Regular", size: 16)) */
                         .foregroundColor(StyleColors.secondaryTitleText)
                         
                         Text("Alamat")
@@ -118,6 +127,27 @@ struct PesananDetailView: View {
                         .font(Font.custom("Sora-Regular", size: 16))
                         .foregroundColor(StyleColors.secondaryTitleText)
                     }
+                    
+                    Button(action: {
+                        isShowingAlert = true
+                    }, label: {
+                        ZStack {
+                            Capsule()
+                                .fill(history.status == "Delivered" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
+                                .frame(height: 52)
+                            
+                            Text(history.status == "Delivered" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
+                                .foregroundColor(Color.white)
+                        }
+                    })
+                    .padding(.vertical, 8)
+                    .disabled(history.status == "Delivered")
+                    .alert(isPresented: $isShowingAlert) {
+                        Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
+                            DispatchQueue.main.async {
+                                historyData.confirmOrder(history: history)
+                            }
+                        }, secondaryButton: .cancel(Text("Tidak")))}
                 }
                 .padding()
             }

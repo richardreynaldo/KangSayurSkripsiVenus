@@ -49,7 +49,7 @@ struct PesananView: View {
         .background(StyleColors.secondaryYellow)
         .onAppear {
             DispatchQueue.main.async {
-                historyData.getHistoryData(productData: productData)
+                historyData.getPesananData(productData: productData)
             }
         }
     }

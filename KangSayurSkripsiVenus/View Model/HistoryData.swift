@@ -56,8 +56,7 @@ class HistoryData: ObservableObject {
                 print("totalOrder: \(totalOrder)")
                 print("orders: \(self.orders)")
                 
-                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders
-                )
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders)
             })
         }
         
@@ -88,6 +87,47 @@ class HistoryData: ObservableObject {
             }
         } */
     }
+    
+    
+    func getPesananData(productData: ProductData) {
+        db.collection("Order").order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.history = documents.map({ queryDocumentSnapshot -> History in
+                let data = queryDocumentSnapshot.data()
+                let paymentType = data["paymentType"] as? String ?? "Cash on Delivery"
+                let status = data["status"] as? String ?? ""
+                let totalOrder = data["totalOrder"] as? Int ?? 0
+                let totalPrice = data["totalPrice"] as? Int ?? 0
+                let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
+                let orderDate = timeStamp.dateValue()
+                
+                self.db.collection("Orders").order(by: "quantity").addSnapshotListener { (snapshot, err) in
+                    guard let documents = snapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+                    self.orders = documents.map({ documentSnapshot -> Orders in
+                        let data = documentSnapshot.data()
+                        let productID = data["productID"] as? String ?? ""
+                        let quantity = data["quantity"] as? Int ?? 0
+                        let orderID = data["orderID"] as? String ?? ""
+                        return Orders(id: documentSnapshot.documentID, orderID: orderID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity)
+                    })
+                }
+                
+                print("documents: \(queryDocumentSnapshot)")
+                print("totalOrder: \(totalOrder)")
+                print("orders: \(self.orders)")
+                
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: self.orders)
+            })
+        }
+    }
+    
     
     /* func getHistoryDetail(index: Int, productData: ProductData) {
         db.collection("Order").whereField("userID", isEqualTo: globalUserID).order(by: "status").order(by: "orderDate", descending: true).addSnapshotListener { (snapshot, err) in
