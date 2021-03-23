@@ -40,7 +40,7 @@ struct RiwayatRow: View {
                     
                     Text("Status: \(history.status)")
                         .font(Font.custom("Sora-Regular", size: 12))
-                        .foregroundColor(StyleColors.titleText)
+                        .foregroundColor(history.status == "Cancelled" ? StyleColors.primaryRed : StyleColors.titleText)
                         .padding(.bottom, 10)
                 }
                 .padding(.leading, 10)

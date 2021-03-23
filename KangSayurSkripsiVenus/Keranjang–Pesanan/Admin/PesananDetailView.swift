@@ -127,26 +127,63 @@ struct PesananDetailView: View {
                         .foregroundColor(StyleColors.secondaryTitleText)
                     }
                     
-                    Button(action: {
-                        isShowingAlert = true
-                    }, label: {
-                        ZStack {
-                            Capsule()
-                                .fill(history.status == "Received" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
-                                .frame(height: 52)
+                    HStack {
+                        if history.status == "Waiting" {
+                            Button(action: {
+                                isShowingAlert = true
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .stroke(StyleColors.primaryRed)
+                                        .frame(height: 52)
+                                    
+                                    Text("Tolak")
+                                        .foregroundColor(StyleColors.primaryRed)
+                                }
+                            })
+                            .padding(.vertical, 8)
+                            .alert(isPresented: $isShowingAlert) {
+                                Alert(title: Text("Tolak Pesanan"), message: Text("Apakah anda yakin ingin menolak pesanan?"), primaryButton: .destructive(Text("Ya")) {
+                                    DispatchQueue.main.async {
+                                        historyData.cancelOrder(history: history)
+                                    }
+                                }, secondaryButton: .cancel(Text("Tidak")))}
                             
-                            Text(history.status == "Received" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
-                                .foregroundColor(Color.white)
+                            Button(action: {
+                                DispatchQueue.main.async {
+                                    historyData.confirmOrder(history: history)
+                                }
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.primaryRed)
+                                        .frame(height: 52)
+                                    
+                                    Text("Terima")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .padding(.vertical, 8)
+                            
+                        } else if history.status == "Preparing" {
+                            Button(action: {
+                                DispatchQueue.main.async {
+                                    historyData.deliverOrder(history: history)
+                                }
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.primaryRed)
+                                        .frame(height: 52)
+                                    
+                                    Text("Kirim Pesanan")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .padding(.vertical, 8)
+                            
                         }
-                    })
-                    .padding(.vertical, 8)
-                    .disabled(history.status == "Received")
-                    .alert(isPresented: $isShowingAlert) {
-                        Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
-                            DispatchQueue.main.async {
-                                historyData.confirmOrder(history: history)
-                            }
-                        }, secondaryButton: .cancel(Text("Tidak")))}
+                    }
                 }
                 .padding()
             }
