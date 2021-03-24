@@ -37,168 +37,206 @@ struct RiwayatDetailView: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ScrollView {
-                    LazyVStack (alignment: .center) {
-                        //INI DI TENGAH TARO GAMBAR PRODUK AJA
-                        /* Image(history.product.name)
-                            .resizable()
-                            .frame(width: 200, height: 200)
-                            .aspectRatio(contentMode: .fit) */
+        ZStack {
+            ScrollView {
+                LazyVStack (alignment: .center) {
+                    //INI DI TENGAH TARO GAMBAR PRODUK AJA
+                    /* Image(history.product.name)
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .aspectRatio(contentMode: .fit) */
+                    
+                    VStack(alignment: .leading) {
+                        Text("Informasi Produk")
+                            .font(Font.custom("Sora-SemiBold", size: 17))
+                            .foregroundColor(StyleColors.titleText)
+                            .padding(.bottom, 4)
                         
-                        
-                        
-                        VStack(alignment: .leading) {
-                            Text("Informasi Produk")
-                                .font(Font.custom("Sora-SemiBold", size: 17))
-                                .foregroundColor(StyleColors.titleText)
-                                .padding(.bottom, 4)
-                            
-                            Group {
-                                ForEach(history.orders.filter({
-                                    $0.orderID == history.id
-                                })) { item in
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text("Nama") //nama produk
-                                            Text("Kuantitas") //berat produk
-                                            Text("Harga") //harga produk
-                                        }
-                                        .font(Font.custom("Sora-Light", size: 16))
-                                        
-                                        Spacer()
-                                        
-                                        VStack(alignment: .trailing) {
-                                            Text(item.product.name) //nama produk
-                                            Text("\(item.quantity) kg") //berat produk
-                                            Text("Rp\(item.product.price)/kg") //harga produk
-                                        }
-                                        .font(Font.custom("Sora-Regular", size: 16))
-                                    }
-                                    
-                                    Divider()
-                                }
-                            }
-                            /* .font(Font.custom("Sora-Regular", size: 16)) */
-                            .foregroundColor(StyleColors.secondaryTitleText)
-                            
-                            Text("Detail Order")
-                                .font(Font.custom("Sora-SemiBold", size: 17))
-                                .foregroundColor(StyleColors.titleText)
-                                .padding(.bottom, 4)
-                            
-                            Group {
+                        Group {
+                            ForEach(history.orders.filter({
+                                $0.orderID == history.id
+                            })) { item in
                                 HStack {
                                     VStack(alignment: .leading) {
-                                        Text("ID") //id order
-                                        Text("Tanggal") //tanggal order
-                                        Text("Waktu") //waktu order
-                                        Text("Status") //status order
-                                        Text("Total") //total order
+                                        Text("Nama") //nama produk
+                                        Text("Kuantitas") //berat produk
+                                        Text("Harga") //harga produk
                                     }
                                     .font(Font.custom("Sora-Light", size: 16))
                                     
                                     Spacer()
                                     
                                     VStack(alignment: .trailing) {
-                                        Text(history.id) //id order
-                                        Text("\(history.orderDate, formatter: Self.dateFormat)") //tanggal order
-                                        Text("\(history.orderDate, formatter: Self.timeFormat)") //waktu order
-                                        Text(history.status) //status order
-                                        Text("Rp\(history.totalPrice)") //total order
+                                        Text(item.product.name) //nama produk
+                                        Text("\(item.quantity) kg") //berat produk
+                                        Text("Rp\(item.product.price)/kg") //harga produk
                                     }
                                     .font(Font.custom("Sora-Regular", size: 16))
                                 }
                                 
                                 Divider()
                             }
-                            /* .font(Font.custom("Sora-Regular", size: 16)) */
-                            .foregroundColor(StyleColors.secondaryTitleText)
-                            
-                            Text("Alamat")
-                                .font(Font.custom("Sora-SemiBold", size: 17))
-                                .foregroundColor(StyleColors.titleText)
-                                .padding(.bottom, 4)
-                            
-                            Group {
-                                Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
-                                
-                                Divider()
-                            }
-                            .font(Font.custom("Sora-Regular", size: 16))
-                            .foregroundColor(StyleColors.secondaryTitleText)
                         }
+                        /* .font(Font.custom("Sora-Regular", size: 16)) */
+                        .foregroundColor(StyleColors.secondaryTitleText)
                         
-                        if history.status == "Waiting" {
-                            Button(action: {
-                                isShowingAlert = true
-                            }, label: {
-                                ZStack {
-                                    Capsule()
-                                        .stroke(StyleColors.primaryRed)
-                                        .frame(height: 52)
-                                    
-                                    Text("Batalkan Pesanan")
-                                        .foregroundColor(StyleColors.primaryRed)
+                        Text("Detail Order")
+                            .font(Font.custom("Sora-SemiBold", size: 17))
+                            .foregroundColor(StyleColors.titleText)
+                            .padding(.bottom, 4)
+                        
+                        Group {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Tanggal") //tanggal order
+                                    Text("Waktu") //waktu order
+                                    Text("Status") //status order
+                                    Text("Total") //total order
                                 }
-                            })
-                            .padding(.vertical, 8)
-                            .alert(isPresented: $isShowingAlert) {
-                                Alert(title: Text("Batalkan Pesanan?"), message: Text("Apakah anda yakin ingin membatalkan pesanan?"), primaryButton: .destructive(Text("Ya")) {
-                                    DispatchQueue.main.async {
-                                        historyData.cancelOrder(history: history)
-                                    }
-                                }, secondaryButton: .cancel(Text("Tidak")))}
+                                .font(Font.custom("Sora-Light", size: 16))
+                                
+                                Spacer()
+                                
+                                VStack(alignment: .trailing) {
+                                    Text("\(history.orderDate, formatter: Self.dateFormat)") //tanggal order
+                                    Text("\(history.orderDate, formatter: Self.timeFormat)") //waktu order
+                                    Text(history.status) //status order
+                                    Text("Rp\(history.totalPrice)") //total order
+                                }
+                                .font(Font.custom("Sora-Regular", size: 16))
+                            }
                             
-                        } else {
-                            Button(action: {
-                                isShowingAlert = true
-                            }, label: {
-                                ZStack {
-                                    Capsule()
-                                        .fill(history.status == "Cancelled" || history.status == "Preparing" || history.status == "Received" ? StyleColors.disabledButtonBg : StyleColors.primaryRed)
-                                        .frame(height: 52)
-                                    
-                                    if history.status == "Cancelled" {
-                                        Text("Pesanan Dibatalkan")
-                                            .foregroundColor(Color.white)
-                                    } else {
-                                        Text(history.status == "Received" ? "Pesanan Telah Diterima" : "Konfirmasi Pesanan Diterima")
-                                            .foregroundColor(Color.white)
-                                    }
-                                }
-                            })
-                            .padding(.vertical, 8)
-                            .disabled(history.status == "Cancelled" || history.status == "Preparing" || history.status == "Received")
-                            .alert(isPresented: $isShowingAlert) {
-                                Alert(title: Text("Pesanan Diterima"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
-                                    DispatchQueue.main.async {
-                                        historyData.receiveOrder(history: history)
-                                    }
-                                }, secondaryButton: .cancel(Text("Tidak")))}
+                            Divider()
                         }
+                        /* .font(Font.custom("Sora-Regular", size: 16)) */
+                        .foregroundColor(StyleColors.secondaryTitleText)
+                        
+                        Text("Alamat")
+                            .font(Font.custom("Sora-SemiBold", size: 17))
+                            .foregroundColor(StyleColors.titleText)
+                            .padding(.bottom, 4)
+                        
+                        Group {
+                            Text("\(userData.profile!.address[0]), \(userData.profile!.address[1]) \(userData.profile!.address[2]), RT \(userData.profile!.address[3]) RW \(userData.profile!.address[4]), Kelurahan \(userData.profile!.address[5]), Kecamatan \(userData.profile!.address[6]), Kota \(userData.profile!.address[7]), \(userData.profile!.address[8]), \(userData.profile!.address[9])")
+                            
+                            Divider()
+                        }
+                        .font(Font.custom("Sora-Regular", size: 16))
+                        .foregroundColor(StyleColors.secondaryTitleText)
                     }
-                    .padding()
-                }
-                .disabled(isLoading)
-                .blur(radius: isLoading ? 3 : 0)
-                
-                if isLoading {
-                    Rectangle()
-                        .fill(Color.white.opacity(0.75))
-                        .cornerRadius(15)
-                        .shadow(color: Color(.lightGray), radius: 4, x: 0.0, y: 0.0)
-                        .frame(width: geometry.size.width / 2, height: geometry.size.height / 5)
                     
-                    ProgressView("Mengonfirmasikan...")
-                        .scaleEffect(1.0, anchor: .center)
-                        .progressViewStyle(CircularProgressViewStyle(tint: StyleColors.primaryRed))
-                        .foregroundColor(StyleColors.primaryRed)
+                    switch history.status {
+                    case "Cancelled":
+                        Button(action: {
+                            
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.disabledButtonBg)
+                                    .frame(height: 52)
+                                
+                                Text("Pesanan Dibatalkan")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .disabled(true)
+                        .padding(.vertical, 8)
+                        
+                    case "Waiting":
+                        Button(action: {
+                            isShowingAlert = true
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .stroke(StyleColors.primaryRed)
+                                    .frame(height: 52)
+                                
+                                Text("Batalkan Pesanan")
+                                    .foregroundColor(StyleColors.primaryRed)
+                            }
+                        })
+                        .padding(.vertical, 8)
+                        .alert(isPresented: $isShowingAlert) {
+                            Alert(title: Text("Batalkan Pesanan?"), message: Text("Apakah anda yakin ingin membatalkan pesanan?"), primaryButton: .destructive(Text("Ya")) {
+                                DispatchQueue.main.async {
+                                    historyData.cancelOrder(history: history)
+                                }
+                            }, secondaryButton: .cancel(Text("Tidak")))}
+                        
+                    case "Preparing":
+                        Button(action: {
+                            
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.disabledButtonBg)
+                                    .frame(height: 52)
+                                
+                                Text("Pesanan Sedang Disiapkan")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .disabled(true)
+                        .padding(.vertical, 8)
+                        
+                    case "Delivering":
+                        Button(action: {
+                            isShowingAlert = true
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.primaryRed)
+                                    .frame(height: 52)
+                                
+                                Text("Konfirmasi Pesanan Diterima")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .padding(.vertical, 8)
+                        .alert(isPresented: $isShowingAlert) {
+                            Alert(title: Text("Pesanan Diterima?"), message: Text("Apakah pesanan sudah diterima dengan baik dan benar?"), primaryButton: .default(Text("Ya")) {
+                                DispatchQueue.main.async {
+                                    historyData.receiveOrder(history: history)
+                                }
+                            }, secondaryButton: .cancel(Text("Tidak")))}
+                        
+                    case "Received":
+                        Button(action: {
+                            
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.disabledButtonBg)
+                                    .frame(height: 52)
+                                
+                                Text("Pesanan Telah Diterima")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .disabled(true)
+                        .padding(.vertical, 8)
+                        
+                    default:
+                        Button(action: {
+                            
+                        }, label: {
+                            ZStack {
+                                Capsule()
+                                    .fill(StyleColors.disabledButtonBg)
+                                    .frame(height: 52)
+                                
+                                Text("Pesanan Telah Diterima")
+                                    .foregroundColor(Color.white)
+                            }
+                        })
+                        .disabled(true)
+                        .padding(.vertical, 8)
+                    }
                 }
+                .padding()
             }
-            .background(StyleColors.secondaryYellow)
         }
+        .background(StyleColors.secondaryYellow)
         .navigationBarTitle("Riwayat")
     }
 }

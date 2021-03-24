@@ -88,7 +88,6 @@ struct PesananDetailView: View {
                         Group {
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("ID") //id order
                                     Text("Tanggal") //tanggal order
                                     Text("Waktu") //waktu order
                                     Text("Status") //status order
@@ -99,7 +98,6 @@ struct PesananDetailView: View {
                                 Spacer()
                                 
                                 VStack(alignment: .trailing) {
-                                    Text(history.id) //id order
                                     Text("\(history.orderDate, formatter: Self.dateFormat)") //tanggal order
                                     Text("\(history.orderDate, formatter: Self.timeFormat)") //waktu order
                                     Text(history.status) //status order
@@ -128,7 +126,24 @@ struct PesananDetailView: View {
                     }
                     
                     HStack {
-                        if history.status == "Waiting" {
+                        switch history.status {
+                        case "Cancelled":
+                            Button(action: {
+                                
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.disabledButtonBg)
+                                        .frame(height: 52)
+                                    
+                                    Text("Pesanan Dibatalkan")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .disabled(true)
+                            .padding(.vertical, 8)
+                        
+                        case "Waiting":
                             Button(action: {
                                 isShowingAlert = true
                             }, label: {
@@ -165,7 +180,7 @@ struct PesananDetailView: View {
                             })
                             .padding(.vertical, 8)
                             
-                        } else if history.status == "Preparing" {
+                        case "Preparing":
                             Button(action: {
                                 DispatchQueue.main.async {
                                     historyData.deliverOrder(history: history)
@@ -182,6 +197,53 @@ struct PesananDetailView: View {
                             })
                             .padding(.vertical, 8)
                             
+                        case "Delivering":
+                            Button(action: {
+                                
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.disabledButtonBg)
+                                        .frame(height: 52)
+                                    
+                                    Text("Pesanan Sedang Dikirim")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .disabled(true)
+                            .padding(.vertical, 8)
+                            
+                        case "Received":
+                            Button(action: {
+                                
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.disabledButtonBg)
+                                        .frame(height: 52)
+                                    
+                                    Text("Pesanan Telah Diterima")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .disabled(true)
+                            .padding(.vertical, 8)
+                            
+                        default:
+                            Button(action: {
+                                
+                            }, label: {
+                                ZStack {
+                                    Capsule()
+                                        .fill(StyleColors.disabledButtonBg)
+                                        .frame(height: 52)
+                                    
+                                    Text("Pesanan Telah Diterima")
+                                        .foregroundColor(Color.white)
+                                }
+                            })
+                            .disabled(true)
+                            .padding(.vertical, 8)
                         }
                     }
                 }

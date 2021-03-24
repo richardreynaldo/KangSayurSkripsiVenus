@@ -22,17 +22,19 @@ struct RiwayatView: View {
     
     var body: some View {
         ZStack {
-            List {
-                ForEach(Array(stride(from: 2020, to: 2025, by: 1)).reversed(), id:\.self) { year in
-                    ForEach(Array(stride(from: 1, to: 13, by: 1)).reversed(), id:\.self) { month in
-                        if (!historyData.history.filter({calendar.component(.month, from: $0.orderDate) == month && calendar.component(.year, from: $0.orderDate) == year}).isEmpty) {
-                            Section(header: Text(String(calendar.monthSymbols[month-1]) + " " + String(year))) {
-                                ForEach(historyData.history.filter({calendar.component(.month, from: $0.orderDate) ==  month && calendar.component(.year, from: $0.orderDate) == year}), id:\.id) { history in
-                                    ZStack {
-                                        RiwayatRow(history: history)
-                                        
+            ScrollView {
+                LazyVStack {
+                    ForEach(Array(stride(from: 2020, to: 2025, by: 1)).reversed(), id:\.self) { year in
+                        ForEach(Array(stride(from: 1, to: 13, by: 1)).reversed(), id:\.self) { month in
+                            if (!historyData.history.filter({calendar.component(.month, from: $0.orderDate) == month && calendar.component(.year, from: $0.orderDate) == year}).isEmpty) {
+                                VStack {
+                                    Text(String(calendar.monthSymbols[month-1]) + " " + String(year))
+                                        .font(Font.custom("Sora-SemiBold", size: 15))
+                                        .foregroundColor(StyleColors.titleText)
+                                    
+                                    ForEach(historyData.history.filter({calendar.component(.month, from: $0.orderDate) ==  month && calendar.component(.year, from: $0.orderDate) == year}), id:\.id) { history in
                                         NavigationLink(destination: RiwayatDetailView(history: history)) {
-                                            EmptyView()
+                                            RiwayatRow(history: history)
                                         }
                                     }
                                 }
@@ -40,9 +42,8 @@ struct RiwayatView: View {
                         }
                     }
                 }
-                .listRowBackground(StyleColors.secondaryYellow)
+                .padding()
             }
-            .listStyle(SidebarListStyle())
         }
         .background(StyleColors.secondaryYellow)
         .navigationBarTitle("Riwayat")
