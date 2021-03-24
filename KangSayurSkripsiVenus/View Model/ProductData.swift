@@ -64,6 +64,16 @@ class ProductData: ObservableObject {
         return total
     }
     
+    func deleteProductData(productId : String){
+        db.collection("Product").document(productId).delete() { err in
+            if let err = err {
+                print("Error removing product: \(err)")
+            } else {
+                print("Product successfully removed!")
+            }
+        }
+    }
+    
     func updateProductStock() {
         loader.showLoader()
         

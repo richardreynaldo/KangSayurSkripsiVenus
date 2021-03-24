@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StokView: View {
     @EnvironmentObject var productData: ProductData
-    
+    @State var trashHidden : Bool = true
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -18,7 +18,7 @@ struct StokView: View {
                         LazyVStack {
                             ForEach(Array(productData.products.enumerated()), id: \.1.id) { (index, item) in
                                 NavigationLink(destination: StokDetailView(product: item)) {
-                                    StokRow(product: item, index: index)
+                                    StokRow(product: item, index: index, trashHidden: $trashHidden)
                                         .padding(.horizontal)
                                         .padding(.vertical, 4)
                                 }
@@ -47,14 +47,20 @@ struct StokView: View {
                         .foregroundColor(StyleColors.primaryRed)
                 }
             }
+            
             .background(StyleColors.secondaryYellow)
             .onAppear {
                 DispatchQueue.main.async {
                     productData.getProductData()
                 }
+            
             }
         }
+        .navigationBarItems(leading: Button(action: {trashHidden.toggle()}, label: {
+            Text("delete")
+        }))
     }
+    
 }
 
 struct StokView_Previews: PreviewProvider {

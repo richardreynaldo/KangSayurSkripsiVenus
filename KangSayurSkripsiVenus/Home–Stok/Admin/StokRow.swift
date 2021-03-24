@@ -11,7 +11,7 @@ struct StokRow: View {
     @EnvironmentObject var productData: ProductData
     var product: Product
     var index: Int
-    
+    @Binding var trashHidden : Bool
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -20,6 +20,20 @@ struct StokRow: View {
             VStack {
                 HStack {
                     // ini harusnya ada if buat check barangnya apa terus keluarin gambarnya berdasarkan barang
+                    if(trashHidden == false)
+                    {
+                        Button(action: {
+                            DispatchQueue.main.async {
+                                productData.deleteProductData(productId: product.id)
+                                productData.getProductData()
+                            }
+                            
+                        }, label: {
+                            Image(systemName: "trash")
+                        })
+                    
+                    }
+                    
                     
                     Image(product.image)
                         .resizable()
@@ -76,8 +90,8 @@ struct StokRow: View {
     }
 }
 
-struct StokRow_Previews: PreviewProvider {
-    static var previews: some View {
-        StokRow(product: Product.example, index: 0)
-    }
-}
+//struct StokRow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StokRow(product: Product.example, index: 0)
+//    }
+//}
