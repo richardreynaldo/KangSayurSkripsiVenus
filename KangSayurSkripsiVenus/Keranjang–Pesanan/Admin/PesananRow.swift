@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PesananRow: View {
+    @EnvironmentObject var historyData: HistoryData
+    @State var recent: [Orders] = []
     var history: History
     
     static let dateFormat: DateFormatter = {
@@ -34,9 +36,19 @@ struct PesananRow: View {
                         .foregroundColor(StyleColors.captionSmall)
                         .padding(.top, 8)
                     
-                    Text("\(history.id)")
-                        .font(Font.custom("Sora-Bold", size: 15))
-                        .foregroundColor(StyleColors.titleText)
+                    if recent.count > 1 {
+                        Text("\(recent[0].product.name), \(recent[1].product.name), and \(recent.count - 2) others")
+                            .font(Font.custom("Sora-Bold", size: 15))
+                            .foregroundColor(StyleColors.titleText)
+                    } else if recent.count == 1 {
+                        Text("\(recent[0].product.name)")
+                            .font(Font.custom("Sora-Bold", size: 15))
+                            .foregroundColor(StyleColors.titleText)
+                    } else {
+                        Text("N/A")
+                            .font(Font.custom("Sora-Bold", size: 15))
+                            .foregroundColor(StyleColors.titleText)
+                    }
                     
                     Text("Status: \(history.status)")
                         .font(Font.custom("Sora-Regular", size: 12))
@@ -50,6 +62,11 @@ struct PesananRow: View {
                 Image(systemName: "chevron.right")
             }
             .padding(.horizontal)
+        }
+        .onAppear {
+            recent = historyData.orders.filter({ item -> Bool in
+                item.orderID == history.id
+            })
         }
     }
 }
