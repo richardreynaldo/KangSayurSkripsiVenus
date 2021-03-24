@@ -46,8 +46,9 @@ struct PasswordBottom: View {
         {
             HStack{
                 Text("\(title)")
-//                    .font(StyleFont.heading2)
-//                    .foregroundColor(StyleColors.accountPageCaptionSmall)
+                    .font(Font.custom("Sora-SemiBold", size: 17))
+                    .foregroundColor(StyleColors.titleText)
+                
                 Spacer()
             }
             .padding(.horizontal)

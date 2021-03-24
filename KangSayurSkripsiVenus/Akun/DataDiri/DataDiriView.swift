@@ -35,8 +35,8 @@ struct DataDiriView: View {
                     
                     DatePicker(selection: $dob, in: ...Date(), displayedComponents: .date) {
                         Text("Birthdate")
-//                            .font(StyleFont.heading2)
-//                            .foregroundColor(StyleColors.accountPageCaptionSmall)
+                            .font(Font.custom("Sora-SemiBold", size: 17))
+                            .foregroundColor(StyleColors.titleText)
                     }
                     .padding(.horizontal)
 

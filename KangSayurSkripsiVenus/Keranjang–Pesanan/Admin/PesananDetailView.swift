@@ -28,13 +28,13 @@ struct PesananDetailView: View {
         return formatter
     }()
     
-    init(history: History) {
+    /* init(history: History) {
         //Disable selection.
         UITableView.appearance().allowsSelection = false
         UITableViewCell.appearance().selectionStyle = .none
         
         self.history = history
-    }
+    } */
     
     var body: some View {
         ZStack {
@@ -91,6 +91,7 @@ struct PesananDetailView: View {
                                     Text("Tanggal") //tanggal order
                                     Text("Waktu") //waktu order
                                     Text("Status") //status order
+                                    Text("Ongkos Kirim") //ongkos kirim
                                     Text("Total") //total order
                                 }
                                 .font(Font.custom("Sora-Light", size: 16))
@@ -101,6 +102,7 @@ struct PesananDetailView: View {
                                     Text("\(history.orderDate, formatter: Self.dateFormat)") //tanggal order
                                     Text("\(history.orderDate, formatter: Self.timeFormat)") //waktu order
                                     Text(history.status) //status order
+                                    Text("Rp10,000") //ongkos kirim
                                     Text("Rp\(history.totalPrice)") //total order
                                 }
                                 .font(Font.custom("Sora-Regular", size: 16))
