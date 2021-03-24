@@ -50,10 +50,22 @@ struct RiwayatRow: View {
                             .foregroundColor(StyleColors.titleText)
                     }
                     
-                    Text("Status: \(history.status)")
-                        .font(Font.custom("Sora-Regular", size: 12))
-                        .foregroundColor(history.status == "Cancelled" ? StyleColors.primaryRed : StyleColors.titleText)
-                        .padding(.bottom, 10)
+                    if history.status == "Cancelled" {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(StyleColors.primaryRed)
+                            .padding(.bottom, 10)
+                    } else if history.status == "Received" {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(Color.green)
+                            .padding(.bottom, 10)
+                    } else {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(Color.yellow)
+                            .padding(.bottom, 10)
+                    }
                 }
                 .padding(.leading, 10)
                 

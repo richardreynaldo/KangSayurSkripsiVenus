@@ -16,11 +16,47 @@ class HistoryData: ObservableObject {
     @Published var orders = [Orders]()
     @Published var profilePemesan: ProfilePemesan?
     private var db = Firestore.firestore()
-
     
-//    func getOrdersData() -> Orders {
-//
-//    }
+    func getAllHistoryData(productData: ProductData) {
+        db.collection("Order").order(by: "orderDate", descending: true).addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            self.history = documents.map({ queryDocumentSnapshot -> History in
+                let data = queryDocumentSnapshot.data()
+                let paymentType = data["paymentType"] as? String ?? "Cash on Delivery"
+                let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
+                let orderDate = timeStamp.dateValue()
+                let status = data["status"] as? String ?? ""
+                let totalOrder = data["totalOrder"] as? Int ?? 0
+                let totalPrice = data["totalPrice"] as? Int ?? 0
+                let userID = data["userID"] as? String ?? ""
+                
+                
+                self.db.collection("Orders").order(by: "quantity").addSnapshotListener { (snapshot, err) in
+                    guard let documents = snapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+                    self.orders = documents.map({ documentSnapshot -> Orders in
+                        let data = documentSnapshot.data()
+                        let productID = data["productID"] as? String ?? ""
+                        let quantity = data["quantity"] as? Int ?? 0
+                        let orderID = data["orderID"] as? String ?? ""
+                        return Orders(id: documentSnapshot.documentID, orderID: orderID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity)
+                    })
+                }
+                
+                print("documents: \(queryDocumentSnapshot)")
+                print("totalOrder: \(totalOrder)")
+                print("orders: \(self.orders)")
+                
+                return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, userID: userID, orders: self.orders)
+            })
+        }
+    }
     
     func getHistoryData(productData: ProductData) {
         // Current Working Code
@@ -62,33 +98,6 @@ class HistoryData: ObservableObject {
                 return History(id: queryDocumentSnapshot.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, userID: userID, orders: self.orders)
             })
         }
-        
-        
-        // Alternate Code 2
-        /* for i in documents {
-            let data = i.data()
-            let paymentType = data["paymentType"] as? String ?? "Cash on Delivery"
-            let status = data["status"] as? Int ?? 0
-            let totalOrder = data["totalOrder"] as? Int ?? 0
-            let totalPrice = data["totalPrice"] as? Int ?? 0
-            let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
-            let orderDate = timeStamp.dateValue()
-            
-            self.db.collection("Order").document(i.documentID).collection("Orders").whereField("orderID", isEqualTo: i.documentID).getDocuments { (snapshot, err) in
-                guard let documents = snapshot?.documents else {
-                    print("No documents")
-                    return
-                }
-                for j in documents {
-                    let data = j.data()
-                    let orderID = data["orderID"] as? String ?? ""
-                    let productID = data["productID"] as? String ?? ""
-                    let quantity = data["quantity"] as? Int ?? 0
-                    
-                    self.history.append(History(id: i.documentID, orderDate: orderDate, paymentType: paymentType, status: status, totalOrder: totalOrder, totalPrice: totalPrice, orders: [Orders(id: j.documentID, orderID: orderID, product: productData.products.first(where: {$0.id == productID}) ?? Product.example, quantity: quantity)]))
-                }
-            }
-        } */
     }
     
     

@@ -50,10 +50,22 @@ struct PesananRow: View {
                             .foregroundColor(StyleColors.titleText)
                     }
                     
-                    Text("Status: \(history.status)")
-                        .font(Font.custom("Sora-Regular", size: 12))
-                        .foregroundColor(StyleColors.titleText)
-                        .padding(.bottom, 8)
+                    if history.status == "Cancelled" {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(StyleColors.primaryRed)
+                            .padding(.bottom, 8)
+                    } else if history.status == "Received" {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(Color.green)
+                            .padding(.bottom, 8)
+                    } else {
+                        Text("Status: \(history.status)")
+                            .font(Font.custom("Sora-Regular", size: 12))
+                            .foregroundColor(Color.yellow)
+                            .padding(.bottom, 8)
+                    }
                 }
                 .padding(.leading)
                 

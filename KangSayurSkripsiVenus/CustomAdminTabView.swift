@@ -49,8 +49,14 @@ struct CustomAdminTabView: View {
                     .tag(2)
                 }
                 .onAppear {
-                    DispatchQueue.main.async {
-                        historyData.getHistoryData(productData: productData)
+                    if userData.profile?.isAdmin ?? false {
+                        DispatchQueue.main.async {
+                            historyData.getAllHistoryData(productData: productData)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            historyData.getHistoryData(productData: productData)
+                        }
                     }
                 }
             }

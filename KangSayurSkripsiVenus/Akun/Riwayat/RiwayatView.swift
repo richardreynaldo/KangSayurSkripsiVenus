@@ -10,6 +10,7 @@ import SwiftUI
 struct RiwayatView: View {
     private let calendar = Calendar.current
     private let year = Calendar.current.component(.year, from: Date())
+    @EnvironmentObject var userData: UserData
     @EnvironmentObject var historyData: HistoryData
     @EnvironmentObject var productData: ProductData
     
@@ -46,10 +47,16 @@ struct RiwayatView: View {
         .background(StyleColors.secondaryYellow)
         .navigationBarTitle("Riwayat")
         .onAppear {
-            DispatchQueue.main.async {
-                
-                historyData.getHistoryData(productData: productData)
-                historyData.updateHistoryStatus()
+            if userData.profile?.isAdmin ?? false {
+                DispatchQueue.main.async {
+                    historyData.getAllHistoryData(productData: productData)
+                    historyData.updateHistoryStatus()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    historyData.getHistoryData(productData: productData)
+                    historyData.updateHistoryStatus()
+                }
             }
         }
     }
