@@ -47,7 +47,9 @@ struct RiwayatView: View {
         .navigationBarTitle("Riwayat")
         .onAppear {
             DispatchQueue.main.async {
+                
                 historyData.getHistoryData(productData: productData)
+                historyData.updateHistoryStatus()
             }
         }
     }

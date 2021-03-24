@@ -33,12 +33,13 @@ class HistoryData: ObservableObject {
             self.history = documents.map({ queryDocumentSnapshot -> History in
                 let data = queryDocumentSnapshot.data()
                 let paymentType = data["paymentType"] as? String ?? "Cash on Delivery"
+                let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
+                let orderDate = timeStamp.dateValue()
                 let status = data["status"] as? String ?? ""
                 let totalOrder = data["totalOrder"] as? Int ?? 0
                 let totalPrice = data["totalPrice"] as? Int ?? 0
                 let userID = data["userID"] as? String ?? ""
-                let timeStamp = data["orderDate"] as? Timestamp ?? Timestamp()
-                let orderDate = timeStamp.dateValue()
+                
                 
                 self.db.collection("Orders").order(by: "quantity").addSnapshotListener { (snapshot, err) in
                     guard let documents = snapshot?.documents else {
@@ -217,6 +218,48 @@ class HistoryData: ObservableObject {
                 print("Error updating product status: \(error)")
             } else {
                 print("Product status successfully updated!")
+            }
+        }
+    }
+    
+//    func updateHistoryStatus(history: History, status: String) {
+//        loader.showLoader()
+//
+//        db.collection("History").document(history.id).updateData([
+//            "Status" : status
+//        ]) { error in
+//            if let error = error {
+//                print("Error updating product data: \(error)")
+//                self.loader.removeLoader()
+//            } else {
+//                print("Product data successfully updated!")
+//                self.loader.removeLoader()
+//            }
+//        }
+//    }
+    
+    
+    
+    func updateHistoryStatus() {
+        loader.showLoader()
+        
+        for i in history {
+            var status  = i.status
+            if(i.orderDate.timeIntervalSinceNow < -300 && status == "Waiting")
+            {
+                status = "Preparing"
+            }
+            
+            db.collection("Order").document(i.id).updateData([
+                "status" : status
+            ]) { error in
+                if let error = error {
+                    print("Error updating product stock: \(error)")
+                    self.loader.removeLoader()
+                } else {
+                    print("Product stock successfully updated!")
+                    self.loader.removeLoader()
+                }
             }
         }
     }
